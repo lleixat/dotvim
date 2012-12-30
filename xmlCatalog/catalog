@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!DOCTYPE catalog
+PUBLIC "-//OASIS//DTD Entity Resolution XML Catalog V1.0//EN"
+"http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
+<catalog
+xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+
+<group
+prefer="public"
+xml:base="file:///home/tobi/bulk/xml/schemas/">
+
+<public
+publicId="-//OASIS//DTD Entity Resolution XML Catalog V1.0//EN"
+uri="oasis_catalogs/1_0/dtd/catalog.dtd"/>
+<system
+systemId=
+"http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd"
+uri="oasis_catalogs/1_0/dtd/catalog.dtd"/>
+
+<public
+publicId="-//W3C//DTD XHTML 1.0 Strict//EN"
+uri="xhtml/1_0/strict/dtd/xhtml1-strict.dtd"/>
+<system
+systemId="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
+uri="xhtml/1_0/strict/dtd/xhtml1-strict.dtd"/>
+
+<public
+publicId="-//OASIS//DTD DocBook XML V4.2//EN"
+uri="docbook/4_2/dtd/docbookx.dtd"/>
+<system
+systemId="http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd"
+uri="docbook/4_2/dtd/docbookx.dtd"/>
+
+<public
+publicId="-//W3C//DTD SVG 1.0//EN"
+uri="svg/1_0/dtd/svg10.dtd"/>
+<system
+systemId="http://www.w3.org/TR/SVG10/DTD/svg10.dtd"
+uri="svg/1_0/dtd/svg10.dtd"/>
+<system
+systemId="http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"
+uri="svg/1_0/dtd/svg10.dtd"/>
+
+<public
+publicId="-//W3C//DTD SVG 1.1//EN"
+uri="svg/1_1/dtd/svg11-flat.dtd"/>
+<system
+systemId="http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"
+uri="svg/1_1/dtd/svg11-flat.dtd"/>
+<system
+systemId="http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-flat.dtd"
+uri="svg/1_1/dtd/svg11-flat.dtd"/>
+
+</group>
+
+<public
+publicId="-//Pinkjuice//DTD link-tree 0.1//EN"
+uri="../../../public_html/pj/svg/links/link-tree_0_1.dtd"/>
+<system
+systemId="http://www.pinkjuice.com/svg/links/link-tree_0_1.dtd"
+uri="../../../public_html/pj/svg/links/link-tree_0_1.dtd"/>
+
+<system
+systemId="http://www.example.org/tobias/reif/contacts.dtd"
+uri="../../xml/schemas/contacts/dtd/contacts.dtd"/>
+
+</catalog>

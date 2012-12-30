@@ -1,0 +1,6 @@
+[submodule "bundle/fugitive"]
+	path = bundle/fugitive
+	url = http://github.com/tpope/vim-fugitive.git
+[submodule "neosnippet"]
+	path = neosnippet
+	url = https://github.com/Shougo/neosnippet

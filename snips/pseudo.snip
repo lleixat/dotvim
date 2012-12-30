@@ -1,0 +1,112 @@
+snippet     com
+abbr        insert a com
+options     head
+    /**
+     * ${1:My com here}
+     */
+
+    ${0}
+
+snippet     comi
+abbr        // style com
+options     head
+    // ${1:type something}
+    ${0}
+
+snippet     var
+abbr        VARIABLE \t
+alias       variable
+options     head
+    VARIABLE    ${1:v}: ${2:REEL}${3:ENTIER};
+                ${0}
+
+snippet     vart
+abbr        TABLEAU DE n REELS|ENTIERS
+alias       tab
+options     head
+    ${1:t}:TABLEAU DE ${2:1000} ${3:REELS}${4:ENTIERS};
+    ${0}
+
+snippet     vare
+abbr        v: ENTIER
+alias       ent
+options     word
+    ${1:v}: ${2:ENTIER};
+    ${0}
+
+snippet     varr
+abbr        v: REEL
+alias       reel
+options     word
+    ${1:v}: ${2:REEL};
+    ${0}
+
+snippet     deb
+abbr        DEBUT ... FIN
+options     head
+    DEBUT
+        ${0}
+    FIN
+
+snippet     fin
+abbr        FIN
+options     head
+    FIN
+    ${0}
+
+snippet     lir
+abbr        LIRE (a);
+alias       lire
+options     head
+    LIRE (${1:a});
+    ${0}
+
+snippet     ecr
+abbr        ECRIRE ("...");
+alias       ecrire
+options     head
+    ECRIRE ("${1:my text}"${2:#:, my value});
+    ${0}
+
+snippet     =
+abbr        ← : arrow left char
+options     head
+    ← ${0}
+
+snippet     --
+abbr        ← : arrow left char
+options     head
+    ← ${0}
+
+snippet     tant
+abbr        TANTQUE condition FAIRE ... FINTANTQUE
+options     head
+    TANTQUE ${1} FAIRE
+        ${0}
+    FINTANTQUE
+
+snippet     pour
+abbr        POUR v VARIANT DE n A m FAIRE ... FINPOUR
+options     head
+    POUR ${1:v} VARIANT DE ${2:n} A ${3:m} FAIRE
+        ${0}
+    FINPOUR
+
+snippet     si
+abbr        SI condition ALORS ... FINSI
+options     head
+    SI ${1:a < 0} ALORS
+        ${0}
+    FINSI
+
+snippet     sin
+abbr        SINON
+options     head
+    SINON
+        ${0}
+
+snippet     sins
+abbr        SINONSI condition ALORS
+options     head
+    SINONSI ${1:a < 0} ALORS
+        ${0}
