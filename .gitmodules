@@ -238,10 +238,6 @@
 	path = bundle/NERD_tree-Project
 	url = git://github.com/vim-scripts/NERD_tree-Project.git
 
-[submodule "bundle/PDV-revised"]
-	path = bundle/PDV-revised
-	url = git://github.com/vim-scripts/PDV-revised.git
-
 [submodule "bundle/SQLUtilities"]
 	path = bundle/SQLUtilities
 	url = git://github.com/vim-scripts/SQLUtilities.git
@@ -339,6 +335,6 @@
 	url = git://github.com/AndrewRadev/switch.vim.git
 
 
-[submodule "bundle/vim-phpdoc"]
-	path = bundle/vim-phpdoc
-	url = git://github.com/stephpy/vim-phpdoc.git
+[submodule "bundle/PDV--phpDocumentor-for-Vim"]
+	path = bundle/PDV--phpDocumentor-for-Vim
+	url = git://github.com/khamer/PDV--phpDocumentor-for-Vim.git
