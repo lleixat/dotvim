@@ -1,6 +1,344 @@
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
-	url = http://github.com/tpope/vim-fugitive.git
-[submodule "neosnippet"]
-	path = neosnippet
-	url = https://github.com/Shougo/neosnippet
+	url = git://github.com/tpope/vim-fugitive.git.git
+	
+[submodule "bundle/PHP-Indenting-for-VIm"]
+	path = bundle/PHP-Indenting-for-VIm
+	url = git://github.com/2072/PHP-Indenting-for-VIm.git
+
+[submodule "bundle/linediff.vim"]
+	path = bundle/linediff.vim
+	url = git://github.com/AndrewRadev/linediff.vim.git
+
+[submodule "bundle/vim-easymotion"]
+	path = bundle/vim-easymotion
+	url = git://github.com/Lokaltog/vim-easymotion.git
+
+[submodule "bundle/vim-addon-mw-utils"]
+	path = bundle/vim-addon-mw-utils
+	url = git://github.com/MarcWeber/vim-addon-mw-utils.git
+
+[submodule "bundle/delimitMate"]
+	path = bundle/delimitMate
+	url = git://github.com/Raimondi/delimitMate.git
+
+[submodule "bundle/colorv.vim"]
+	path = bundle/colorv.vim
+	url = git://github.com/Rykka/colorv.vim.git
+
+[submodule "bundle/neocomplcache"]
+	path = bundle/neocomplcache
+	url = git://github.com/Shougo/neocomplcache.git
+
+[submodule "bundle/neosnippet"]
+	path = bundle/neosnippet
+	url = git://github.com/Shougo/neosnippet.git
+
+[submodule "bundle/vimproc"]
+	path = bundle/vimproc
+	url = git://github.com/Shougo/vimproc.git
+
+[submodule "bundle/vimshell"]
+	path = bundle/vimshell
+	url = git://github.com/Shougo/vimshell.git
+
+[submodule "bundle/ultisnips"]
+	path = bundle/ultisnips
+	url = git://github.com/SirVer/ultisnips.git
+
+[submodule "bundle/vim-sparkup"]
+	path = bundle/vim-sparkup
+	url = git://github.com/bingaman/vim-sparkup.git
+
+[submodule "bundle/scss-syntax.vim"]
+	path = bundle/scss-syntax.vim
+	url = git://github.com/cakebaker/scss-syntax.vim.git
+
+[submodule "bundle/vim-dbext"]
+	path = bundle/vim-dbext
+	url = git://github.com/edsono/vim-dbext.git
+
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = git://github.com/juanpabloaj/supertab.git
+
+[submodule "bundle/csapprox"]
+	path = bundle/csapprox
+	url = git://github.com/godlygeek/csapprox.git
+
+[submodule "bundle/MatchTag"]
+	path = bundle/MatchTag
+	url = git://github.com/gregsexton/MatchTag.git
+
+[submodule "bundle/vim-preview"]
+	path = bundle/vim-preview
+	url = git://github.com/greyblake/vim-preview.git
+
+[submodule "bundle/vim-nerdtree-tabs"]
+	path = bundle/vim-nerdtree-tabs
+	url = git://github.com/jistr/vim-nerdtree-tabs.git
+
+[submodule "bundle/vim-slime"]
+	path = bundle/vim-slime
+	url = git://github.com/jpalardy/vim-slime.git
+
+[submodule "bundle/ctrlp.vim"]
+	path = bundle/ctrlp.vim
+	url = git://github.com/kien/ctrlp.vim.git
+
+[submodule "bundle/colorizer"]
+	path = bundle/colorizer
+	url = git://github.com/lilydjwg/colorizer.git
+
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = git://github.com/majutsushi/tagbar.git
+
+[submodule "bundle/gist-vim"]
+	path = bundle/gist-vim
+	url = git://github.com/mattn/gist-vim.git
+
+[submodule "bundle/webapi-vim"]
+	path = bundle/webapi-vim
+	url = git://github.com/mattn/webapi-vim.git
+
+[submodule "bundle/zencoding-vim"]
+	path = bundle/zencoding-vim
+	url = git://github.com/mattn/zencoding-vim.git
+
+[submodule "bundle/vim-indent-guides"]
+	path = bundle/vim-indent-guides
+	url = git://github.com/nathanaelkane/vim-indent-guides.git
+
+[submodule "bundle/vim-markdown-preview"]
+	path = bundle/vim-markdown-preview
+	url = git://github.com/nelstrom/vim-markdown-preview.git
+
+[submodule "bundle/fecompressor.vim"]
+	path = bundle/fecompressor.vim
+	url = git://github.com/othree/fecompressor.vim.git
+
+[submodule "bundle/html5-syntax.vim"]
+	path = bundle/html5-syntax.vim
+	url = git://github.com/othree/html5-syntax.vim.git
+
+[submodule "bundle/vim-javascript"]
+	path = bundle/vim-javascript
+	url = git://github.com/pangloss/vim-javascript.git
+	
+[submodule "bundle/vim-javascript-syntax"]
+	path = bundle/vim-javascript-syntax
+	url = git://github.com/jelera/vim-javascript-syntax.git
+
+[submodule "bundle/Javascript-syntax-with-Ajax-Support"]
+	path = bundle/Javascript-syntax-with-Ajax-Support
+	url = git://github.com/vim-scripts/Javascript-syntax-with-Ajax-Support.git
+	
+[submodule "bundle/vim-markdown"]
+	path = bundle/vim-markdown
+	url = git://github.com/plasticboy/vim-markdown.git
+
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = git://github.com/scrooloose/syntastic.git
+
+[submodule "bundle/phpcomplete.vim"]
+	path = bundle/phpcomplete.vim
+	url = git://github.com/shawncplus/phpcomplete.vim.git
+
+[submodule "bundle/gundo.vim"]
+	path = bundle/gundo.vim
+	url = git://github.com/sjl/gundo.vim.git
+
+[submodule "bundle/Smart-Tabs"]
+	path = bundle/Smart-Tabs
+	url = git://github.com/skroll/Smart-Tabs.git
+
+[submodule "bundle/vim-bufexplorer"]
+	path = bundle/vim-bufexplorer
+	url = git://github.com/slack/vim-bufexplorer.git
+
+[submodule "bundle/javaScriptLint.vim"]
+	path = bundle/javaScriptLint.vim
+	url = git://github.com/smith/javaScriptLint.vim.git
+
+[submodule "bundle/vim-quickrun"]
+	path = bundle/vim-quickrun
+	url = git://github.com/thinca/vim-quickrun.git
+
+[submodule "bundle/checksyntax_vim"]
+	path = bundle/checksyntax_vim
+	url = git://github.com/tomtom/checksyntax_vim.git
+
+[submodule "bundle/quickfixsigns_vim"]
+	path = bundle/quickfixsigns_vim
+	url = git://github.com/tomtom/quickfixsigns_vim.git
+
+[submodule "bundle/tlib_vim"]
+	path = bundle/tlib_vim
+	url = git://github.com/tomtom/tlib_vim.git
+
+[submodule "bundle/vim-bundler"]
+	path = bundle/vim-bundler
+	url = git://github.com/tpope/vim-bundler.git
+
+[submodule "bundle/vim-endwise"]
+	path = bundle/vim-endwise
+	url = git://github.com/tpope/vim-endwise.git
+
+[submodule "bundle/vim-fugitive"]
+	path = bundle/vim-fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+
+[submodule "bundle/vim-pathogen"]
+	path = bundle/vim-pathogen
+	url = git://github.com/tpope/vim-pathogen.git
+
+[submodule "bundle/vim-rails"]
+	path = bundle/vim-rails
+	url = git://github.com/tpope/vim-rails.git
+
+[submodule "bundle/vim-unimpaired"]
+	path = bundle/vim-unimpaired
+	url = git://github.com/tpope/vim-unimpaired.git
+
+[submodule "bundle/vim-ruby"]
+	path = bundle/vim-ruby
+	url = git://github.com/vim-ruby/vim-ruby.git
+
+[submodule "bundle/Align"]
+	path = bundle/Align
+	url = git://github.com/vim-scripts/Align.git
+
+[submodule "bundle/AutoAlign"]
+	path = bundle/AutoAlign
+	url = git://github.com/vim-scripts/AutoAlign.git
+
+[submodule "bundle/FindInNERDTree"]
+	path = bundle/FindInNERDTree
+	url = git://github.com/vim-scripts/FindInNERDTree.git
+
+[submodule "bundle/FuzzyFinder"]
+	path = bundle/FuzzyFinder
+	url = git://github.com/vim-scripts/FuzzyFinder.git
+
+[submodule "bundle/L9"]
+	path = bundle/L9
+	url = git://github.com/vim-scripts/L9.git
+
+[submodule "bundle/Mark--Karkat"]
+	path = bundle/Mark--Karkat
+	url = git://github.com/vim-scripts/Mark--Karkat.git
+
+[submodule "bundle/NERD_tree-Project"]
+	path = bundle/NERD_tree-Project
+	url = git://github.com/vim-scripts/NERD_tree-Project.git
+
+[submodule "bundle/PDV-revised"]
+	path = bundle/PDV-revised
+	url = git://github.com/vim-scripts/PDV-revised.git
+
+[submodule "bundle/SQLUtilities"]
+	path = bundle/SQLUtilities
+	url = git://github.com/vim-scripts/SQLUtilities.git
+
+[submodule "bundle/ShowMarks"]
+	path = bundle/ShowMarks
+	url = git://github.com/vim-scripts/ShowMarks.git
+
+[submodule "bundle/The-NERD-Commenter"]
+	path = bundle/The-NERD-Commenter
+	url = git://github.com/vim-scripts/The-NERD-Commenter.git
+
+[submodule "bundle/YankRing.vim"]
+	path = bundle/YankRing.vim
+	url = git://github.com/vim-scripts/YankRing.vim.git
+
+[submodule "bundle/ack.vim"]
+	path = bundle/ack.vim
+	url = git://github.com/vim-scripts/ack.vim.git
+
+[submodule "bundle/boost.vim"]
+	path = bundle/boost.vim
+	url = git://github.com/vim-scripts/boost.vim.git
+
+[submodule "bundle/bufexplorer.zip"]
+	path = bundle/bufexplorer.zip
+	url = git://github.com/vim-scripts/bufexplorer.zip.git
+
+[submodule "bundle/file-line"]
+	path = bundle/file-line
+	url = git://github.com/vim-scripts/file-line.git
+
+[submodule "bundle/jQuery"]
+	path = bundle/jQuery
+	url = git://github.com/vim-scripts/jQuery.git
+
+[submodule "bundle/lodgeit.vim"]
+	path = bundle/lodgeit.vim
+	url = git://github.com/vim-scripts/lodgeit.vim.git
+
+[submodule "bundle/lua_omni"]
+	path = bundle/lua_omni
+	url = git://github.com/vim-scripts/lua_omni.git
+
+[submodule "bundle/mru.vim"]
+	path = bundle/mru.vim
+	url = git://github.com/vim-scripts/mru.vim.git
+
+[submodule "bundle/netrw.vim"]
+	path = bundle/netrw.vim
+	url = git://github.com/vim-scripts/netrw.vim.git
+
+[submodule "bundle/publish.vim"]
+	path = bundle/publish.vim
+	url = git://github.com/vim-scripts/publish.vim.git
+
+[submodule "bundle/repeat.vim"]
+	path = bundle/repeat.vim
+	url = git://github.com/vim-scripts/repeat.vim.git
+
+[submodule "bundle/restart.vim"]
+	path = bundle/restart.vim
+	url = git://github.com/vim-scripts/restart.vim.git
+
+[submodule "bundle/surround.vim"]
+	path = bundle/surround.vim
+	url = git://github.com/vim-scripts/surround.vim.git
+
+[submodule "bundle/vcscommand.vim"]
+	path = bundle/vcscommand.vim
+	url = git://github.com/vim-scripts/vcscommand.vim.git
+
+[submodule "bundle/xmledit"]
+	path = bundle/xmledit
+	url = git://github.com/vim-scripts/xmledit.git
+
+[submodule "bundle/Command-T"]
+	path = bundle/Command-T
+	url = git://github.com/wincent/Command-T.git
+
+[submodule "bundle/vim-easytags"]
+	path = bundle/vim-easytags
+	url = git://github.com/xolox/vim-easytags.git
+
+[submodule "bundle/vim-session"]
+	path = bundle/vim-session
+	url = git://github.com/xolox/vim-session.git
+
+[submodule "bundle/vim-shell"]
+	path = bundle/vim-shell
+	url = git://github.com/xolox/vim-shell.git
+
+[submodule "bundle/switch.vim"]
+	path = bundle/switch.vim
+	url = git://github.com/AndrewRadev/switch.vim.git
+
+
+[submodule "bundle/vim-phpdoc"]
+	path = bundle/vim-phpdoc
+	url = git://github.com/stephpy/vim-phpdoc.git
