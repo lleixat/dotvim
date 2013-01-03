@@ -1,4 +1,4 @@
-snippet     sign
+snippet     sigc
 abbr        Add signature "Author and Contact"
 prev_word   '^'
     /**
@@ -6,16 +6,59 @@ prev_word   '^'
      * Creation : `strftime("%d %b %Y")`
      * Contact  : <contact@thomaslleixa.fr>
      */
+     
+snippet     sigm
+abbr        Add signature "Author and Contact"
+prev_word   '^'
+    /**
+     * Author       : Thomas Lleixa
+     * Modification : `strftime("%d %b %Y")`
+     * Contact      : <contact@thomaslleixa.fr>
+     */
+
+snippet     com
+abbr        Bloc com
+options     head
+    /**
+     * ${1: My com here}
+     */
 
 snippet     phpi
 abbr        <?php ... ?>
 prev_word   '^'
     <?php ${0} ?>
 
+snippet     csl
+abbr        console.log()
+options     head
+    console.log(${1:data});   
+    
+snippet     csw
+abbr        console.warn()
+options     head
+    console.warn(${1:data});   
+
 snippet     vd
 abbr        echo "<pre>";var_dump...
 prev_word   '^'
     echo "<pre>\n";var_dump($${1:data});echo "</pre>\n";
+    
+snippet     vdd
+abbr        echo "<pre>";var_dump...
+prev_word   '^'
+    echo "<pre>\n";var_dump($${1:data});echo "</pre>\n";
+    die('die var_dump@[`@%`::L`expand(line('.'))`]');
+    
+snippet     vdlq
+abbr        v_d(\DB::last_query())
+prev_word   '^'
+    echo "<pre>\n";var_dump(\DB::last_query());echo "</pre>\n";
+    die('die var_dump@[`@%`::L`expand(line('.'))`]');
+
+snippet     die
+abbr        die(@[`@%`::L`expand(line('.'))`]')
+options     head
+    die("@[`@%`::L`expand(line('.'))`]");
     
 snippet     pvd
 abbr        <pre><?php echo var_dump...
@@ -298,7 +341,7 @@ snippet session
 	$_SESSION['${1:variable}']
 	
 snippet     dbg
-abbr        débuggue
+abbr        dbg, deb
 prev_word   '^'
     $${3:this}->dbg($${1:var}, '$${2:$1}');
 
@@ -316,3 +359,10 @@ snippet     ftt
 abbr        $this->template->....
 prev_word   '^'
     $this->template->${1:var} = ${2:var};
+    
+snippet     lorem
+abbr        lor lorem
+prev_word   '^'
+    Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing.
+    
+

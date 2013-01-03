@@ -1,10 +1,17 @@
-snippet add
+snippet     add
+prev_word   '^'
 	${1:obj}.add('${2:selector expression}')${3}
-snippet addClass
+
+snippet     addClass
+prev_word   '^'
 	${1:obj}.addClass('${2:class name}')${3}
-snippet after
+
+snippet     after
+prev_word   '^'
 	${1:obj}.after('${2:Some text <b>and bold!</b>}')${3}
-snippet ajax
+
+snippet     ajax
+prev_word   '^'
 	$.ajax({
 		url: '${1:mydomain.com/url}',
 		type: '${2:POST}',
@@ -20,39 +27,53 @@ snippet ajax
 			${7:// error callback}
 		}
 	});
-snippet ajaxcomplete
+
+snippet     ajaxcomplete
+prev_word   '^'
 	${1:obj}.ajaxComplete(function (${1:e}, xhr, settings) {
 		${2:// callback}
 	});
-snippet ajaxerror
+
+snippet     ajaxerror
+prev_word   '^'
 	${1:obj}.ajaxError(function (${1:e}, xhr, settings, thrownError) {
 		${2:// error callback}
 	});
 	${3}
-snippet ajaxget
+
+snippet     ajaxget
+prev_word   '^'
 	$.get('${1:mydomain.com/url}',
 		${2:{ param1: value1 },}
 		function (data, textStatus, jqXHR) {
 			${3:// success callback}
 		}
 	);
-snippet ajaxpost
+
+snippet     ajaxpost
+prev_word   '^'
 	$.post('${1:mydomain.com/url}',
 		${2:{ param1: value1 },}
 		function (data, textStatus, jqXHR) {
 			${3:// success callback}
 		}
 	);
-snippet ajaxprefilter
+
+snippet     ajaxprefilter
+prev_word   '^'
 	$.ajaxPrefilter(function (${1:options}, ${2:originalOptions}, jqXHR) {
 		${3: // Modify options, control originalOptions, store jqXHR, etc}
 	});
-snippet ajaxsend
+
+snippet     ajaxsend
+prev_word   '^'
 	${1:obj}.ajaxSend(function (${1:request, settings}) {
 		${2:// error callback}
 	});
 	${3}
-snippet ajaxsetup
+
+snippet     ajaxsetup
+prev_word   '^'
 	$.ajaxSetup({
 		url: "${1:mydomain.com/url}",
 		type: "${2:POST}",
@@ -68,84 +89,146 @@ snippet ajaxsetup
 			${7:// error callback}
 		}
 	});
-snippet ajaxstart
+
+snippet     ajaxstart
+prev_word   '^'
 	$.ajaxStart(function () {
 		${1:// handler for when an AJAX call is started and no other AJAX calls are in progress};
 	});
 	${2}
-snippet ajaxstop
+
+snippet     ajaxstop
+prev_word   '^'
 	$.ajaxStop(function () {
 		${1:// handler for when all AJAX calls have been completed};
 	});
 	${2}
-snippet ajaxsuccess
+
+snippet     ajaxsuccess
+prev_word   '^'
 	$.ajaxSuccess(function (${1:e}, xhr, settings) {
 		${2:// handler for when any AJAX call is successfully completed};
 	});
 	${2}
-snippet andself
+
+snippet     andself
+prev_word   '^'
 	${1:obj}.andSelf()${2}
-snippet animate
+
+snippet     animate
+prev_word   '^'
 	${1:obj}.animate({${2:param1: value1, param2: value2}}, ${3:speed})${4}
-snippet append
+
+snippet     append
+prev_word   '^'
 	${1:obj}.append('${2:Some text <b>and bold!</b>}')${3}
-snippet appendTo
+
+snippet     appendTo
+prev_word   '^'
 	${1:obj}.appendTo('${2:selector expression}')${3}
-snippet attr
+
+snippet     attr
+prev_word   '^'
 	${1:obj}.attr('${2:attribute}', '${3:value}')${4}
-snippet attrm
+
+snippet     attrm
+prev_word   '^'
 	${1:obj}.attr({'${2:attr1}': '${3:value1}', '${4:attr2}': '${5:value2}'})${6}
-snippet before
+
+snippet     before
+prev_word   '^'
 	${1:obj}.before('${2:Some text <b>and bold!</b>}')${3}
-snippet bind
+
+snippet     bind
+prev_word   '^'
 	${1:obj}.bind('${2:event name}', function (${3:e}) {
 		${4:// event handler}
 	});
-snippet blur
+
+snippet     blur
+prev_word   '^'
 	${1:obj}.blur(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet C
+
+snippet     C
+prev_word   '^'
 	$.Callbacks()${1}
-snippet Cadd
+
+snippet     Cadd
+prev_word   '^'
 	${1:callbacks}.add(${2:callbacks})${3}
-snippet Cdis
+
+snippet     Cdis
+prev_word   '^'
 	${1:callbacks}.disable()${2}
-snippet Cempty
+
+snippet     Cempty
+prev_word   '^'
 	${1:callbacks}.empty()${2}
-snippet Cfire
+
+snippet     Cfire
+prev_word   '^'
 	${1:callbacks}.fire(${2:args})${3}
-snippet Cfired
+
+snippet     Cfired
+prev_word   '^'
 	${1:callbacks}.fired()${2}
-snippet Cfirew
+
+snippet     Cfirew
+prev_word   '^'
 	${1:callbacks}.fireWith(${2:this}, ${3:args})${4}
-snippet Chas
+
+snippet     Chas
+prev_word   '^'
 	${1:callbacks}.has(${2:callback})${3}
-snippet Clock
+
+snippet     Clock
+prev_word   '^'
 	${1:callbacks}.lock()${2}
-snippet Clocked
+
+snippet     Clocked
+prev_word   '^'
 	${1:callbacks}.locked()${2}
-snippet Crem
+
+snippet     Crem
+prev_word   '^'
 	${1:callbacks}.remove(${2:callbacks})${3}
-snippet change
+
+snippet     change
+prev_word   '^'
 	${1:obj}.change(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet children
+
+snippet     children
+prev_word   '^'
 	${1:obj}.children('${2:selector expression}')${3}
-snippet clearq
+
+snippet     clearq
+prev_word   '^'
 	${1:obj}.clearQueue(${2:'queue name'})${3}
-snippet click
+
+snippet     click
+prev_word   '^'
 	${1:obj}.click(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet clone
+
+snippet     clone
+prev_word   '^'
 	${1:obj}.clone()${2}
-snippet contains
+
+snippet     contains
+prev_word   '^'
 	$.contains(${1:container}, ${2:contents});
-snippet css
+
+snippet     css
+prev_word   '^'
 	${1:obj}.css('${2:attribute}', '${3:value}')${4}
-snippet csshooks
+
+snippet     csshooks
+prev_word   '^'
 	$.cssHooks['${1:CSS prop}'] = {
 		get: function (elem, computed, extra) {
 			${2: // handle getting the CSS property}
@@ -154,437 +237,769 @@ snippet csshooks
 			${3: // handle setting the CSS value}
 		}
 	};
-snippet cssm
+
+snippet     cssm
+prev_word   '^'
 	${1:obj}.css({${2:attribute1}: '${3:value1}', ${4:attribute2}: '${5:value2}'})${6}
-snippet D
+
+snippet     D
+prev_word   '^'
 	$.Deferred()${1}
-snippet Dalways
+
+snippet     Dalways
+prev_word   '^'
 	${1:deferred}.always(${2:callbacks})${3}
-snippet Ddone
+
+snippet     Ddone
+prev_word   '^'
 	${1:deferred}.done(${2:callbacks})${3}
-snippet Dfail
+
+snippet     Dfail
+prev_word   '^'
 	${1:deferred}.fail(${2:callbacks})${3}
-snippet Disrej
+
+snippet     Disrej
+prev_word   '^'
 	${1:deferred}.isRejected()${2}
-snippet Disres
+
+snippet     Disres
+prev_word   '^'
 	${1:deferred}.isResolved()${2}
-snippet Dnotify
+
+snippet     Dnotify
+prev_word   '^'
 	${1:deferred}.notify(${2:args})${3}
-snippet Dnotifyw
+
+snippet     Dnotifyw
+prev_word   '^'
 	${1:deferred}.notifyWith(${2:this}, ${3:args})${4}
-snippet Dpipe
+
+snippet     Dpipe
+prev_word   '^'
 	${1:deferred}.then(${2:doneFilter}, ${3:failFilter}, ${4:progressFilter})${5}
-snippet Dprog
+
+snippet     Dprog
+prev_word   '^'
 	${1:deferred}.progress(${2:callbacks})${3}
-snippet Dprom
+
+snippet     Dprom
+prev_word   '^'
 	${1:deferred}.promise(${2:target})${3}
-snippet Drej
+
+snippet     Drej
+prev_word   '^'
 	${1:deferred}.reject(${2:args})${3}
-snippet Drejw
+
+snippet     Drejw
+prev_word   '^'
 	${1:deferred}.rejectWith(${2:this}, ${3:args})${4}
-snippet Dres
+
+snippet     Dres
+prev_word   '^'
 	${1:deferred}.resolve(${2:args})${3}
-snippet Dresw
+
+snippet     Dresw
+prev_word   '^'
 	${1:deferred}.resolveWith(${2:this}, ${3:args})${4}
-snippet Dstate
+
+snippet     Dstate
+prev_word   '^'
 	${1:deferred}.state()${2}
-snippet Dthen
+
+snippet     Dthen
+prev_word   '^'
 	${1:deferred}.then(${2:doneCallbacks}, ${3:failCallbacks}, ${4:progressCallbacks})${5}
-snippet Dwhen
+
+snippet     Dwhen
+prev_word   '^'
 	$.when(${1:deferreds})${2}
-snippet data
+
+snippet     data
+prev_word   '^'
 	${1:obj}.data(${2:obj})${3}
-snippet dataa
+
+snippet     dataa
+prev_word   '^'
 	$.data('${1:selector expression}', '${2:key}'${3:, 'value'})${4}
-snippet dblclick
+
+snippet     dblclick
+prev_word   '^'
 	${1:obj}.dblclick(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet delay
+
+snippet     delay
+prev_word   '^'
 	${1:obj}.delay('${2:slow/400/fast}'${3:, 'queue name'})${4}
-snippet dele
+
+snippet     dele
+prev_word   '^'
 	${1:obj}.delegate('${2:selector expression}', '${3:event name}', function (${4:e}) {
 		${5:// event handler}
 	});
-snippet deq
+
+snippet     deq
+prev_word   '^'
 	${1:obj}.dequeue(${2:'queue name'})${3}
-snippet deqq
+
+snippet     deqq
+prev_word   '^'
 	$.dequeue('${1:selector expression}'${2:, 'queue name'})${3}
-snippet detach
+
+snippet     detach
+prev_word   '^'
 	${1:obj}.detach('${2:selector expression}')${3}
-snippet die
+
+snippet     die
+prev_word   '^'
 	${1:obj}.die(${2:event}, ${3:handler})${4}
-snippet each
+
+snippet     each
+prev_word   '^'
 	${1:obj}.each(function (index) {
 		${2:this.innerHTML = this + " is the element, " + index + " is the position";}
 	});
-snippet el
+
+snippet     el
+prev_word   '^'
 	$('<${1}/>'${2:, {}})${3}
-snippet eltrim
+
+snippet     eltrim
+prev_word   '^'
 	$.trim('${1:string}')${2}
-snippet empty
+
+snippet     empty
+prev_word   '^'
 	${1:obj}.empty()${2}
-snippet end
+
+snippet     end
+prev_word   '^'
 	${1:obj}.end()${2}
-snippet eq
+
+snippet     eq
+prev_word   '^'
 	${1:obj}.eq(${2:element index})${3}
-snippet error
+
+snippet     error
+prev_word   '^'
 	${1:obj}.error(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet eventsmap
+
+snippet     eventsmap
+prev_word   '^'
 	{
 		:f${1}
 	}
-snippet extend
+
+snippet     extend
+prev_word   '^'
 	$.extend(${1:true, }${2:target}, ${3:obj})${4}
-snippet fadein
+
+snippet     fadein
+prev_word   '^'
 	${1:obj}.fadeIn('${2:slow/400/fast}')${3}
-snippet fadeinc
+
+snippet     fadeinc
+prev_word   '^'
 	${1:obj}.fadeIn('slow/400/fast', function () {
 		${2:// callback};
 	});
-snippet fadeout
+
+snippet     fadeout
+prev_word   '^'
 	${1:obj}.fadeOut('${2:slow/400/fast}')${3}
-snippet fadeoutc
+
+snippet     fadeoutc
+prev_word   '^'
 	${1:obj}.fadeOut('slow/400/fast', function () {
 		${2:// callback};
 	});
-snippet fadeto
+
+snippet     fadeto
+prev_word   '^'
 	${1:obj}.fadeTo('${2:slow/400/fast}', ${3:0.5})${4}
-snippet fadetoc
+
+snippet     fadetoc
+prev_word   '^'
 	${1:obj}.fadeTo('slow/400/fast', ${2:0.5}, function () {
 		${3:// callback};
 	});
-snippet filter
+
+snippet     filter
+prev_word   '^'
 	${1:obj}.filter('${2:selector expression}')${3}
-snippet filtert
+
+snippet     filtert
+prev_word   '^'
 	${1:obj}.filter(function (${2:index}) {
 		${3:// test code}
 	})${4}
-snippet find
+
+snippet     find
+prev_word   '^'
 	${1:obj}.find('${2:selector expression}')${3}
-snippet focus
+
+snippet     focus
+prev_word   '^'
 	${1:obj}.focus(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet focusin
+
+snippet     focusin
+prev_word   '^'
 	${1:obj}.focusIn(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet focusout
+
+snippet     focusout
+prev_word   '^'
 	${1:obj}.focusOut(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet get
+
+snippet     get
+prev_word   '^'
 	${1:obj}.get(${2:element index})${3}
-snippet getjson
+
+snippet     getjson
+prev_word   '^'
 	$.getJSON('${1:mydomain.com/url}',
 		${2:{ param1: value1 },}
 		function (data, textStatus, jqXHR) {
 			${3:// success callback}
 		}
 	);
-snippet getscript
+
+snippet     getscript
+prev_word   '^'
 	$.getScript('${1:mydomain.com/url}', function (script, textStatus, jqXHR) {
 		${2:// callback}
 	});
-snippet grep
+
+snippet     grep
+prev_word   '^'
 	$.grep(${1:array}, function (item, index) {
 		${2:// test code}
 	}${3:, true});
-snippet hasc
+
+snippet     hasc
+prev_word   '^'
 	${1:obj}.hasClass('${2:className}')${3}
-snippet hasd
+
+snippet     hasd
+prev_word   '^'
 	$.hasData('${1:selector expression}');
-snippet height
+
+snippet     height
+prev_word   '^'
 	${1:obj}.height(${2:integer})${3}
-snippet hide
+
+snippet     hide
+prev_word   '^'
 	${1:obj}.hide('${2:slow/400/fast}')${3}
-snippet hidec
+
+snippet     hidec
+prev_word   '^'
 	${1:obj}.hide('${2:slow/400/fast}', function () {
 		${3:// callback}
 	});
-snippet hover
+
+snippet     hover
+prev_word   '^'
 	${1:obj}.hover(function (${2:e}) {
 		${3:// event handler}
 	}, function ($2) {
 		${4:// event handler}
 	});${5}
-snippet html
+
+snippet     html
+prev_word   '^'
 	${1:obj}.html('${2:Some text <b>and bold!</b>}')${3}
-snippet inarr
+
+snippet     inarr
+prev_word   '^'
 	$.inArray(${1:value}, ${2:array});
-snippet insa
+
+snippet     insa
+prev_word   '^'
 	${1:obj}.insertAfter('${2:selector expression}')${3}
-snippet insb
+
+snippet     insb
+prev_word   '^'
 	${1:obj}.insertBefore('${2:selector expression}')${3}
-snippet is
+
+snippet     is
+prev_word   '^'
 	${1:obj}.is('${2:selector expression}')${3}
-snippet isarr
+
+snippet     isarr
+prev_word   '^'
 	$.isArray(${1:obj})${2}
-snippet isempty
+
+snippet     isempty
+prev_word   '^'
 	$.isEmptyObject(${1:obj})${2}
-snippet isfunc
+
+snippet     isfunc
+prev_word   '^'
 	$.isFunction(${1:obj})${2}
-snippet isnum
+
+snippet     isnum
+prev_word   '^'
 	$.isNumeric(${1:value})${2}
-snippet isobj
+
+snippet     isobj
+prev_word   '^'
 	$.isPlainObject(${1:obj})${2}
-snippet iswin
+
+snippet     iswin
+prev_word   '^'
 	$.isWindow(${1:obj})${2}
-snippet isxml
+
+snippet     isxml
+prev_word   '^'
 	$.isXMLDoc(${1:node})${2}
-snippet jj
+
+snippet     jj
+prev_word   '^'
 	$('${1:selector}')${2}
-snippet kdown
+
+snippet     kdown
+prev_word   '^'
 	${1:obj}.keydown(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet kpress
+
+snippet     kpress
+prev_word   '^'
 	${1:obj}.keypress(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet kup
+
+snippet     kup
+prev_word   '^'
 	${1:obj}.keyup(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet last
+
+snippet     last
+prev_word   '^'
 	${1:obj}.last('${1:selector expression}')${3}
-snippet live
+
+snippet     live
+prev_word   '^'
 	${1:obj}.live('${2:events}', function (${3:e}) {
 		${4:// event handler}
 	});
-snippet load
+
+snippet     load
+prev_word   '^'
 	${1:obj}.load(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet loadf
+
+snippet     loadf
+prev_word   '^'
 	${1:obj}.load('${2:mydomain.com/url}',
 		${2:{ param1: value1 },}
 		function (responseText, textStatus, xhr) {
 			${3:// success callback}
 		}
 	});
-snippet makearray
+
+snippet     makearray
+prev_word   '^'
 	$.makeArray(${1:obj});
-snippet map
+
+snippet     map
+prev_word   '^'
 	${1:obj}.map(function (${2:index}, ${3:element}) {
 		${4:// callback}
 	});
-snippet mapp
+
+snippet     mapp
+prev_word   '^'
 	$.map(${1:arrayOrObject}, function (${2:value}, ${3:indexOrKey}) {
 		${4:// callback}
 	});
-snippet merge
+
+snippet     merge
+prev_word   '^'
 	$.merge(${1:target}, ${2:original});
-snippet mdown
+
+snippet     mdown
+prev_word   '^'
 	${1:obj}.mousedown(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet menter
+
+snippet     menter
+prev_word   '^'
 	${1:obj}.mouseenter(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet mleave
+
+snippet     mleave
+prev_word   '^'
 	${1:obj}.mouseleave(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet mmove
+
+snippet     mmove
+prev_word   '^'
 	${1:obj}.mousemove(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet mout
+
+snippet     mout
+prev_word   '^'
 	${1:obj}.mouseout(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet mover
+
+snippet     mover
+prev_word   '^'
 	${1:obj}.mouseover(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet mup
+
+snippet     mup
+prev_word   '^'
 	${1:obj}.mouseup(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet next
+
+snippet     next
+prev_word   '^'
 	${1:obj}.next('${2:selector expression}')${3}
-snippet nexta
+
+snippet     nexta
+prev_word   '^'
 	${1:obj}.nextAll('${2:selector expression}')${3}
-snippet nextu
+
+snippet     nextu
+prev_word   '^'
 	${1:obj}.nextUntil('${2:selector expression}'${3:, 'filter expression'})${4}
-snippet not
+
+snippet     not
+prev_word   '^'
 	${1:obj}.not('${2:selector expression}')${3}
-snippet off
+
+snippet     off
+prev_word   '^'
 	${1:obj}.off('${2:events}', '${3:selector expression}'${4:, handler})${5}
-snippet offset
+
+snippet     offset
+prev_word   '^'
 	${1:obj}.offset()${2}
-snippet offsetp
+
+snippet     offsetp
+prev_word   '^'
 	${1:obj}.offsetParent()${2}
-snippet on
+
+snippet     on
+prev_word   '^'
 	${1:obj}.on('${2:events}', '${3:selector expression}', function (${4:e}) {
 		${5:// event handler}
 	});
-snippet one
+
+snippet     one
+prev_word   '^'
 	${1:obj}.one('${2:event name}', function (${3:e}) {
 		${4:// event handler}
 	});
-snippet outerh
+
+snippet     outerh
+prev_word   '^'
 	${1:obj}.outerHeight()${2}
-snippet outerw
+
+snippet     outerw
+prev_word   '^'
 	${1:obj}.outerWidth()${2}
-snippet param
+
+snippet     param
+prev_word   '^'
 	$.param(${1:obj})${2}
-snippet parent
+
+snippet     parent
+prev_word   '^'
 	${1:obj}.parent('${2:selector expression}')${3}
-snippet parents
+
+snippet     parents
+prev_word   '^'
 	${1:obj}.parents('${2:selector expression}')${3}
-snippet parentsu
+
+snippet     parentsu
+prev_word   '^'
 	${1:obj}.parentsUntil('${2:selector expression}'${3:, 'filter expression'})${4}
-snippet parsejson
+
+snippet     parsejson
+prev_word   '^'
 	$.parseJSON(${1:data})${2}
-snippet parsexml
+
+snippet     parsexml
+prev_word   '^'
 	$.parseXML(${1:data})${2}
-snippet pos
+
+snippet     pos
+prev_word   '^'
 	${1:obj}.position()${2}
-snippet prepend
+
+snippet     prepend
+prev_word   '^'
 	${1:obj}.prepend('${2:Some text <b>and bold!</b>}')${3}
-snippet prependto
+
+snippet     prependto
+prev_word   '^'
 	${1:obj}.prependTo('${2:selector expression}')${3}
-snippet prev
+
+snippet     prev
+prev_word   '^'
 	${1:obj}.prev('${2:selector expression}')${3}
-snippet preva
+
+snippet     preva
+prev_word   '^'
 	${1:obj}.prevAll('${2:selector expression}')${3}
-snippet prevu
+
+snippet     prevu
+prev_word   '^'
 	${1:obj}.prevUntil('${2:selector expression}'${3:, 'filter expression'})${4}
-snippet promise
+
+snippet     promise
+prev_word   '^'
 	${1:obj}.promise(${2:'fx'}, ${3:target})${4}
-snippet prop
+
+snippet     prop
+prev_word   '^'
 	${1:obj}.prop('${2:property name}')${3}
-snippet proxy
+
+snippet     proxy
+prev_word   '^'
 	$.proxy(${1:function}, ${2:this})${3}
-snippet pushstack
+
+snippet     pushstack
+prev_word   '^'
 	${1:obj}.pushStack(${2:elements})${3}
-snippet queue
+
+snippet     queue
+prev_word   '^'
 	${1:obj}.queue(${2:name}${3:, newQueue})${4}
-snippet queuee
+
+snippet     queuee
+prev_word   '^'
 	$.queue(${1:element}${2:, name}${3:, newQueue})${4}
-snippet ready
+
+snippet     ready
+prev_word   '^'
 	$(function () {
 		${1}
 	});
-snippet rem
+
+snippet     rem
+prev_word   '^'
 	${1:obj}.remove()${2}
-snippet rema
+
+snippet     rema
+prev_word   '^'
 	${1:obj}.removeAttr('${2:attribute name}')${3}
-snippet remc
+
+snippet     remc
+prev_word   '^'
 	${1:obj}.removeClass('${2:class name}')${3}
-snippet remd
+
+snippet     remd
+prev_word   '^'
 	${1:obj}.removeData('${2:key name}')${3}
-snippet remdd
+
+snippet     remdd
+prev_word   '^'
 	$.removeData(${1:element}${2:, 'key name}')${3}
-snippet remp
+
+snippet     remp
+prev_word   '^'
 	${1:obj}.removeProp('${2:property name}')${3}
-snippet repa
+
+snippet     repa
+prev_word   '^'
 	${1:obj}.replaceAll(${2:target})${3}
-snippet repw
+
+snippet     repw
+prev_word   '^'
 	${1:obj}.replaceWith(${2:content})${3}
-snippet reset
+
+snippet     reset
+prev_word   '^'
 	${1:obj}.reset(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet resize
+
+snippet     resize
+prev_word   '^'
 	${1:obj}.resize(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet scroll
+
+snippet     scroll
+prev_word   '^'
 	${1:obj}.scroll(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet scrolll
+
+snippet     scrolll
+prev_word   '^'
 	${1:obj}.scrollLeft(${2:value})${3}
-snippet scrollt
+
+snippet     scrollt
+prev_word   '^'
 	${1:obj}.scrollTop(${2:value})${3}
-snippet sdown
+
+snippet     sdown
+prev_word   '^'
 	${1:obj}.slideDown('${2:slow/400/fast}')${3}
-snippet sdownc
+
+snippet     sdownc
+prev_word   '^'
 	${1:obj}.slideDown('${2:slow/400/fast}', function () {
 		${3:// callback};
 	});
-snippet select
+
+snippet     select
+prev_word   '^'
 	${1:obj}.select(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet serialize
+
+snippet     serialize
+prev_word   '^'
 	${1:obj}.serialize()${2}
-snippet serializea
+
+snippet     serializea
+prev_word   '^'
 	${1:obj}.serializeArray()${2}
-snippet show
+
+snippet     show
+prev_word   '^'
 	${1:obj}.show('${2:slow/400/fast}')${3}
-snippet showc
+
+snippet     showc
+prev_word   '^'
 	${1:obj}.show('${2:slow/400/fast}', function () {
 		${3:// callback}
 	});
-snippet sib
+
+snippet     sib
+prev_word   '^'
 	${1:obj}.siblings('${2:selector expression}')${3}
-snippet size
+
+snippet     size
+prev_word   '^'
 	${1:obj}.size()${2}
-snippet slice
+
+snippet     slice
+prev_word   '^'
 	${1:obj}.slice(${2:start}${3:, end})${4}
-snippet stoggle
+
+snippet     stoggle
+prev_word   '^'
 	${1:obj}.slideToggle('${2:slow/400/fast}')${3}
-snippet stop
+
+snippet     stop
+prev_word   '^'
 	${1:obj}.stop('${2:queue}', ${3:false}, ${4:false})${5}
-snippet submit
+
+snippet     submit
+prev_word   '^'
 	${1:obj}.submit(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet sup
+
+snippet     sup
+prev_word   '^'
 	${1:obj}.slideUp('${2:slow/400/fast}')${3}
-snippet supc
+
+snippet     supc
+prev_word   '^'
 	${1:obj}.slideUp('${2:slow/400/fast}', function () {
 		${3:// callback};
 	});
-snippet text
+
+snippet     text
+prev_word   '^'
 	${1:obj}.text(${2:'some text'})${3}
-snippet this
+
+snippet     this
+prev_word   '^'
 	$(this)${1}
-snippet toarr
+
+snippet     toarr
+prev_word   '^'
 	${1:obj}.toArray()
-snippet tog
+
+snippet     tog
+prev_word   '^'
 	${1:obj}.toggle(function (${2:e}) {
 		${3:// event handler}
 	}, function ($2) {
 		${4:// event handler}
 	});
 	${4}
-snippet togclass
+
+snippet     togclass
+prev_word   '^'
 	${1:obj}.toggleClass('${2:class name}')${3}
-snippet togsh
+
+snippet     togsh
+prev_word   '^'
 	${1:obj}.toggle('${2:slow/400/fast}')${3}
-snippet trig
+
+snippet     trig
+prev_word   '^'
 	${1:obj}.trigger('${2:event name}')${3}
-snippet trigh
+
+snippet     trigh
+prev_word   '^'
 	${1:obj}.triggerHandler('${2:event name}')${3}
-snippet $trim
+
+snippet     $trim
+prev_word   '^'
 	$.trim(${1:str})${2}
-snippet $type
+
+snippet     $type
+prev_word   '^'
 	$.type(${1:obj})${2}
-snippet unbind
+
+snippet     unbind
+prev_word   '^'
 	${1:obj}.unbind('${2:event name}')${3}
-snippet undele
+
+snippet     undele
+prev_word   '^'
 	${1:obj}.undelegate(${2:selector expression}, ${3:event}, ${4:handler})${5}
-snippet uniq
+
+snippet     uniq
+prev_word   '^'
 	$.unique(${1:array})${2}
-snippet unload
+
+snippet     unload
+prev_word   '^'
 	${1:obj}.unload(function (${2:e}) {
 		${3:// event handler}
 	});
-snippet unwrap
+
+snippet     unwrap
+prev_word   '^'
 	${1:obj}.unwrap()${2}
-snippet val
+
+snippet     val
+prev_word   '^'
 	${1:obj}.val('${2:text}')${3}
-snippet width
+
+snippet     width
+prev_word   '^'
 	${1:obj}.width(${2:integer})${3}
-snippet wrap
+
+snippet     wrap
+prev_word   '^'
 	${1:obj}.wrap('${2:&lt;div class="extra-wrapper"&gt;&lt;/div&gt;}')${3}
 

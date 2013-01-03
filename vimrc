@@ -167,7 +167,7 @@ endif
 
 " Sudo-write 
 " -----------------------------------------------------------------------------
-command W w !sudo tee % > /dev/null
+command! W w !sudo tee % > /dev/null
 
 " surlignement des champs à remplir dans les templates
 " -----------------------------------------------------------------------------
@@ -617,7 +617,7 @@ function! DivHtml(line1, line2)
  " set nonu
 endfunction
 
-command! -range=% DivHtml :call DivHtml(<line1>,<line2>)
+com! -range=% DivHtml :call DivHtml(<line1>,<line2>)
 
 
 " Compte Le nombre de lignes
@@ -662,8 +662,8 @@ function! ForumCopy(line1, line2, scroll)
     let g:html_use_css = old_css
 endfunction
 
-command! -range=% ForumCopy :call ForumCopy(<line1>,<line2>, "false")
-command! -range=% ForumCopyS :call ForumCopy(<line1>,<line2>,"true")
+com! -range=% ForumCopy :call ForumCopy(<line1>,<line2>, "false")
+com! -range=% ForumCopyS :call ForumCopy(<line1>,<line2>,"true")
 "}}}
 
 " Syntaxe Pour l'édition avec pentadactyl "{{{
@@ -730,6 +730,11 @@ let g:gundo_preview_height = 20
 "}}}
 
 "------------------------------------------------------------------------------
+" 	Custom Align maps
+"------------------------------------------------------------------------------
+vmap <leader>tp :Align =><CR>
+
+"------------------------------------------------------------------------------
 "   Tabular"{{{
 "------------------------------------------------------------------------------
 "let g:tabular_loaded = 1
@@ -742,7 +747,7 @@ let g:neocomplcache_enable_at_startup               = 1   " use neocomplcache.
 "let g:neocomplcache_disable_auto_complete          = 1
 let g:neocomplcache_enable_smart_case               = 1   " use smartcase.
 let g:neocomplcache_enable_camel_case_completion    = 1   " use camel case completion.
-let g:neocomplcache_enable_underbar_completion      = 1     " use underbar completion.
+let g:neocomplcache_enable_underbar_completion      = 1   " use underbar completion.
 let g:neocomplcache_auto_completion_start_length    = 3   " set minimum syntax keyword length.
 "let g:neocomplcache_manual_completion_start_length = 3
 let g:neocomplcache_lock_buffer_name_pattern        = '\*ku\*'
@@ -773,8 +778,6 @@ endif
 let g:neocomplcache_keyword_patterns['default'] = '$\w+'
 
 " Plugin key-mappings.
-imap <C-k>     <Plug>(neocomplcache_snippets_expand)
-smap <C-k>     <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
@@ -794,7 +797,7 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabDefaultCompletionType = "context"
 let g:UltiSnipsExpandTrigger="<Tab>"
 " SuperTab like snippets behavior.
-imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+"imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 
 "--- NeoComplCache PopUp on <tab> --- {{{
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
@@ -812,13 +815,42 @@ endfunction
 "}}}
 
 " -----------------------------------------------------------------------------
-" NeoComplCache & custom snips " {{{
+" NeoSnippets & custom snips " {{{
 " -----------------------------------------------------------------------------
-let g:neocomplcache_snippets_dir = '~/.vim/snips'
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/snips'
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_jump)" : "\<TAB>"
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neocomplcache_snippets_expand)
+smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
 
 " Add custom coms because thats names sux
-com! EditRunSnips :NeoComplCacheEditRuntimeSnippets
-com! EditSnips :NeoComplCacheEditSnippets
+"com! EditRunSnips :NeoSnippetEditRuntimeSnippets
+com! EditSnips :NeoSnippetEdit
 
 let g:snips_author = "contact@thomaslleixa.fr"
 
@@ -850,6 +882,18 @@ endfunction
 "}}}
 
 "------------------------------------------------------------------------------ 
+" PhpDoc
+"------------------------------------------------------------------------------ 
+let g:pdv_cfg_Type = "mixed"
+let g:pdv_cfg_Author = "Thomas LLeixa <thomas.lleixa@gmail.com>"
+let g:pdv_cfg_Version = "GIT: $id$"
+let g:pdv_cfg_Copyright = "©2012-" + strftime("%Y")
+let g:pdv_cfg_ReturnVal = "mixed"
+nnoremap <C-o> :call PhpDocSingle()<CR>
+vnoremap <C-o> :call PhpDocRange()<CR>
+
+
+"------------------------------------------------------------------------------ 
 " Re-indent PHP (WIP)
 "------------------------------------------------------------------------------ 
 function! ReindentPhp()
@@ -878,20 +922,17 @@ function! ReindentPhp()
 endfunction
 command! -bar -range=% ReindentPhp :call ReindentPhp() 
 
+command
 " -----------------------------------------------------------------------------
 " Pathogen
 " -----------------------------------------------------------------------------
 "runtime bundle/vim-pathogen/autoload/pathogen.vim
-"call pathogen#runtime_append_all_bundles()
-"call pathogen#helptags()
-"" register bundles found in the runtimepath
-"let s:bundles    = tr(globpath(&runtimepath, 'bundle/*/.'), "\n", ',')
-"let s:afters     = tr(globpath(s:bundles, 'after/.'), "\n", ',')
-"let &runtimepath = join([s:bundles, &runtimepath, s:afters], ',')
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
+"call pathogen#infect()
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+" register bundles found in the runtimepath
+let s:bundles    = tr(globpath(&runtimepath, 'bundle/*/.'), "\n", ',')
+let s:afters     = tr(globpath(s:bundles, 'after/.'), "\n", ',')
+let &runtimepath = join([s:bundles, &runtimepath, s:afters], ',')
 
 " -----------------------------------------------------------------------------
 " Tabs
@@ -1027,103 +1068,5 @@ set laststatus=2
 call <sid>set_statusline()
 
 "set statusline=%-3.3n\ %f\ %h%m%r%w%{SL('fugitive#statusline')}[%{strlen(&filetype)?&filetype:'?'},%{&encoding},%{&fileformat}]%{SL('SyntasticStatuslineFlag')}%=\\ 0x%-8b\\ \\ %-14.(%l,%c%V%)\\ %<%p
-
-
-" ---
-"  Vundle
-"  ---
-Bundle 'gmarik/vundle'
-
-Bundle '2072/PHP-Indenting-for-VIm'
-Bundle 'AndrewRadev/linediff.vim'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'Raimondi/delimitMate'
-Bundle 'Rykka/colorv.vim'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neosnippet'
-Bundle 'Shougo/vimproc'
-Bundle 'Shougo/vimshell'
-Bundle 'SirVer/ultisnips'
-Bundle 'bingaman/vim-sparkup'
-Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'edsono/vim-dbext'
-Bundle 'juanpabloaj/supertab'
-Bundle 'godlygeek/csapprox'
-Bundle 'gregsexton/MatchTag'
-Bundle 'greyblake/vim-preview'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'jpalardy/vim-slime'
-Bundle 'kien/ctrlp.vim'
-Bundle 'lilydjwg/colorizer'
-Bundle 'majutsushi/tagbar'
-Bundle 'mattn/gist-vim'
-Bundle 'mattn/webapi-vim'
-Bundle 'mattn/zencoding-vim'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'nelstrom/vim-markdown-preview'
-Bundle 'othree/fecompressor.vim'
-Bundle 'othree/html5-syntax.vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'shawncplus/phpcomplete.vim'
-Bundle 'sjl/gundo.vim'
-Bundle 'skroll/Smart-Tabs'
-Bundle 'slack/vim-bufexplorer'
-Bundle 'smith/javaScriptLint.vim'
-Bundle 'thinca/vim-quickrun'
-Bundle 'tomtom/checksyntax_vim'
-Bundle 'tomtom/quickfixsigns_vim'
-Bundle 'tomtom/tlib_vim'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-fugitive'
-"Bundle 'tpope/vim-pathogen'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'vim-scripts/Align'
-Bundle 'vim-scripts/AutoAlign'
-Bundle 'vim-scripts/FindInNERDTree'
-Bundle 'vim-scripts/FuzzyFinder'
-Bundle 'vim-scripts/Javascript-syntax-with-Ajax-Support'
-Bundle 'vim-scripts/L9'
-Bundle 'vim-scripts/ManPageView'
-Bundle 'vim-scripts/Mark--Karkat'
-Bundle 'vim-scripts/NERD_tree-Project'
-Bundle 'vim-scripts/PDV-revised'
-Bundle 'vim-scripts/SQLUtilities'
-Bundle 'vim-scripts/ShowMarks'
-Bundle 'vim-scripts/The-NERD-Commenter'
-Bundle 'vim-scripts/YankRing.vim'
-Bundle 'vim-scripts/ack.vim'
-Bundle 'vim-scripts/boost.vim'
-Bundle 'vim-scripts/bufexplorer.zip'
-Bundle 'vim-scripts/file-line'
-Bundle 'vim-scripts/jQuery'
-Bundle 'vim-scripts/lodgeit.vim'
-Bundle 'vim-scripts/lua_omni'
-Bundle 'vim-scripts/mru.vim'
-Bundle 'vim-scripts/netrw.vim'
-Bundle 'vim-scripts/publish.vim'
-Bundle 'vim-scripts/repeat.vim'
-Bundle 'vim-scripts/restart.vim'
-Bundle 'vim-scripts/surround.vim'
-Bundle 'vim-scripts/vcscommand.vim'
-Bundle 'vim-scripts/xmledit'
-Bundle 'wincent/Command-T'
-Bundle 'xolox/vim-easytags'
-Bundle 'xolox/vim-session'
-Bundle 'xolox/vim-shell'
-Bundle 'AndrewRadev/switch.vim'
-
-
-
-
-
-
-
 
 
