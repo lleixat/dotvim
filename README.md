@@ -1,16 +1,15 @@
+## Installation
 
-##Installation
-
-###Cloning the repo
+### Cloning the repo
 
     git clone git://github.com/lleixat/dotvim.git ~/.vim
 
-###Create symlinks
+### Create symlinks
 
     ln -s ~/.vim/vimrc ~/.vimrc
     ln -s ~/.vim/gvimrc ~/.gvimrc
 
-###Switch to the `~/.vim` directory, ...
+### Switch to the `~/.vim` directory, ...
 
 ... and fetch submodules:
 
@@ -18,16 +17,16 @@
     git submodule init
     git submodule update
 
-###Or if you have a repo list and `gitvim`
+### Or if you have a repo list and `gitvim`
 
     gitvim -af repolist
 
 
-##Usage
+## Usage
 
-###Update
+### Update
 
-####First method: Using shell config file (.zshrc exemple)
+#### First method: Using shell config file (.zshrc exemple)
 
 Add something like this to your `~/.zshrc` (or `~/.bashrc`)
 
@@ -43,7 +42,7 @@ Do
 
 You can execute `vimplug_update` every time you want to update your plugins. 
 
-####Second method: Using gitvim script
+#### Second method: Using gitvim script
 
 Use `gitvim` script installed in `$PATH` (like `$HOME/bin/`) or creating symlink: `ln -s $HOME/.vim/gitvim $HOME/bin/gitvim`
 
@@ -51,11 +50,11 @@ Updating all plugins : `gitvim -u`
 
 Or updating only 'PIV' submodule : `gitvim -u bundle/PIV`
 
-##TODO
+## TODO
 
 Maybe giving `gitvim` his own repo ?
 
-##Play with me
+## Play with me
 
 Send issues, pull requests, a beer or whatever ...
 

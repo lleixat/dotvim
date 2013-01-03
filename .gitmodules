@@ -338,3 +338,9 @@
 [submodule "bundle/PDV--phpDocumentor-for-Vim"]
 	path = bundle/PDV--phpDocumentor-for-Vim
 	url = https://github.com/lleixat/PDV--phpDocumentor-for-Vim.git
+[submodule "vim-instant-markdown"]
+	path = vim-instant-markdown
+	url = git://github.com/suan/vim-instant-markdown.git
+[submodule "bundle/vim-instant-markdown.git"]
+	path = bundle/vim-instant-markdown.git
+	url = git://github.com/suan/vim-instant-markdown.git
