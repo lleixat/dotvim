@@ -1,7 +1,7 @@
-" @author Thomas Lleixa [lex]
-" @link https://github.com/lleixat/dotvim
+" @author  Thomas Lleixa [lex]
+" @link    https://github.com/lleixat/dotvim
 " @version GIT $Id$
-" @update : $Date$
+" @update  $Date$
  
  
  
@@ -891,13 +891,12 @@ endfunction
 "------------------------------------------------------------------------------ 
 " PhpDoc
 "------------------------------------------------------------------------------ 
-let g:pdv_cfg_Type = "mixed"
-let g:pdv_cfg_Author = "Thomas LLeixa <thomas.lleixa@gmail.com>"
-let g:pdv_cfg_Version = "GIT: $id$"
+let g:pdv_cfg_Type      = "mixed"
+let g:pdv_cfg_Author    = "Thomas LLeixa <thomas.lleixa@gmail.com>"
+let g:pdv_cfg_Version   = "GIT: $id$"
 let g:pdv_cfg_Copyright = "©2012-" + strftime("%Y")
 let g:pdv_cfg_ReturnVal = "mixed"
 nnoremap <C-o> :call PhpDocSingle()<CR>
-vnoremap <C-o> :call PhpDocRange()<CR>
 
 
 "------------------------------------------------------------------------------ 
@@ -1075,8 +1074,3 @@ set laststatus=2
 call <sid>set_statusline()
 
 "set statusline=%-3.3n\ %f\ %h%m%r%w%{SL('fugitive#statusline')}[%{strlen(&filetype)?&filetype:'?'},%{&encoding},%{&fileformat}]%{SL('SyntasticStatuslineFlag')}%=\\ 0x%-8b\\ \\ %-14.(%l,%c%V%)\\ %<%p
-
-
-/**
- * 
- */
