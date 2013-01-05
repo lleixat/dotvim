@@ -2,8 +2,9 @@
 " @link    https://github.com/lleixat/dotvim
 " @version GIT: $Id$
 " @commit  GIT: $Commit$
+" @rev     $Revision$
 " @update  GIT: $Date$
-" @changes GIT: $Changes: test3$
+" @changes GIT: $Changes$
  
  
 " -----------------------------------------------------------------------------
@@ -899,7 +900,7 @@ let g:pdv_cfg_ReturnVal = "mixed"
 let g:pdv_cfg_Version   = "GIT: $id$"
 let g:pdv_cfg_Commit    = "GIT: $Commit$"
 let g:pdv_cfg_Update    = "GIT: $Date$"
-let g:pdv_cfg_Changes   = "GIT: $Changes: test3$"
+let g:pdv_cfg_Changes   = "GIT: $Changes$"
 nnoremap <C-o> :call PhpDocSingle()<CR>
 
 
