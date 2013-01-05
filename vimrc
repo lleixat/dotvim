@@ -1,3 +1,10 @@
+" @author Thomas Lleixa [lex]
+" @link https://github.com/lleixat/dotvim
+" @version GIT $Id$
+" @update : $Date$
+ 
+ 
+ 
 " -----------------------------------------------------------------------------
 " Basics"{{{
 " -----------------------------------------------------------------------------
@@ -1070,3 +1077,6 @@ call <sid>set_statusline()
 "set statusline=%-3.3n\ %f\ %h%m%r%w%{SL('fugitive#statusline')}[%{strlen(&filetype)?&filetype:'?'},%{&encoding},%{&fileformat}]%{SL('SyntasticStatuslineFlag')}%=\\ 0x%-8b\\ \\ %-14.(%l,%c%V%)\\ %<%p
 
 
+/**
+ * 
+ */

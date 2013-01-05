@@ -1,0 +1,5 @@
+*.swp
+.netrwhist
+.session
+sessions/
+record/

@@ -116,6 +116,11 @@ prev_word   '^'
     /* End of file `expand("%:t")` */
     /* Location: `CiFilePos(expand("%:p"))` */
 
+snippet     fn
+abbr        File name
+options     word
+    `expand("%")`
+    
 snippet     cim
 abbr        CI class Model
 prev_word   '^'
@@ -307,10 +312,17 @@ abbr        Insert param doc line here
 prev_word   '^'
     @param   ${1:str}     $${2:Var}     ${3:Ma var desc}
 
+snippet     dexemple
+abbr        Insert param doc line here
+alias       dex
+prev_word   '*'
+    @exemple   `expand("%")` ${1:first line} ${2:nb lines}
+
 snippet     dret
 abbr        Insert param doc line here
 prev_word   '^'
     @return     ${1:void}
+
 
 # Vars
 snippet gloabals
