@@ -1,8 +1,9 @@
 " @author  Thomas Lleixa [lex]
 " @link    https://github.com/lleixat/dotvim
 " @version GIT: $Id$
-" @commit  GIT: $Commit$
+" @commit  GIT: $Commit: 929b15d4664da028a358de60c1529877a7653346$
 " @update  GIT: $Date: Sat Jan 5 12:05:36 2013 +0100$
+" @changes Git: $Changes$
  
  
 " -----------------------------------------------------------------------------
@@ -893,9 +894,12 @@ endfunction
 "------------------------------------------------------------------------------ 
 let g:pdv_cfg_Type      = "mixed"
 let g:pdv_cfg_Author    = "Thomas LLeixa <thomas.lleixa@gmail.com>"
-let g:pdv_cfg_Version   = "GIT: $id$"
 let g:pdv_cfg_Copyright = "©2012-" + strftime("%Y")
 let g:pdv_cfg_ReturnVal = "mixed"
+let g:pdv_cfg_Version   = "GIT: $id$"
+let g:pdv_cfg_Commit    = "GIT: $Commit$"
+let g:pdv_cfg_Update    = "GIT: $Date$"
+let g:pdv_cfg_Changes   = "GIT: $Changes$"
 nnoremap <C-o> :call PhpDocSingle()<CR>
 
 
