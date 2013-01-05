@@ -1,7 +1,8 @@
 " @author  Thomas Lleixa [lex]
 " @link    https://github.com/lleixat/dotvim
 " @version GIT: $Id$
-" @update  $Date$
+" @commit  GIT: $Commit$
+" @update  GIT: $Date: Sat Jan 5 12:05:36 2013 +0100$
  
  
  
