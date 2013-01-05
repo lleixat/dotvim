@@ -3,7 +3,7 @@
 " @version GIT: $Id$
 " @commit  GIT: $Commit: 0ed3f21$
 " @update  GIT: $Date: Sat Jan 5 12:05:36 2013 +0100$
-" @changes GIT: $Changes$
+" @changes GIT: $Changes: id in com$
  
  
 " -----------------------------------------------------------------------------
@@ -899,7 +899,7 @@ let g:pdv_cfg_ReturnVal = "mixed"
 let g:pdv_cfg_Version   = "GIT: $id$"
 let g:pdv_cfg_Commit    = "GIT: $Commit: 0ed3f21$"
 let g:pdv_cfg_Update    = "GIT: $Date$"
-let g:pdv_cfg_Changes   = "GIT: $Changes$"
+let g:pdv_cfg_Changes   = "GIT: $Changes: id in com$"
 nnoremap <C-o> :call PhpDocSingle()<CR>
 
 
