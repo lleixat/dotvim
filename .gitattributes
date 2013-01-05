@@ -1,4 +1,4 @@
 *vimrc ident
 *vimrc filter=dater
-*vimrc filter=commiter
+*vimrc filter=revisioner
 *vimrc filter=subjecter
