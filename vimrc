@@ -623,14 +623,13 @@ function! DivHtml(line1, line2)
  " set nonu
 endfunction
 
-com! -range=% DivHtml :call DivHtml(<line1>,<line2>)
+command! -range=% DivHtml :call DivHtml(<line1>,<line2>)
 
 
 " Compte Le nombre de lignes
 " -----------------------------------------------------------------------------
-com! -range -nargs=0 Lignes :echo <line2> - <line1> + 1
+command! -range -nargs=0 Lignes :echo <line2> - <line1> + 1
 "}}}
-
 
 "------------------------------------------------------------------------------
 " Paste with colorsheme {{{
@@ -894,6 +893,7 @@ let g:pdv_cfg_Type      = "mixed"
 let g:pdv_cfg_Author    = "Thomas LLeixa <thomas.lleixa@gmail.com>"
 let g:pdv_cfg_Copyright = "©2012-" + strftime("%Y")
 let g:pdv_cfg_ReturnVal = "mixed"
+let g:pdv_cfg_Package   = "Giift"
 let g:pdv_cfg_Update    = "GIT: $Date$"
 let g:pdv_cfg_Version   = "GIT: $Id$"
 nnoremap <C-o> :call PhpDocSingle()<CR>
@@ -926,9 +926,8 @@ function! ReindentPhp()
     call cursor(l, c)
     
 endfunction
-command! -bar -range=% ReindentPhp :call ReindentPhp() 
+command! -bar -range=% ReindentPhp :call ReindentPhp()
 
-command
 " -----------------------------------------------------------------------------
 " Pathogen
 " -----------------------------------------------------------------------------
