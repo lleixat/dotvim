@@ -889,13 +889,14 @@ endfunction
 "------------------------------------------------------------------------------ 
 " PhpDoc
 "------------------------------------------------------------------------------ 
-let g:pdv_cfg_Type      = "mixed"
-let g:pdv_cfg_Author    = "Thomas LLeixa <thomas.lleixa@gmail.com>"
-let g:pdv_cfg_Copyright = "©2012-" + strftime("%Y")
-let g:pdv_cfg_ReturnVal = "mixed"
-let g:pdv_cfg_Package   = "Giift"
-let g:pdv_cfg_Update    = "GIT: $Date$"
-let g:pdv_cfg_Version   = "GIT: $Id$"
+let g:pdv_cfg_Type        = "mixed"
+let g:pdv_cfg_Author      = "Thomas LLeixa [l3x] <thomas.lleixa@gmail.com>"
+let g:pdv_cfg_Copyright   = "©2012-" + strftime("%Y")
+let g:pdv_cfg_ReturnVal   = "mixed"
+let g:pdv_cfg_Package     = "Giift"
+let g:pdv_cfg_ProjectName = "giift"
+let g:pdv_cfg_Update      = "GIT: $Date$"
+let g:pdv_cfg_Version     = "GIT: $Id$"
 nnoremap <C-o> :call PhpDocSingle()<CR>
 
 

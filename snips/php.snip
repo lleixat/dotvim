@@ -72,6 +72,13 @@ prev_word   '^'
         ${0}
     <?php endforeach ?>
 
+### Git
+
+snippet     update
+abbr        @update GIT <date>
+alias       @up, upd
+options     head
+     @update GIT: `system('expand_git "raw" "%ad"')`
 
 ## Code Igniter
 
