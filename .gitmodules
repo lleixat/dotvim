@@ -347,3 +347,6 @@
 [submodule "bundle/Decho"]
 	path = bundle/Decho
 	url = git://github.com/vim-scripts/Decho.git
+[submodule "bundle/vim-project"]
+	path = bundle/vim-project
+	url = git://github.com/LStinson/vim-project.git
