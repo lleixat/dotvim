@@ -134,7 +134,7 @@ options   head
  } while (${1:/* condition */});
 
 # Object Method
-snippet   :f
+snippet   :fun
 options   head
     ${1:method_name}: function(${2:attribute}) {
   ${4}
@@ -201,24 +201,39 @@ snippet   jsons
 options   head
     JSON.stringify(${1:object});
 
+
+snippet     typeof
+abbr        typeof var === 'type'
+alias       typ, type
+options     head
+    typeof ${1:var} === '${2:string}';
+
+
 # self-defining function
 snippet   sdf
 alias     fun
 options   head
     var ${1:function_name} = function (${2:argument}) {
-  ${3:// initial code ...}
+        ${3:// initial code ...}
 
-$1 = function ($2) {
-   ${4:// main code}
-  };
- }
+        $1 = function ($2) {
+        ${4:// main code}
+        };
+    }
 
 snippet   vfun
 abbr      var x = function(){}
-alias     fun
+alias     fun func
 options   head
-    var ${1:a} = function (${2:arg}) {
-        ${2://com here}
+    var ${1:a} = function (${2:arg}, cfunc) {
+        ${3://com here}
+        $2 = typeof $2 === 'undefined' ? false : $2 ;
+        ${0}
+        
+
+        if (typeof cfunc ==='function') {
+            cfunc();
+        }
     }
 
 snippet   jfun

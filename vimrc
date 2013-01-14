@@ -269,12 +269,17 @@ nnoremap <leader>z zMzvzz
 " CtrlP {{{
 " -----------------------------------------------------------------------------
 nmap <c-p> :CtrlP<cr>
-"{{{
+"}}}
 
 " Switch {{{
 " -----------------------------------------------------------------------------
 nnoremap - :Switch<cr>
-"{{{
+
+runtime etc/switch_definitions.vim
+
+
+
+"}}}
 "
 " Marks "{{{
 " -----------------------------------------------------------------------------
@@ -855,7 +860,7 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 " Add custom coms because thats names sux
 "com! EditRunSnips :NeoSnippetEditRuntimeSnippets
-com! EditSnips :NeoSnippetEdit
+command! EditSnips :NeoSnippetEdit
 
 let g:snips_author = "contact@thomaslleixa.fr"
 
