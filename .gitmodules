@@ -350,3 +350,6 @@
 [submodule "bundle/vim-project"]
 	path = bundle/vim-project
 	url = git://github.com/LStinson/vim-project.git
+[submodule "bundle/pentadactyl"]
+	path = bundle/pentadactyl
+	url = git://github.com/haesken/pentadactyl.vim.git
