@@ -181,7 +181,7 @@ IFS='\n' read -r -d '' mess << 'EOF'
 Usage:  gitvim [option] [url | file | plugin directory]
         gitvim --replace directory url
 
-Manage vim plugins installed as submodules.
+		Manage vim plugins installed as submodules (with pathogen plugin).
 
 Options :
    -a,  --add           Add a plugin from his Url repository.
