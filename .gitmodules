@@ -353,3 +353,6 @@
 [submodule "bundle/pentadactyl"]
 	path = bundle/pentadactyl
 	url = git://github.com/haesken/pentadactyl.vim.git
+[submodule "bundle/auto-pairs"]
+	path = bundle/auto-pairs
+	url = git://github.com/jiangmiao/auto-pairs.git
