@@ -954,6 +954,11 @@ map <C-Left> :tabprevious<CR>
 
 set showtabline=2 " always show tabs in gvim, but not vim
 
+" -----------------------------------------------------------------------------
+" Auto pairs
+" -----------------------------------------------------------------------------
+let g:AutoPairsFlyMode = 1
+
 " My tabline function {{{
 " -----------------------------------------------------------------------------
 set tabline=%!MyTabLine()
