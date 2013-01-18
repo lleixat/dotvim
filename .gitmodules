@@ -202,10 +202,6 @@
 	path = bundle/vim-rails
 	url = git://github.com/tpope/vim-rails.git
 
-[submodule "bundle/vim-unimpaired"]
-	path = bundle/vim-unimpaired
-	url = git://github.com/tpope/vim-unimpaired.git
-
 [submodule "bundle/vim-ruby"]
 	path = bundle/vim-ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
@@ -356,6 +352,3 @@
 [submodule "bundle/auto-pairs"]
 	path = bundle/auto-pairs
 	url = git://github.com/jiangmiao/auto-pairs.git
-[submodule "bundle/smartgf"]
-	path = bundle/smartgf
-	url = git://github.com/gorkunov/smartgf.vim.git
