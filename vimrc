@@ -129,11 +129,18 @@ endif
 " With Unimpared plugin
 " -----------------------------------------------------------------------------
 " Bubble single lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
+"nmap <C-Up> [e
+"nmap <C-Down> ]e
+"" Bubble multiple lines
+"vmap <C-Up> [egv
+"vmap <C-Down> ]egv
+
+" Bubble single lines
+nmap <C-Up> ddkP
+nmap <C-Down> ddp
 " Bubble multiple lines
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
+vmap <C-Up> xkP`[V`]
+vmap <C-Down> xp`[V`]
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
 
@@ -801,6 +808,15 @@ inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
+                                       
+  
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+	return neocomplcache#smart_close_popup() . "\<CR>"
+	" For no inserting <CR> key.
+	"return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+endfunction
 
 ""neoSupertab key mapping
 let g:SuperTabDefaultCompletionType = "<c-n>"
@@ -846,23 +862,11 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
-
 
 " Add custom coms because thats names sux
-"com! EditRunSnips :NeoSnippetEditRuntimeSnippets
 command! EditSnips :NeoSnippetEdit
 
-let g:snips_author = "contact@thomaslleixa.fr"
+let g:snips_author = $MAIL1
 
 function! Cucfirst(str)
 	return substitute(strpart(a:str,0,strlen(a:str)-4), '\w\+', '\u\0', "")
@@ -895,8 +899,9 @@ endfunction
 " PhpDoc
 "------------------------------------------------------------------------------ 
 let g:pdv_cfg_Type        = "mixed"
-let g:pdv_cfg_Author      = "Thomas LLeixa [l3x] <thomas.lleixa@gmail.com>"
-let g:pdv_cfg_Copyright   = "©2012-" + strftime("%Y")
+let g:pdv_cfg_Author      = $AUTHOR2
+let g:pdv_cfg_AuthorLink  = system("echo 'http://'${AUTHOR_LINK} ${AUTHOR_LINK}")
+let g:pdv_cfg_Copyright   = system("echo ${COPYL}' 2012-'`date \"+%Y\"`")
 let g:pdv_cfg_ReturnVal   = "mixed"
 let g:pdv_cfg_Package     = "Giift"
 let g:pdv_cfg_ProjectName = "giift"
