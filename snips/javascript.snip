@@ -28,48 +28,47 @@ options  head
 # Prototype
 snippet   proto
 options   head
-    ${1:class_name}.prototype.${2:method_name} =
- function(${3:first_argument}) {
-  ${4:// body...}
- };
+    ${1:class_name}.prototype.${2:method_name} = function(${3:first_argument}) {
+        ${4:// body...}
+    };
 
 # Function
 snippet   fun
 options   head
     function ${1:function_name}(${2:argument}) {
-  ${3:// body...}
- }
+        ${3:// body...}
+    }
 
 # Anonymous Function
 snippet   f
 options   head
     function(${1}) {
-  ${3}
- }${2:;}
+        ${3}
+    }${2:;}
 
 
 # Immediate function
 snippet   (f
 options   head
     (function(${1}) {
-  ${3:/* code */}
- }(${2}));
+        ${3:/* code */}
+    }(${2}));
 
 # if
 snippet   if
 options   head
     if (${1:true}) {
-  ${2}
- }
+        ${2}
+    }
 
 # if ... else
 snippet   ife
 options   head
     if (${1:true}) {
-  ${2}
- } else {
-  ${3}
- }
+        ${2}
+    } else {
+        ${3}
+    }
 
 # tertiary conditional
 snippet   t
@@ -80,65 +79,65 @@ options   head
 snippet   switch
 options   head
     switch(${1:expression}) {
-  case '${3:case}':
-   ${4:// code}
-   break;
-  ${5}
-  default:
-   ${2:// code}
- }
+        case '${3:case}':
+            ${4:// code}
+        break;
+        ${5}
+        default:
+            ${2:// code}
+    }
 
 # case
 snippet   case
 options   head
     case '${1:case}':
-  ${2:// code}
-  break;
- ${3}
+        ${2:// code}
+    break;
+    ${3}
 
 # for (...) {...}
 snippet   for
 options   head
     for (var ${2:i} = 0; $2 < ${1:Things}.length; $2${3: += 1}) {
-  ${4:$1[$2]}
- }
+        ${4:$1[$2]}
+    }
 
 # for (...) {...} (Improved Native For-Loop)
 snippet   forr
 options   head
     for (var ${2:i} = ${1:Things}.length - 1; $2 >= 0; $2${3: -= 1}) {
-  ${4:$1[$2]}
- }
+        ${4:$1[$2]}
+    }
 
 # while (...) {...}
 snippet   wh
 options   head
     while (${1:/* condition */}) {
-  ${2:/* code */}
- }
+        ${2:/* code */}
+    }
 
 # try
 snippet   try
 options   head
     try {
-  ${1:/* code */}
- } catch(${2:e}) {
-  ${3:/* handle error */}
- }
+        ${1:/* code */}
+    } catch(${2:e}) {
+        ${3:/* handle error */}
+    }
 
 # do...while
 snippet   do
 options   head
     do {
-  ${2:/* code */}
- } while (${1:/* condition */});
+        ${2:/* code */}
+    } while (${1:/* condition */});
 
 # Object Method
 snippet   :fun
 options   head
     ${1:method_name}: function(${2:attribute}) {
-  ${4}
- }${3:,}
+        ${4}
+    }${3:,}
 
 # setTimeout function
 snippet   timeout
@@ -169,8 +168,8 @@ options   head
 snippet   fori
 options   head
     for (var ${1:prop} in ${2:Things}) {
-  ${3:$2[$1]}
- }
+        ${3:$2[$1]}
+    }
 
 # hasOwnProperty
 snippet   has
@@ -181,9 +180,9 @@ options   head
 snippet   /**
 options   head
     /**
-  * ${1:description}
-  *
-  */
+     * ${1:description}
+     *
+     */
 snippet   @par
 options   head
     @param {${1:type}} ${2:name} ${3:description}
