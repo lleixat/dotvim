@@ -1,4 +1,4 @@
-" Maintainer: Thomas Lleixa <contact@thomaslleixa.fr>
+" Maintainer: Thomas Lleixa <https://github.com/lleixat>
 " Based on https://github.com/croaker/mustang-vim
 " wich is based on Mustang theme by :
 " Henrique C. Alves (hcarvalhoalves@gmail.com)
