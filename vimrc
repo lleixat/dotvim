@@ -903,8 +903,8 @@ let g:pdv_cfg_Author      = $AUTHOR2
 let g:pdv_cfg_AuthorLink  = system("echo 'http://'${AUTHOR_LINK} ${AUTHOR_LINK}")
 let g:pdv_cfg_Copyright   = system("echo ${COPYL}' 2012-'`date \"+%Y\"`")
 let g:pdv_cfg_ReturnVal   = "mixed"
-let g:pdv_cfg_Package     = "Giift"
-let g:pdv_cfg_ProjectName = "giift"
+let g:pdv_cfg_Package     = "mybiz"
+let g:pdv_cfg_ProjectName = "myBiz"
 let g:pdv_cfg_Update      = "GIT: $Date$"
 let g:pdv_cfg_Version     = "GIT: $Id$"
 nnoremap <C-o> :call PhpDocSingle()<CR>
