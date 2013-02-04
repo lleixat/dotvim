@@ -354,3 +354,6 @@
 [submodule "bundle/vim-nazca-colorscheme"]
 	path = bundle/vim-nazca-colorscheme
 	url = git://github.com/jelera/vim-nazca-colorscheme.git
+[submodule "bundle/prettysql"]
+	path = bundle/prettysql
+	url = git://github.com/mbra/prettysql.git
