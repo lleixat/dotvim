@@ -45,27 +45,27 @@ options     head
 alias       autoloader alias
 	Autoloader::alias(${1:$class}, ${2:$alias});
 
-snippet     Autoloader
+snippet     autoloader:dir
 abbr        Laravel: Autoloader::directories()
 options     head
 	Autoloader::directories(${1:$directory});
 
-snippet     Autoloader
+snippet     autoloader:load
 abbr        Laravel: Autoloader::load()
 options     head
 	Autoloader::load(${1:$class});
 
-snippet     Autoloader
+snippet     autoloader:map
 abbr        Laravel: Autoloader::map()
 options     head
 	Autoloader::map(${1:$mappings});
 
-snippet     Autoloader
+snippet     autoloader:name
 abbr        Laravel: Autoloader::namespaces()
 options     head
 	Autoloader::namespaces(${1:$mappings}, ${2:$append});
 
-snippet     Autoloader
+snippet     autoloader:under
 abbr        Laravel: Autoloader::underscored()
 options     head
 	Autoloader::underscored(${1:$mappings});
@@ -130,7 +130,7 @@ alias       bundle name
 options     head
 	Bundle::name(${1:$identifier});
 
-snippet     bundle:name
+snippet     bundle:names
 abbr        Laravel: Bundle::names()
 alias       bundle name
 options     head
@@ -178,9 +178,9 @@ alias       bundle rout
 options     head
 	Bundle::routed(${1:$bundle});
 
-snippet     bundle:rout
+snippet     bundle:routs
 abbr        Laravel: Bundle::routes()
-alias       bundle rout
+alias       bundle routs
 options     head
 	Bundle::routes(${1:$bundle});
 
@@ -376,7 +376,7 @@ alias       event list
 options     head
 	Event::listen(${1:$event}, ${2:$callback});
 
-snippet     event:list
+snippet     event:lists
 abbr        Laravel: Event::listeners()
 alias       event list
 options     head
@@ -634,9 +634,9 @@ alias       form text
 options     head
 	Form::text(${1:$name}, ${2:$value}, ${3:$attributes});
 
-snippet     form:text
+snippet     form:texta
 abbr        Laravel: Form::textarea()
-alias       form text
+alias       form texta
 options     head
 	Form::textarea(${1:$name}, ${2:$value}, ${3:$attributes});
 
@@ -712,9 +712,9 @@ alias       html link
 options     head
 	HTML::link_to_secure(${1:$url}, ${2:$title}, ${3:$attributes});
 
-snippet     html:linkass
+snippet     html:linkassa
 abbr        Laravel: HTML::link_to_secure_asset()
-alias       html link
+alias       html linkassa
 options     head
 	HTML::link_to_secure_asset(${1:$url}, ${2:$title}, ${3:$attributes});
 
@@ -856,9 +856,9 @@ alias       ioc regi
 options     head
 	IoC::register(${1:$name}, ${2:$resolver}, ${3:$singleton});
 
-snippet     ioc:regi
+snippet     ioc:registered
 abbr        Laravel: IoC::registered()
-alias       ioc regi
+alias       ioc registered
 options     head
 	IoC::registered(${1:$name});
 
@@ -1114,9 +1114,9 @@ alias       route secu
 options     head
 	Route::secure(${1:$method}, ${2:$route}, ${3:$action});
 
-snippet     route:secu
+snippet     route:secuc
 abbr        Laravel: Route::secure_controller()
-alias       route secu
+alias       route secuc
 options     head
 	Route::secure_controller(${1:$controllers}, ${2:$defaults});
 
@@ -1418,15 +1418,15 @@ alias       url to
 options     head
 	URL::to(${1:$url}, ${2:$https});
 
-snippet     url:to_a
+snippet     url:to_ac
 abbr        Laravel: URL::to_action()
-alias       url to_a
+alias       url to_ac
 options     head
 	URL::to_action(${1:$action}, ${2:$parameters});
 
-snippet     url:to_a
+snippet     url:to_as
 abbr        Laravel: URL::to_asset()
-alias       url to_a
+alias       url to_as
 options     head
 	URL::to_asset(${1:$url}, ${2:$https});
 
