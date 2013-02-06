@@ -18,6 +18,11 @@ let g:switch_definitions = [
             \       '\([A-Z]\)': '_\l\1'
             \     },
             \   },
+            \  {
+            \   '\[\s\]': '\[x\]',
+            \   '\[x\]': '\[-\]',
+            \   '\[-\]': '\[ \]',
+            \  },
             \ ]
 
 autocmd FileType php let b:switch_definitions = [
@@ -44,13 +49,21 @@ autocmd FileType php let b:switch_definitions = [
             \     '<?php \%(echo\)\@!\(.\{-}\) ?>': '<?php echo \1 ?>',
             \   },
             \   {
-            \     'if\s(\%(true\|false\)\@!\(.*\))': 'if (true || (\1))',
-            \     'if\s(true || (\(.*\)))': 'if (false && (\1))',
-            \     'if\s(false && (\(.*\)))': 'if (\1)',
+            \     'if\s*(\%(true\|false\)\@!\(.*\))': 'if (true || (\1))',
+            \     'if\s*(true || (\(.*\)))': 'if (false && (\1))',
+            \     'if\s*(false && (\(.*\)))': 'if (\1)',
             \   },
             \ ]
 
-autocmd FileType javascript let b:switch_definitions = [
+autocmd FileType laravel,blade let b:switch_definitions = [
+            \   {
+            \     '@if\s*(\%(true\|false\)\@!\(.*\))': '@if (true || (\1))',
+            \     '@if\s*(true || (\(.*\)))': '@if (false && (\1))',
+            \     '@if\s*(false && (\(.*\)))': '@if (\1)',
+            \   },
+            \ ]
+
+autocmd FileType javascript,js let b:switch_definitions = [
             \   {
             \ 	  'return \(\k\+\)': 'console.log(\1)',
             \ 	  'console.log(\(.*\))': 'return \1'
@@ -60,9 +73,9 @@ autocmd FileType javascript let b:switch_definitions = [
             \     '\(\k\+\)\.\(\k\+\)': '\1[''\2'']'
             \   },
             \   {
-            \     'if (\%(true\|false\)\@!\(.*\))': 'if (true || (\1))',
-            \     'if (true || (\(.*\)))': 'if (false && (\1))',
-            \     'if (false && (\(.*\)))': 'if (\1)'
+            \     'if\s*(\%(true\|false\)\@!\(.*\))': 'if (true || (\1))',
+            \     'if\s*(true || (\(.*\)))': 'if (false && (\1))',
+            \     'if\s*(false && (\(.*\)))': 'if (\1)'
             \   },
             \ ]
 

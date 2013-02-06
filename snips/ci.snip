@@ -1,0 +1,202 @@
+snippet     cic
+abbr        CI class controller
+prev_word   '^'
+    <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+    /**
+     * Undocumented Controller class
+     *
+     * @package default
+     * @author `g:snips_author`
+     */
+    class `Cucfirst(expand("%:t"))` extends CI_Controller {
+
+        public function ${1:index}()
+        {
+            // Pass variable into view
+            $data['${2:`expand("%:t:r")`}'] = ${3:"hello world"};
+
+            // Loads the view '${4:`expand("%:t:r")`}.php'
+            $this->load->view('$4', $data);
+        }
+
+        ${0}
+
+    }
+
+    /* End of file `expand("%:t")` */
+    /* Location: `CiFilePos(expand("%:p"))` */
+
+snippet     cim
+abbr        CI class Model
+prev_word   '^'
+    <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+    class `Cucfirst(expand("%:t"))` extends CI_Model {
+
+        function __construct() {
+
+            parent::__construct();
+            ${1:// code...}
+        }
+
+        ${0}
+
+    }
+
+    /* End of file `expand("%:t")` */
+    /* Location: `CiFilePos(expand("%:p"))` */
+
+
+snippet     cilv
+abbr        CI load view
+prev_word   '^'
+    $this->load->view('${1:view_name}', $${2:data});${3}
+
+# DB Class CI snippets
+snippet cidbi
+abbr $this->db->insert('table', $data);
+    $this->db->insert('${1:table}', $${2:data});${3}
+snippet cidbs
+abbr $this->db->select('id, ...');
+    $this->db->select('${1:id, ...}');${2}
+snippet cidbf
+abbr $this->db->from('table');
+    $this->db->from('${1:table}');${2}
+snippet cidbj
+abbr $this->db->join('table', 'condition', 'type');
+    $this->db->join('${1:table}', '${2:condition}', '${3:type}');${4}
+snippet cidbw
+abbr $this->db->where('key', 'value');
+    $this->db->where('${1:key}', '${2:value}');${3}
+snippet cidbow
+abbr $this->db->or_where('key', 'value');
+    $this->db->or_where('${1:key}', '${2:value}');${3}
+snippet cidbg
+abbr $this->db->get('table', limit, offset);
+    $this->db->get('${1:table}', ${2:limit}, ${3:offset});${4}
+snippet cidbd
+abbr $this->db->delete('table', 'where');
+    $this->db->delete('${1:table}', '${2:where}');${3}
+snippet cidbu
+abbr $this->db->update('table', $set, $where);
+    $this->db->update('${1:table}', $${2:set}, $${3:where});${4}
+# Input Class snippets
+snippet ciip
+abbr $this->input->post('index');
+    $this->input->post('${1:index}');${2}
+snippet ciig
+abbr $this->input->get('index');
+    $this->input->get('${1:index}');${2}
+snippet ciic
+abbr $this->input->cookie('index');
+    $this->input->cookie('${1:index}');${2}
+snippet ciis
+abbr $this->input->server('index');
+    $this->input->server('${1:index}');${2}
+snippet ciiua
+abbr $this->input->user_agent();
+    $this->input->user_agent();${1}
+snippet ciiajax
+abbr $this->input->is_ajax_request();
+    $thispt->is_ajax_request();${1}
+snippet ciicli
+abbr $this->input->is_cli_request();
+    $thispt->is_cli_request();${1}
+# Form Validation Class and Form Helper snippets
+snippet cifvsr
+abbr $this->form_validation->set_rules('fiel', 'label', 'trim|required');
+    $this->form_validation->set_rules('${1:field}', '${2:label}', '${3:trim|required}');${4}
+snippet cifo
+abbr form_open('action');
+    form_open('${1:action}');${2}
+snippet cifom
+abbr form_open_multipart('action');
+    form_open_multipart('${1:action}');${2}
+snippet cifh
+abbr form_hidden('name', 'value');
+    form_hidden('${1:name}', '${2:value}');${3}
+snippet cifi
+abbr form_input('name', 'value');
+    form_input('${1:name}', '${2:value}');${3}
+snippet cifp
+abbr form_password('name', 'value');
+    form_password('${1:name}', '${2:value}');${3}
+snippet cifu
+abbr form_upload('name', 'value');
+    form_upload('${1:name}', '${2:value}');${3}
+snippet cifta
+abbr form_textarea('name', 'value');
+    form_textarea('${1:name}', '${2:value}');${3}
+snippet cifdd
+abbr form_dropdown('name', options, selected);
+    form_dropdown('${1:name}', $${2:options}, $${3:selected);${4}
+snippet cifcb
+abbr form_checkbox('name', 'value');
+    form_checkbox('${1:name}', '${2:value}');${3}
+snippet cifr
+abbr form_radio('name', 'value');
+    form_radio('${1:name}', '${2:value}');${3}
+snippet cifsub
+abbr form_submit('name', 'value');
+    form_submit('${1:name}', '${2:value}');${3}
+snippet cifres
+abbr form_reset('name', 'value');
+    form_reset('${1:name}', '${2:value}');${3}
+snippet cifbut
+abbr form_button('name', 'value');
+    form_button('${1:name}', '${2:value}');${3}
+snippet ciflab
+abbr form_label('label txt', 'id');
+    form_label('${1:label text}', '${2:id}');${3}
+snippet cifc
+abbr form_close();
+    form_close();
+snippet cierr
+abbr validation_errors();
+    validation_errors();
+# Sesion Class snippets
+snippet cisud
+abbr $this->sessionerdat('item');
+    $this->session->userdata('${1:item}');${2}
+snippet cissud
+abbr $this->session->set_userdata(array);
+    $this->session->set_userdata($${1:array});${2}
+snippet cisfd
+abbr $this->session->flashdata('item');
+    $this->session->flashdata('${1:item}');${2}
+snippet cissfd
+abbr $this->session->set_flashdat('item', 'value');
+    $this->session->set_flashdata('${1:item}', '${2:value}');${3}
+
+# Helpers
+snippet     cicss_asset
+abbr        Put asset CSS file link here
+prev_word   '^'
+    <?php echo css_asset('${0:main}.css') ?>
+
+snippet     cijs_asset
+abbr        Put asset JS file link here
+prev_word   '^'
+    <?php echo js_asset('${0:js}.js') ?>
+
+snippet     cifg
+abbr        Form Control Group for twitter Bootstrap
+prev_word   '^'
+    <div class="control-group">
+	    <?php echo form_label('${1:Name}','input${2:01}',
+   		    array(
+			    'class'=>'control-label'
+		    )
+	    ) ?>
+	    <div class="controls">
+		    <?php echo form_input('${3:mark}_$1', set_value('$3_$1'),
+			    array(
+				    'id'=>'input$2',
+				    'type'=>'text',
+				    'class'=>'input-x-large',
+			    )
+		    ) ?>
+	    </div>
+    </div>
+    ${0}

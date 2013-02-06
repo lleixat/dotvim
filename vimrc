@@ -319,17 +319,24 @@ set showmode     " show mode at bottom of screen
 " set previewheight=5
 "}}}
 
-" Easytags {{{
+" Easytags & ctags{{{
 " https://github.com/xolox/vim-easytags
 " -----------------------------------------------------------------------------
 "set tags=./tags
-set tags=./.tags;,~/.vim/mytags
-let g:easytags_auto_update   = 0
-let g:easytags_dynamic_files = 1
-let g:easytags_by_filetype   = '~/.vim/mytags/'
-let g:easytags_on_cursorhold = 1
-let g:easytags_autorecurse   = 1
+"set tags=./.tags;,~/.vim/mytags
+"let g:easytags_auto_update   = 0
+"let g:easytags_dynamic_files = 1
+"let g:easytags_by_filetype   = '~/.vim/mytags/'
+"let g:easytags_on_cursorhold = 1
+"let g:easytags_autorecurse   = 1
 "}}}
+
+" tags keymap {{{
+" -----------------------------------------------------------------------------
+map <C-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+set tags=.git/tags
+"}}}
+
 
 " Shell Vim {{{
 " https://github.com/xolox/vim-shell
@@ -499,7 +506,7 @@ au BufRead,BufNewFile .followup,.article,.letter,/tmp/pico*,nn.*,snd.*,/tmp/mutt
 "Correction ortho"{{{
 " -----------------------------------------------------------------------------
 augroup filetypedetect
-au BufNewFile,BufRead *.html,TODO.txt,/tmp/pentadactyl* setlocal spell spelllang=fr
+au BufNewFile,BufRead *.html,*.txt,/tmp/pentadactyl* setlocal spell spelllang=fr
 "au BufNewFile,BufRead *.php                             setlocal spell spelllang=en
 "set hi SpellLocal guifg=none guibg=none gui=none ctermfg=none ctermbg=none
 augroup END
@@ -513,6 +520,11 @@ augroup END
 " php indent style
 au filetype *.php           set noet ci pi sts=0 sw=4 ts=4
 au BufRead,BufNewfile *.php set noet ci pi sts=0 sw=4 ts=4
+
+" -----------------------------------------------------------------------------
+" tidy depends on CPAN JSON::XS
+" -----------------------------------------------------------------------------
+map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
 
 " actionscript language
 " -----------------------------------------------------------------------------
@@ -909,6 +921,19 @@ let g:pdv_cfg_Update      = "GIT: $Date$"
 let g:pdv_cfg_Version     = "GIT: $Id$"
 nnoremap <C-o> :call PhpDocSingle()<CR>
 
+"------------------------------------------------------------------------------ 
+" Try to auto source specific config file when cd-ing in root project dir 
+"------------------------------------------------------------------------------ 
+let g:auto_source_Appconfig = "appconfig.vim"
+function! Appconfig_load()
+        if filereadable(g:auto_source_Appconfig)
+        exec 'source ' . g:auto_source_Appconfig
+        echom "loaded: ".g:auto_source_Appconfig
+    endif
+endfunction
+
+autocmd VimEnter * :call Appconfig_load()
+
 
 "------------------------------------------------------------------------------ 
 " Re-indent PHP (WIP)
@@ -962,7 +987,7 @@ set showtabline=2 " always show tabs in gvim, but not vim
 " -----------------------------------------------------------------------------
 " Auto pairs
 " -----------------------------------------------------------------------------
-let g:AutoPairsFlyMode = 1
+let g:AutoPairsFlyMode = 0
 
 " My tabline function {{{
 " -----------------------------------------------------------------------------
