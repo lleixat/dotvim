@@ -1,7 +1,3 @@
-[submodule "bundle/fugitive"]
-	path = bundle/fugitive
-	url = git://github.com/tpope/vim-fugitive.git.git
-	
 [submodule "bundle/PHP-Indenting-for-VIm"]
 	path = bundle/PHP-Indenting-for-VIm
 	url = git://github.com/2072/PHP-Indenting-for-VIm.git
@@ -325,3 +321,6 @@
 [submodule "bundle/prettysql"]
 	path = bundle/prettysql
 	url = git://github.com/mbra/prettysql.git
+[submodule "bundle/vim-fugitive"]
+	path = bundle/vim-fugitive
+	url = git://github.com/tpope/vim-fugitive.git
