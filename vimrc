@@ -2,12 +2,12 @@
 " @link    https://github.com/lleixat/dotvim
 " @version GIT: $Id$
 " @update  GIT: $Date$
- 
- 
+
+
 " -----------------------------------------------------------------------------
 " Basics"{{{
 " -----------------------------------------------------------------------------
-syntax on 
+syntax on
 filetype off
 filetype plugin on
 filetype plugin indent on     " required!
@@ -88,7 +88,7 @@ map <C-S> :source ~/.vim/.session <cr>
 let g:session_autosave = 'no'
 
 "set noerrorbells
-set novb 
+set novb
 set t_vb= " ^
 
 
@@ -105,7 +105,7 @@ if has('gui_running')
     set cursorline
 elseif (&term =~ 'linux')
     set t_co=8
-    colorscheme xterm16 
+    colorscheme xterm16
 else
     set t_co=256
     set mouse=a
@@ -117,8 +117,8 @@ endif
 " Set linenums
 " -----------------------------------------------------------------------------
 if has("autocmd")
-	autocmd InsertLeave * :set norelativenumber number
-	autocmd InsertEnter * :set nonumber relativenumber
+    autocmd InsertLeave * :set norelativenumber number
+    autocmd InsertEnter * :set nonumber relativenumber
 endif
 
 
@@ -154,14 +154,14 @@ endif
 
 map <Leader>cd :exe 'cd ' . expand ("%:p:h")<CR>
 "equivalent <ctrl a><ctrl C>
-map <F8> gg"+yG<CR> 
+map <F8> gg"+yG<CR>
 "}}}
 
 " -----------------------------------------------------------------------------
 "  comportement de l'editeur {{{
 " -----------------------------------------------------------------------------
- 
-" Envoyer le curseur sur la ligne suivante/précédente après usage des flèches 
+
+" Envoyer le curseur sur la ligne suivante/précédente après usage des flèches
 " droite/gauche en bout de ligne :
 " -----------------------------------------------------------------------------
 set whichwrap=<,>,[,],h,l
@@ -174,11 +174,11 @@ set scrolloff=5
 " Récupération de la position du curseur entre 2 ouvertures de fichiers
 " -----------------------------------------------------------------------------
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal g'\"" | endif
+    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+                \| exe "normal g'\"" | endif
 endif
 
-" Sudo-write 
+" Sudo-write
 " -----------------------------------------------------------------------------
 command! W w !sudo tee % > /dev/null
 
@@ -223,9 +223,9 @@ let g:html_indent_style1 = "inc"
 "let g:sparkupNextMapping (Default: '<c-n>')
 "}}}
 
-" ----------------------------------------------------------------------------- 
+" -----------------------------------------------------------------------------
 "  Zencoding
-" ----------------------------------------------------------------------------- 
+" -----------------------------------------------------------------------------
 "let g:user_zen_leader_key = '<c-y>'
 
 " -----------------------------------------------------------------------------
@@ -248,7 +248,7 @@ map <F4> :emenu <C-Z>
 " -----------------------------------------------------------------------------
 "Détection du type de fichier pour l'indentation
 if has("autocmd")
-  filetype indent on
+    filetype indent on
 endif
 set tabstop=4     " numbers of spaces of tab character
 set shiftwidth=4  " numbers of spaces to (auto)indent
@@ -297,7 +297,7 @@ runtime etc/switch_definitions.vim
 " TabBar "{{{
 " -----------------------------------------------------------------------------
 let g:Tb_MaxSize      = 1 " I want it to automatically resize if I have buffers
-                          " that fill more then one line
+" that fill more then one line
 let g:Tb_MoreThanOne  = 0 " I want the tabbar to be always visible
 let g:Tb_ModSelTarget = 1
 
@@ -382,22 +382,22 @@ let g:tagbar_iconchars = ['▾', '▸']
 let g:tagbar_singleclick = 1
 
 let g:tagbar_type_css = {
-\ 'ctagstype' : 'Css',
-    \ 'kinds' : [
-        \ 'c:classes',
-        \ 's:selectors',
-        \ 'i:identities'
-    \ ]
-\ }
+            \ 'ctagstype' : 'Css',
+            \ 'kinds' : [
+            \ 'c:classes',
+            \ 's:selectors',
+            \ 'i:identities'
+            \ ]
+            \ }
 
 let g:tagbar_type_scss = {
-\ 'ctagstype' : 'Css',
-    \ 'kinds' : [
-        \ 'c:classes',
-        \ 's:selectors',
-        \ 'i:identities'
-    \ ]
-\ }
+            \ 'ctagstype' : 'Css',
+            \ 'kinds' : [
+            \ 'c:classes',
+            \ 's:selectors',
+            \ 'i:identities'
+            \ ]
+            \ }
 
 
 "}}}
@@ -496,8 +496,8 @@ au BufNewFile,BufRead     *.htc       set ft=javascript
 au BufNewFile,BufRead     *.snip      set ft=snippet
 "au BufNewFile,BufRead     *.scss      set ft=scss.css
 au BufNewFile,BufRead jquery-*.js        set ft=javascript syntax=jquery
-"}}}                               
-                                   
+"}}}
+
 " set up syntax highlighting for e-mail "{{{
 " -----------------------------------------------------------------------------
 au BufRead,BufNewFile .followup,.article,.letter,/tmp/pico*,nn.*,snd.*,/tmp/mutt* :set ft=mail
@@ -506,9 +506,9 @@ au BufRead,BufNewFile .followup,.article,.letter,/tmp/pico*,nn.*,snd.*,/tmp/mutt
 "Correction ortho"{{{
 " -----------------------------------------------------------------------------
 augroup filetypedetect
-au BufNewFile,BufRead *.html,*.txt,/tmp/pentadactyl* setlocal spell spelllang=fr
-"au BufNewFile,BufRead *.php                             setlocal spell spelllang=en
-"set hi SpellLocal guifg=none guibg=none gui=none ctermfg=none ctermbg=none
+    au BufNewFile,BufRead *.html,*.txt,/tmp/pentadactyl* setlocal spell spelllang=fr
+    "au BufNewFile,BufRead *.php                             setlocal spell spelllang=en
+    "set hi SpellLocal guifg=none guibg=none gui=none ctermfg=none ctermbg=none
 augroup END
 
 "}}}
@@ -536,7 +536,7 @@ let tlist_actionscript_settings = 'actionscript;c:class;f:method;p:property;v:va
 " -----------------------------------------------------------------------------
 au filetype c,cpp set cindent
 au filetype c,cpp set formatoptions+=ro
- 
+
 "}}}
 
 "------------------------------------------------------------------------------
@@ -553,9 +553,9 @@ au filetype c,cpp set formatoptions+=ro
 "" below was copied directly from
 "" :help g:fuf_file_exclude@en
 "let g:fuf_mrufile_exclude =
-      "\ '\v\~$|\.(bak|sw[po])$|^(\/\/|\\\\|\/mnt\/|\/media\/)'
-      "\ . '|^/tmp/|^/var/tmp/|^\~/tmp/'
-      "\ . '|\.git'
+"\ '\v\~$|\.(bak|sw[po])$|^(\/\/|\\\\|\/mnt\/|\/media\/)'
+"\ . '|^/tmp/|^/var/tmp/|^\~/tmp/'
+"\ . '|\.git'
 
 "nnoremap <leader>fo :FufFile<enter>
 "nnoremap <leader>fb :FufBuffer<enter>
@@ -567,28 +567,28 @@ au filetype c,cpp set formatoptions+=ro
 " -----------------------------------------------------------------------------
 
 "map <leader>x
-    "\ :set filetype=xml<cr>
-    "\ :source $vimruntime/syntax/xml.vim<cr>
-    "\ :set foldmethod=syntax<cr>
-    "\ :source $vimruntime/syntax/syntax.vim<cr>
-    "\ :source $added/xml.vim<cr>
-    ""\ :iunmap <buffer> <leader>.<cr>
-    "\ :iunmap <buffer> <leader>><cr>
-    "\ :inoremap \> ><cr>
-    "\ :echo "xml mode is on"<cr>
-    ""  no imaps for <leader>
-    ""\:inoremap \. ><cr>
+"\ :set filetype=xml<cr>
+"\ :source $vimruntime/syntax/xml.vim<cr>
+"\ :set foldmethod=syntax<cr>
+"\ :source $vimruntime/syntax/syntax.vim<cr>
+"\ :source $added/xml.vim<cr>
+""\ :iunmap <buffer> <leader>.<cr>
+"\ :iunmap <buffer> <leader>><cr>
+"\ :inoremap \> ><cr>
+"\ :echo "xml mode is on"<cr>
+""  no imaps for <leader>
+""\:inoremap \. ><cr>
 
-    "" catalog should be set up
-    "nmap <leader>l <leader>cd:%w !xmllint --valid --noout -<cr>
-    ""nmap <leader>r <leader>cd:%w !rxp -v -n -s -x<cr>
-    "nmap <leader>d4 :%w !xmllint --dtdvalid "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" --noout -<cr>
+"" catalog should be set up
+"nmap <leader>l <leader>cd:%w !xmllint --valid --noout -<cr>
+""nmap <leader>r <leader>cd:%w !rxp -v -n -s -x<cr>
+"nmap <leader>d4 :%w !xmllint --dtdvalid "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" --noout -<cr>
 
-    "vmap <leader>px !xmllint --format -<cr>
-    "nmap <leader>px !!xmllint --format -<cr>
-    "nmap <leader>pxa :%!xmllint --format -<cr>
+"vmap <leader>px !xmllint --format -<cr>
+"nmap <leader>px !!xmllint --format -<cr>
+"nmap <leader>pxa :%!xmllint --format -<cr>
 
-    "nmap <leader>i :%!xsltlint<cr>
+"nmap <leader>i :%!xsltlint<cr>
 "}}}
 
 " -----------------------------------------------------------------------------
@@ -629,22 +629,22 @@ com! -range Imcopy <line1>,<line2>call Imcopy()
 let g:html_diff_one_file = 1
 
 function! DivHtml(line1, line2)
-  " make sure to generate in the correct format
-  let old_css = 1
-  if exists('g:html_use_css')
-    let old_css = g:html_use_css
-  endif
-  let g:html_use_css = 0
+    " make sure to generate in the correct format
+    let old_css = 1
+    if exists('g:html_use_css')
+        let old_css = g:html_use_css
+    endif
+    let g:html_use_css = 0
 
-  exec a:line1.','.a:line2.'TOhtml'
-  %g/<style/normal $dgg
-  %s/<\/style>\n<\/head>\n//
-  %s/.vim_block {/.vim_block {/
-  %s/<body\(.*\)>\n/<div class="vim_block"\1>/
-  %s/<\/body>\n<\/html>/<\/div>
-  %s/<br>//g
+    exec a:line1.','.a:line2.'TOhtml'
+    %g/<style/normal $dgg
+    %s/<\/style>\n<\/head>\n//
+    %s/.vim_block {/.vim_block {/
+    %s/<body\(.*\)>\n/<div class="vim_block"\1>/
+    %s/<\/body>\n<\/html>/<\/div>
+    %s/<br>//g
 
- " set nonu
+    " set nonu
 endfunction
 
 command! -range=% DivHtml :call DivHtml(<line1>,<line2>)
@@ -673,20 +673,20 @@ function! ForumCopy(line1, line2, scroll)
     %g/<body/normal k$dgg
 
     " convert body to a span
-    if a:scroll == "true" 
-    	%s/<body bgcolor="\s*\([^"]*\)"\s*text=\("[^"]*"\)\s*>/
-    				\<span style="display:block; background-color:\1;
-    				\ padding:5px; margin:10px; height: 25em; overflow:auto;
-    				\ -moz-border-radius:5px; border-radius:5px;" >
-    				\<font color=\2>/
-	else
-	    %s/<body bgcolor="\s*\([^"]*\)"\s*text=\("[^"]*"\)\s*>/
-	    			\<span style="display:block; background-color:\1;
-	    			\ padding:5px; margin:10px; -moz-border-radius:5px;
-	    			\ border-radius:5px;" ><font color=\2>/
+    if a:scroll == "true"
+        %s/<body bgcolor="\s*\([^"]*\)"\s*text=\("[^"]*"\)\s*>/
+                    \<span style="display:block; background-color:\1;
+                    \ padding:5px; margin:10px; height: 25em; overflow:auto;
+                    \ -moz-border-radius:5px; border-radius:5px;" >
+                    \<font color=\2>/
+    else
+        %s/<body bgcolor="\s*\([^"]*\)"\s*text=\("[^"]*"\)\s*>/
+                    \<span style="display:block; background-color:\1;
+                    \ padding:5px; margin:10px; -moz-border-radius:5px;
+                    \ border-radius:5px;" ><font color=\2>/
     endif
-    	%s#</body>\(.\|\n\)*</html>#\='</font></span><br />'#i
-    	%s/br>/br \/>/
+    %s#</body>\(.\|\n\)*</html>#\='</font></span><br />'#i
+    %s/br>/br \/>/
     " restore old setting
     let g:html_use_css = old_css
 endfunction
@@ -696,7 +696,7 @@ com! -range=% ForumCopyS :call ForumCopy(<line1>,<line2>,"true")
 "}}}
 
 " Syntaxe Pour l'édition avec pentadactyl "{{{
-" (avec <C-i> dans un champ dans Firefox ) 
+" (avec <C-i> dans un champ dans Firefox )
 " -----------------------------------------------------------------------------
 au BufRead,BufNewFile /tmp/pentadactyl* :set ft=xhtml
 "}}}
@@ -712,10 +712,10 @@ au BufRead,BufNewFile /tmp/pentadactyl* :set ft=xhtml
 "}}}
 
 
-" ----------------------------------------------------------------------------- 
+" -----------------------------------------------------------------------------
 "  Gist plugin "{{{
 "  https://github.com/mattn/gist-vim
-" ----------------------------------------------------------------------------- 
+" -----------------------------------------------------------------------------
 let g:gist_clip_command            = 'xclip -selection clipboard'
 let g:gist_detect_filetype         = 1
 let g:gist_open_browser_after_post = 1
@@ -759,7 +759,7 @@ let g:gundo_preview_height = 20
 "}}}
 
 "------------------------------------------------------------------------------
-" 	Custom Align maps
+"   Custom Align maps
 "------------------------------------------------------------------------------
 vmap <leader>tp :Align =><CR>
 
@@ -783,12 +783,12 @@ let g:neocomplcache_lock_buffer_name_pattern        = '\*ku\*'
 
 "" define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default' : '',
-    \ 'javascript' : $HOME.'/.vim/dictionary/javascript.dict',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'xhtml' : $HOME.'/.vim/dictionary/html.dict',
-    \ 'php' : $HOME.'/.vim/dictionary/php.dict'
-    \ }
+            \ 'default' : '',
+            \ 'javascript' : $HOME.'/.vim/dictionary/javascript.dict',
+            \ 'vimshell' : $HOME.'/.vimshell_hist',
+            \ 'xhtml' : $HOME.'/.vim/dictionary/html.dict',
+            \ 'php' : $HOME.'/.vim/dictionary/php.dict'
+            \ }
 
 " Enable syntaxcomplete
 if has("autocmd") && exists("+omnifunc")
@@ -798,7 +798,7 @@ if has("autocmd") && exists("+omnifunc")
                 \ endif
 endif
 
-    
+
 " define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
     let g:neocomplcache_keyword_patterns = {}
@@ -812,7 +812,7 @@ inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+"inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
@@ -820,20 +820,19 @@ inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
-                                       
-  
+
+
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-	return neocomplcache#smart_close_popup() . "\<CR>"
-	" For no inserting <CR> key.
-	"return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+    return neocomplcache#smart_close_popup() . "\<CR>"
+    " For no inserting <CR> key.
+    "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 endfunction
 
 ""neoSupertab key mapping
-let g:SuperTabDefaultCompletionType = "<c-n>"
-let g:SuperTabDefaultCompletionType = "context"
-let g:UltiSnipsExpandTrigger="<Tab>"
+"let g:SuperTabDefaultCompletionType = "<c-n>"
+"let g:SuperTabDefaultCompletionType = "context"
 " SuperTab like snippets behavior.
 "imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 
@@ -847,7 +846,7 @@ endfunction
 
 " enable heavy omni completion.
 "if !exists('g:neocomplcache_omni_patterns')
-    "let g:neocomplcache_omni_patterns = {}
+"let g:neocomplcache_omni_patterns = {}
 "endif
 "let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "}}}
@@ -859,8 +858,8 @@ endfunction
 let g:neosnippet#snippets_directory='~/.vim/snips'
 
 " SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_jump)" : "\<TAB>"
+"imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+"smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_jump)" : "\<TAB>"
 
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neocomplcache_snippets_expand)
@@ -871,7 +870,7 @@ inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 " For snippet_complete marker.
 if has('conceal')
-  set conceallevel=2 concealcursor=i
+    set conceallevel=2 concealcursor=i
 endif
 
 
@@ -881,35 +880,35 @@ command! EditSnips :NeoSnippetEdit
 let g:snips_author = $MAIL1
 
 function! Cucfirst(str)
-	return substitute(strpart(a:str,0,strlen(a:str)-4), '\w\+', '\u\0', "")
+    return substitute(strpart(a:str,0,strlen(a:str)-4), '\w\+', '\u\0', "")
 endfunction
 
 function! Uppercase(str)
-	return substitute(a:str, '\(\w\)', '\u\1'; '')
+    return substitute(a:str, '\(\w\)', '\u\1'; '')
 endfunction
 
 function! Lowercase(str)
-	return substitute(a:str, '(\w\+)', '\u\0', "")
+    return substitute(a:str, '(\w\+)', '\u\0', "")
 endfunction
 
 function! Ucfisrt(str)
-	return substitute(strpart(a:str,0,strlen(a:str)-4), '\w\+', '\u\0', "")
+    return substitute(strpart(a:str,0,strlen(a:str)-4), '\w\+', '\u\0', "")
 endfunction
 
 function! CiFilePos(str)
-  if a:str =~ ".\.system.\."
-    return '.' . matchstr(a:str, "\/system/.*$")
-  elseif a:str =~ ".\.application.\."
-    return '.' . matchstr(a:str, "\/application/.*$")
-  else
-    return a:str
+    if a:str =~ ".\.system.\."
+        return '.' . matchstr(a:str, "\/system/.*$")
+    elseif a:str =~ ".\.application.\."
+        return '.' . matchstr(a:str, "\/application/.*$")
+    else
+        return a:str
 endfunction
 
 "}}}
 
-"------------------------------------------------------------------------------ 
+"------------------------------------------------------------------------------
 " PhpDoc
-"------------------------------------------------------------------------------ 
+"------------------------------------------------------------------------------
 let g:pdv_cfg_Type        = "mixed"
 let g:pdv_cfg_Author      = $AUTHOR2
 let g:pdv_cfg_AuthorLink  = system("echo 'http://'${AUTHOR_LINK} ${AUTHOR_LINK}")
@@ -921,12 +920,12 @@ let g:pdv_cfg_Update      = "GIT: $Date$"
 let g:pdv_cfg_Version     = "GIT: $Id$"
 nnoremap <C-o> :call PhpDocSingle()<CR>
 
-"------------------------------------------------------------------------------ 
-" Try to auto source specific config file when cd-ing in root project dir 
-"------------------------------------------------------------------------------ 
+"------------------------------------------------------------------------------
+" Try to auto source specific config file when cd-ing in root project dir
+"------------------------------------------------------------------------------
 let g:auto_source_Appconfig = "appconfig.vim"
 function! Appconfig_load()
-        if filereadable(g:auto_source_Appconfig)
+    if filereadable(g:auto_source_Appconfig)
         exec 'source ' . g:auto_source_Appconfig
         echom "loaded: ".g:auto_source_Appconfig
     endif
@@ -935,34 +934,29 @@ endfunction
 autocmd VimEnter * :call Appconfig_load()
 
 
-"------------------------------------------------------------------------------ 
-" Re-indent PHP (WIP)
-"------------------------------------------------------------------------------ 
-function! ReindentPhp()
+"------------------------------------------------------------------------------
+" Retabing and Indenting (WIP)
+"------------------------------------------------------------------------------
+function! RetabIndent()
     " Save last search, and cursor position.
     let _s=@/
     let l = line(".")
     let c = col(".")
-    
-    " trim spaces each begin and end of line
-    "%s/\(\s*$\)\&\(^\s*\)\&\(^\t*\)//
-    " Add <cr> before and after all '{' in ') {'
-    %s/\().{\)/)\r{\r/
-    " Add <cr> before and after '}' 
-    "%s/\(}$\)\&\(^{\)\@!/\r}\r
-    
-    " do gg=G (reindent all)
+    " trim spaces each end of line
+    ":%s=\s\+$==
+    :%s/\s\+$//e
+    " reindent all
     :normal gg=G
-    " transform spaces in Tabs 
-    exec 'RetabIndent!'
-    " add <cr> after } 
-    "%s/\(}$\)\&\(}.\r\r\)\@!/\r}\r/
+    " transform spaces in Tabs
+    :retab
     " restore previous search history, and cursor position
     let @/=_s
     call cursor(l, c)
-    
+    " center
+    :normal zz
+
 endfunction
-command! -bar -range=% ReindentPhp :call ReindentPhp()
+command! -bar -range=% RetabIndent :call RetabIndent()
 
 " -----------------------------------------------------------------------------
 " Pathogen
@@ -993,36 +987,36 @@ let g:AutoPairsFlyMode = 0
 " -----------------------------------------------------------------------------
 set tabline=%!MyTabLine()
 function! MyTabLine()
-	let s = '' " complete tabline goes here
-  	" loop through each tab page
-  	for t in range(tabpagenr('$'))
-    	" select the highlighting for the buffer names
-    	if t + 1 == tabpagenr()
-      		let s .= '%#TabLineSel#'
-    	else
-      		let s .= '%#TabLine#'
-    	endif
-    	" empty space and dot
-    	let s .= ' • '
-    	" set the tab page number (for mouse clicks)
-    	let s .= '%' . (t + 1) . 'T'
-    	" set page number string
-    	let s .= t + 1 . ' '
-    	" get buffer names and statuses
-    	let n = ''  "temp string for buffer names while we loop and check buftype
-    	let m = 0 " &modified counter
-    	let bc = len(tabpagebuflist(t + 1))  "counter to avoid last ' '
-    	
-    	" loop through each buffer in a tab
-    	for b in tabpagebuflist(t + 1)
-      		" bufername : rewrite '*Tagbar*' & 'NerdTree*' to shorten string
-      		" buffer types: quickfix gets a [Q], help gets [H]{base fname}
-      		" others get 1dir/2dir/3dir/fname shortened to 1/2/3/fname
-      		let bn = bufname(b)
-      		let bt = getbufvar(b, "&buftype")
-      		
-      		if bn == '' 
-      		    let n .= '[No name]'
+    let s = '' " complete tabline goes here
+    " loop through each tab page
+    for t in range(tabpagenr('$'))
+        " select the highlighting for the buffer names
+        if t + 1 == tabpagenr()
+            let s .= '%#TabLineSel#'
+        else
+            let s .= '%#TabLine#'
+        endif
+        " empty space and dot
+        let s .= ' • '
+        " set the tab page number (for mouse clicks)
+        let s .= '%' . (t + 1) . 'T'
+        " set page number string
+        let s .= t + 1 . ' '
+        " get buffer names and statuses
+        let n = ''  "temp string for buffer names while we loop and check buftype
+        let m = 0 " &modified counter
+        let bc = len(tabpagebuflist(t + 1))  "counter to avoid last ' '
+
+        " loop through each buffer in a tab
+        for b in tabpagebuflist(t + 1)
+            " bufername : rewrite '*Tagbar*' & 'NerdTree*' to shorten string
+            " buffer types: quickfix gets a [Q], help gets [H]{base fname}
+            " others get 1dir/2dir/3dir/fname shortened to 1/2/3/fname
+            let bn = bufname(b)
+            let bt = getbufvar(b, "&buftype")
+
+            if bn == ''
+                let n .= '[No name]'
             elseif bn =~ 'NERD'
                 let n .= '¤'
             elseif bn =~ 'Tagbar'
@@ -1032,49 +1026,49 @@ function! MyTabLine()
             elseif bt == 'quickfix'
                 let n .= '[Q]'
             else
-        		let n .= pathshorten(bn)
-      		endif
-      		
-      		" check and ++ tab's &modified count
-      		if getbufvar(b, "&modified")
-        		let m += 1
-      		endif
-      		
-      		" no final ' ' added...formatting looks better done later
-      		if bc > 1
-        		let n .= ' '
-      		endif
-      		
-      		let bc -= 1
-    	endfor
-    	
-    	" add modified label [n+] where n pages in tab are modified
-    	if m > 0
-      		"let s .= '[' . m . '+]'
-      		let s.= '+ '
-    	endif
-    	
-    	" add buffer names
-    	if n == ''
-      		let s .= '[Empty]'
-    	else
-      		let s .= n
-    	endif
-    	
-    	" switch to no underlining and add final space to buffer list
-    	"let s .= '%#TabLineSel#' . ' '
-    	let s .= ' '
-  	endfor
-  	
-  	" after the last tab fill with TabLineFill and reset tab page nr
-  	let s .= '%#TabLineFill#%T'
-  	
-  	" right-align the label to close the current tab page
-  	if tabpagenr('$') > 1
-    	let s .= '%=%#TabLine#%999XX'
-  	endif
-  	
-  	return s
+                let n .= pathshorten(bn)
+            endif
+
+            " check and ++ tab's &modified count
+            if getbufvar(b, "&modified")
+                let m += 1
+            endif
+
+            " no final ' ' added...formatting looks better done later
+            if bc > 1
+                let n .= ' '
+            endif
+
+            let bc -= 1
+        endfor
+
+        " add modified label [n+] where n pages in tab are modified
+        if m > 0
+            "let s .= '[' . m . '+]'
+            let s.= '+ '
+        endif
+
+        " add buffer names
+        if n == ''
+            let s .= '[Empty]'
+        else
+            let s .= n
+        endif
+
+        " switch to no underlining and add final space to buffer list
+        "let s .= '%#TabLineSel#' . ' '
+        let s .= ' '
+    endfor
+
+    " after the last tab fill with TabLineFill and reset tab page nr
+    let s .= '%#TabLineFill#%T'
+
+    " right-align the label to close the current tab page
+    if tabpagenr('$') > 1
+        let s .= '%=%#TabLine#%999XX'
+    endif
+
+    return s
 endfunction
 "}}}
 
@@ -1102,15 +1096,14 @@ nnoremap K h/[^ ]<cr>"zd$jyyP^v$h"zpJk:s/\v +$//<cr>:noh<cr>j^
 
 
 " set up the status line
-" -
+" ----------------------
 fun! <sid>set_statusline()
     let l:s1="%-3.3n\\ %f\\ %h%m%r%w"
     let l:s2="%{fugitive#statusline()}"
+    let l:s5="%{SyntasticStatuslineFlag()}"
     let l:s3="[%{strlen(&filetype)?&filetype:'?'},%{&encoding},%{&fileformat}]"
-    let l:s4="%=\\ 0x%-8b\\ \\ %-14.(%l,%c%V%)\\ %<%p"
-    execute "set statusline=" . l:s1 . l:s2 . l:s3 . l:s4
+    let l:s4="%=\\ 0x%-8b\\ \\ %-14.(%l,%c%V\\[ε%L\\]%)\\ %<%03p%%"
+    execute "set statusline=" . l:s1 . l:s2 . l:s5 . l:s3 . l:s4
 endfun
 set laststatus=2
 call <sid>set_statusline()
-
-"set statusline=%-3.3n\ %f\ %h%m%r%w%{SL('fugitive#statusline')}[%{strlen(&filetype)?&filetype:'?'},%{&encoding},%{&fileformat}]%{SL('SyntasticStatuslineFlag')}%=\\ 0x%-8b\\ \\ %-14.(%l,%c%V%)\\ %<%p

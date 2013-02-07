@@ -138,10 +138,6 @@
 	path = bundle/gundo.vim
 	url = git://github.com/sjl/gundo.vim.git
 
-[submodule "bundle/Smart-Tabs"]
-	path = bundle/Smart-Tabs
-	url = git://github.com/skroll/Smart-Tabs.git
-
 [submodule "bundle/vim-bufexplorer"]
 	path = bundle/vim-bufexplorer
 	url = git://github.com/slack/vim-bufexplorer.git
@@ -324,6 +320,3 @@
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
-[submodule "bundle/IndentTab"]
-	path = bundle/IndentTab
-	url = git://github.com/vim-scripts/IndentTab.git
