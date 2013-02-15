@@ -320,3 +320,6 @@
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
+[submodule "bundle/Smart-tabs"]
+	path = bundle/Smart-tabs
+	url = git://github.com/skroll/Smart-Tabs.git
