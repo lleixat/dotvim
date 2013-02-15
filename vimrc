@@ -784,9 +784,11 @@ let g:neocomplcache_lock_buffer_name_pattern        = '\*ku\*'
 "" define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
             \ 'default' : '',
+            \ 'sh' : $HOME.'/.vim/dictionary/sh.dict',
+            \ 'zsh' : $HOME.'/.vim/dictionary/sh.dict',
+            \ 'bash' : $HOME.'/.vim/dictionary/sh.dict',
             \ 'javascript' : $HOME.'/.vim/dictionary/javascript.dict',
             \ 'vimshell' : $HOME.'/.vimshell_hist',
-            \ 'xhtml' : $HOME.'/.vim/dictionary/html.dict',
             \ 'php' : $HOME.'/.vim/dictionary/php.dict'
             \ }
 
@@ -803,8 +805,8 @@ endif
 if !exists('g:neocomplcache_keyword_patterns')
     let g:neocomplcache_keyword_patterns = {}
 endif
-"let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-let g:neocomplcache_keyword_patterns['default'] = '$\w+'
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+let g:neocomplcache_keyword_patterns['php'] = '$\w+'
 
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplcache#undo_completion()
@@ -845,11 +847,13 @@ endfunction
 "}}
 
 " enable heavy omni completion.
-"if !exists('g:neocomplcache_omni_patterns')
-"let g:neocomplcache_omni_patterns = {}
-"endif
-"let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+if !exists('g:neocomplcache_omni_patterns')
+    let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "}}}
+
+
 
 " -----------------------------------------------------------------------------
 " NeoSnippets & custom snips " {{{
@@ -883,8 +887,12 @@ function! Cucfirst(str)
     return substitute(strpart(a:str,0,strlen(a:str)-4), '\w\+', '\u\0', "")
 endfunction
 
+function! Clcname(str)
+    return substitute(strpart(a:str,0,strlen(a:str)-4), '(\w\+)', '\u\0', "")
+endfunction
+
 function! Uppercase(str)
-    return substitute(a:str, '\(\w\)', '\u\1'; '')
+    return substitute(a:str, '(\w\+)', '\u\1', "")
 endfunction
 
 function! Lowercase(str)

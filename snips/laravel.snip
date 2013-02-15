@@ -1593,3 +1593,59 @@ alias   @section
 	@section('${1:section}')
 	    ${2:content}
 	@yield_section
+
+snippet     lc
+abbr        laravel: controller Class
+options     head
+    <?php
+    class `Cucfirst(expand("%:t"))`_Controller extends Base_Controller
+    {
+
+        public function action_index()
+        {
+            $view = View::make('`Clcname(expand("%:t"))`.index');
+
+            return $view;
+        }	
+
+        public function action_${1:login}()
+        {
+            $view = View::make('`Clcname(expand("%:t"))`.$1');
+            return $view;	
+        }
+
+    }
+
+snippet     lmo
+abbr        laravel: model Class
+options     head
+    <?php
+
+    class `Cucfirst(expand("%:t"))` extends Eloquent 
+    {
+        ${0}
+    }
+
+snippet     lmi
+abbr        laravel: migration Class
+options     head
+    <?php 
+
+    class Create_${1:Users}_Table
+    {
+
+        public function up()
+        {
+            Schema::create('${2:users}', function($table)
+            {
+                ${0}
+                $table->timestamps();
+            });
+        }
+
+        public function down()
+        {
+            Schema::drop('$2');
+        }
+
+    }
