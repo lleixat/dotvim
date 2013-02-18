@@ -38,7 +38,15 @@ set completeopt+=longest,menuone
 set copyindent    " copy the previous indentation on autoindenting
 
 nmap <silent> <leader>ev :e ~/.vim/vimrc<CR>
+
 nmap <silent> <leader>sv :so ~/.vim/vimrc<CR>
+
+                        
+
+
+
+
+
 
 noremap <leader><space> :noh<cr>:call clearmatches()<cr>
 
@@ -250,17 +258,16 @@ map <F4> :emenu <C-Z>
 if has("autocmd")
     filetype indent on
 endif
-set tabstop=4     " numbers of spaces of tab character
+"set tabstop=4     " numbers of spaces of tab character
 set shiftwidth=4  " numbers of spaces to (auto)indent
 set softtabstop=4 " counts n spaces when DELETE or BCKSPCE is used
-set expandtab     " insert spaces instead of tab chars
-set autoindent    " always set autoindenting on
+set noexpandtab   " insert tabs for indent
+"set autoindent    " always set autoindenting on
 set smartindent   " advenced indenting [vs nosmartindent]
 "set nosmartindent                              " intelligent indenting -- DEPRECATED by cindent
-set nocindent     " set C style indenting off
+set cindent     " set C style indenting off
 "set foldenable
-set foldmethod=indent
-
+"set foldmethod=indent
 
 " Space to toggle folds.
 nnoremap <Space> za
@@ -346,7 +353,6 @@ inoremap <Leader>fs <C-o>:Fullscreen<CR>
 nnoremap <Leader>fs :Fullscreen<CR>
 inoremap <Leader>op <C-o>:Open<CR>
 nnoremap <Leader>op :Open<CR>
-
 
 "}}}
 
@@ -813,8 +819,6 @@ inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 " Recommended key-mappings.
-" <CR>: close popup and save indent.
-"inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
@@ -824,12 +828,13 @@ inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 
+
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-    return neocomplcache#smart_close_popup() . "\<CR>"
+    "return neocomplcache#smart_close_popup() . "\<CR>"
     " For no inserting <CR> key.
-    "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+    return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 endfunction
 
 ""neoSupertab key mapping

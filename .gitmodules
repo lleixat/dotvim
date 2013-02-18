@@ -323,3 +323,6 @@
 [submodule "bundle/Smart-tabs"]
 	path = bundle/Smart-tabs
 	url = git://github.com/skroll/Smart-Tabs.git
+[submodule "bundle/vimpanel"]
+	path = bundle/vimpanel
+	url = git://github.com/mihaifm/vimpanel.git
