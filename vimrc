@@ -15,6 +15,7 @@ set nocompatible
 "set noequalalways " don't auto-resize when a window is closed
 set showmatch          " show matching brackets (),{},[]
 set lazyredraw
+set noswapfile
 set updatetime=4000
 set matchtime=5        " Bracket blinking
 set number
@@ -37,16 +38,9 @@ set completeopt+=longest,menuone
 
 set copyindent    " copy the previous indentation on autoindenting
 
+" Quick load vimrc
 nmap <silent> <leader>ev :e ~/.vim/vimrc<CR>
-
 nmap <silent> <leader>sv :so ~/.vim/vimrc<CR>
-
-                        
-
-
-
-
-
 
 noremap <leader><space> :noh<cr>:call clearmatches()<cr>
 
@@ -149,18 +143,19 @@ nmap <C-Down> ddp
 " Bubble multiple lines
 vmap <C-Up> xkP`[V`]
 vmap <C-Down> xp`[V`]
+vmap <C-k> xkP`[V`]
+vmap <C-j> xp`[V`]
+vnoremap <C-Left> <`[V`]
+vnoremap <C-Right> >`[V`]
+vnoremap <C-h> <`[V`]
+vnoremap <C-l> >`[V`]
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
 
 " mapleader et added
 " -----------------------------------------------------------------------------
 let mapleader = ","
-let $ADDED = '~/.vim/added/'
-if has("win32")
-    let $ADDED = $VIM.'/added/'
-endif
-
-map <Leader>cd :exe 'cd ' . expand ("%:p:h")<CR>
+map <Leader>cd :exe 'cd '.expand ("%:p:h")<CR>
 "equivalent <ctrl a><ctrl C>
 map <F8> gg"+yG<CR>
 "}}}
@@ -258,7 +253,7 @@ map <F4> :emenu <C-Z>
 if has("autocmd")
     filetype indent on
 endif
-"set tabstop=4     " numbers of spaces of tab character
+set tabstop=4     " numbers of spaces of tab character
 set shiftwidth=4  " numbers of spaces to (auto)indent
 set softtabstop=4 " counts n spaces when DELETE or BCKSPCE is used
 set noexpandtab   " insert tabs for indent
@@ -282,6 +277,7 @@ nnoremap <leader>z zMzvzz
 
 " CtrlP {{{
 " -----------------------------------------------------------------------------
+let g:ctrlp_show_hidden = 1
 nmap <c-p> :CtrlP<cr>
 "}}}
 
@@ -444,6 +440,16 @@ let g:nerdtree_tabs_focus_on_files      = 1
 
 " netrw"{{{
 " -----------------------------------------------------------------------------
+cabbrev ss VimpanelSessionMake
+cabbrev sl VimpanelSessionLoad
+cabbrev vp Vimpanel
+cabbrev vl VimpanelLoad
+cabbrev vc VimpanelCreate
+cabbrev ve VimpanelEdit
+cabbrev vr VimpanelRemove
+
+" netrw"{{{
+" -----------------------------------------------------------------------------
 
 " FTP
 " -----------------------------------------------------------------------------
@@ -488,6 +494,7 @@ set comments+=n::
 " Fix filetype detection "{{{
 " -----------------------------------------------------------------------------
 au BufNewFile,BufRead      .torsmorc* set ft=rc
+au BufNewFile,BufRead     *.html      set ft=javascript syn=html
 au BufNewFile,BufRead     *.md        set ft=markdown
 au BufNewFile,BufRead     *.mkd       set ft=markdown
 au BufNewFile,BufRead     *.inc       set ft=php
@@ -768,26 +775,21 @@ let g:gundo_preview_height = 20
 "   Custom Align maps
 "------------------------------------------------------------------------------
 vmap <leader>tp :Align =><CR>
-
-"------------------------------------------------------------------------------
-"   Tabular"{{{
-"------------------------------------------------------------------------------
-"let g:tabular_loaded = 1
-"}}}
+vmap <leader>t" :Align "<CR>
 
 "------------------------------------------------------------------------------
 " Neocomplcache "{{{
 "------------------------------------------------------------------------------
-let g:neocomplcache_enable_at_startup               = 1   " use neocomplcache.
+let g:neocomplcache_enable_at_startup               = 1        " use neocomplcache.
 "let g:neocomplcache_disable_auto_complete          = 1
-let g:neocomplcache_enable_smart_case               = 1   " use smartcase.
-let g:neocomplcache_enable_camel_case_completion    = 1   " use camel case completion.
-let g:neocomplcache_enable_underbar_completion      = 1   " use underbar completion.
-let g:neocomplcache_auto_completion_start_length    = 3   " set minimum syntax keyword length.
+let g:neocomplcache_enable_smart_case               = 1        " use smartcase.
+let g:neocomplcache_enable_camel_case_completion    = 1        " use camel case completion.
+let g:neocomplcache_enable_underbar_completion      = 1        " use underbar completion.
+let g:neocomplcache_auto_completion_start_length    = 3        " set minimum syntax keyword length.
 "let g:neocomplcache_manual_completion_start_length = 3
 let g:neocomplcache_lock_buffer_name_pattern        = '\*ku\*'
 
-"" define dictionary.
+" define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
             \ 'default' : '',
             \ 'sh' : $HOME.'/.vim/dictionary/sh.dict',
@@ -801,9 +803,9 @@ let g:neocomplcache_dictionary_filetype_lists = {
 " Enable syntaxcomplete
 if has("autocmd") && exists("+omnifunc")
     autocmd Filetype *
-                \ if &omnifunc == "" |
-                \ setlocal omnifunc=syntaxcomplete#Complete |
-                \ endif
+        \ if &omnifunc == "" |
+        \ setlocal omnifunc=syntaxcomplete#Complete |
+        \ endif
 endif
 
 
@@ -815,17 +817,17 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 let g:neocomplcache_keyword_patterns['php'] = '$\w+'
 
 " Plugin key-mappings.
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
+inoremap <expr><C-g> neocomplcache#undo_completion()
+inoremap <expr><C-l> neocomplcache#complete_common_string()
 
 " Recommended key-mappings.
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
+inoremap <expr><C-y> neocomplcache#close_popup()
+inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 
 
@@ -986,8 +988,8 @@ let &runtimepath = join([s:bundles, &runtimepath, s:afters], ',')
 " Tabs
 " -----------------------------------------------------------------------------
 nmap t :tabnew<CR>
-map <C-Right> :tabnext<CR>
-map <C-Left> :tabprevious<CR>
+nmap <C-Right> :tabnext<CR>
+nmap <C-Left> :tabprevious<CR>
 
 set showtabline=2 " always show tabs in gvim, but not vim
 
