@@ -1,6 +1,6 @@
 snippet     sigc
 abbr        Add signature "Author and Contact"
-prev_word   '^'
+options     head
     /**
      * Author   : Thomas Lleixa
      * Creation : `strftime("%d %b %Y")`
@@ -9,7 +9,7 @@ prev_word   '^'
      
 snippet     sigm
 abbr        Add signature "Author and Contact"
-prev_word   '^'
+options     head
     /**
      * Author       : Thomas Lleixa
      * Modification : `strftime("%d %b %Y")`
@@ -25,18 +25,43 @@ options     head
 
 snippet     phpi
 abbr        <?php ... ?>
-options     head
+options     word
     <?php ${0} ?>
+
+snippet     pecho
+abbr        <?php echo ... ?>
+options     word
+    <?php echo ${0} ?>
+
+snippet     pif
+abbr        <?php if() {... ?>
+options     word
+    <?php if(${1}): ?>
+    ${0}
+    <?php endif; ?>
+
+snippet     pelse
+abbr        <?php else: ?>
+options     word
+    <?php else: ?>
+    ${0}
+
+snippet     pelseif
+abbr        <?php elseif (...): ?>
+options     word
+    <?php elseif (${1}): ?>
+    ${0}
+
 
 snippet     csl
 abbr        console.log()
-options     head
+options     word
     console.log(${1:data});   
     
 snippet     csw
 abbr        console.warn()
-options     head
-    console.warn(${1:data});   
+options     word
+    console.warn(${1:data});   head
 
 snippet     vd
 abbr        echo "<pre>";var_dump...
@@ -62,12 +87,12 @@ options     head
     
 snippet     pvd
 abbr        <pre><?php echo var_dump...
-prev_word   '^'
+options     head
     <pre><?php var_dump($${1:data}) ?></pre>
 
 snippet     pfore
 abbr        <?php foreach ... ?>
-prev_word   '^'
+options     head
     <?php foreach ($${1:variable} as $${2:k => $v}): ?>
         ${0}
     <?php endforeach ?>
@@ -84,13 +109,13 @@ options     head
 
 snippet     panchor
 abbr        <?php echo anchor('#','Something','Title');?>
-prev_word   '^'
+options     head
     <?php echo anchor('${1:#}', '${2:Something}', 'title="${3:Title about Something}"');?>
     ${0}
     
 snippet     pmailto
 abbr        <?php echo mailto('contact@hello.org','Click here');?>
-prev_word   '^'
+options     head
     <?php echo safe_mailto('${1:contact@thomaslleixa.fr}', '${2:Something}', 'title="${3:Title about My mail}"');?>
     ${0}
 
@@ -101,7 +126,7 @@ options     word
     
 snippet     doc
 abbr        Insert doc bloc text here
-prev_word   '^'
+options     head
     /**
      * ${1:Title}
      *
@@ -113,7 +138,7 @@ prev_word   '^'
 
 snippet     dpar
 abbr        Insert param doc line here
-prev_word   '^'
+options     head
     @param   ${1:str}     $${2:Var}     ${3:Ma var desc}
 
 snippet     dexemple
@@ -124,61 +149,83 @@ prev_word   '*'
 
 snippet     dret
 abbr        Insert param doc line here
-prev_word   '^'
+options     head
     @return     ${1:void}
 
 
 # Vars
 snippet gloabals
+abbr    $GLOBALS['...'] = ...
+options word
 	$GLOBALS['${1:variable}']${2: = }${3:something}${4:;}${0}
 
 snippet cookie
+abbr    $_COOKIE['${1:variable}']
+options word
 	$_COOKIE['${1:variable}']
 
 snippet env
+options word
 	$_ENV['${1:variable}']
 
 snippet files
+abbr    $_FILES['${1:variable}']
+options word
 	$_FILES['${1:variable}']
 
 snippet get
+abbr $GET['...']
+options word
 	$_GET['${1:variable}']
 
 snippet post
+abbr    $_POST['${1:variable}']
+options word
 	$_POST['${1:variable}']
 
 snippet request
+abbr    $_REQUEST['${1:variable}']
+options word
 	$_REQUEST['${1:variable}']
 
 snippet server
+abbr    $_SERVER['${1:variable}']
+options word
 	$_SERVER['${1:variable}']
 
 snippet session
+abbr    $_SESSION['${1:variable}']
+options word
 	$_SESSION['${1:variable}']
+
+snippet     \n
+abbr        ."\n"
+options     word
+    ."\n"${0:;}
 	
 snippet     dbg
 abbr        dbg, deb
-prev_word   '^'
+options     head
     $${3:this}->dbg($${1:var}, '$${2:$1}');
 
 snippet     deb
 abbr        Debug::dump
-prev_word   '^'
+options     head
     Debug::dump(${1:$data}${2:, ${3:$data}});
     
 snippet     faimg
 abbr        pecho Asset::img('')
-prev_word   '^'
+options     head
     <?php echo Asset::img('${1}'); ?>
 
 snippet     ftt
 abbr        $this->template->....
-prev_word   '^'
+options     head
     $this->template->${1:var} = ${2:var};
     
 snippet     lorem
 abbr        lor lorem
-prev_word   '^'
+options     head
     Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing.
     
 
