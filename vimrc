@@ -195,9 +195,10 @@ command! W w !sudo tee % > /dev/null
 
 "}}}
 
+
 " Color-Picker"{{{
 " -----------------------------------------------------------------------------
-map <F2> :ColorVdropper<CR>
+map <F2> :ColorVPicker<CR>
 map <S-F2> :ColorToggle<CR>
 "}}}
 

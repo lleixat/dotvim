@@ -326,3 +326,6 @@
 [submodule "bundle/vimpanel"]
 	path = bundle/vimpanel
 	url = git://github.com/mihaifm/vimpanel.git
+[submodule "bundle/ftpsync"]
+	path = bundle/ftpsync
+	url = git://github.com/vim-scripts/ftpsync.git
