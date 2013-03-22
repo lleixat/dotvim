@@ -344,3 +344,6 @@
 [submodule "bundle/ctrlp-sessions"]
 	path = bundle/ctrlp-sessions
 	url = git://github.com/pielgrzym/ctrlp-sessions.git
+[submodule "bundle/ctrlp-extensions"]
+	path = bundle/ctrlp-extensions
+	url = git://github.com/sgur/ctrlp-extensions.vim.git
