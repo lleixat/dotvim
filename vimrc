@@ -85,7 +85,7 @@ au VimResized * exe "normal! \<c-w>="
 " -----------------------------------------------------------------------------
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 map <C-Q> :mksession! ~/.vim/.session <cr>
-map <C-S> :source ~/.vim/.session <cr>
+"map <C-S> :source ~/.vim/.session <cr>
 let g:session_autosave = 'no'
 
 "set noerrorbells
@@ -277,8 +277,18 @@ nnoremap <leader>z zMzvzz
 
 " CtrlP {{{
 " -----------------------------------------------------------------------------
-nmap <c-p> :CtrlP<cr>
+nmap <C-p> :CtrlP<cr>
+nmap <C-m> :CtrlPMark<cr>
+nmap <C-l> :CtrlPLauncher<cr>
+nmap <C-g> :CtrlPGist<cr>
+nmap <C-y> :CtrlPYankring<cr>
+nmap <C-s> :CtrlPSessions<cr>
+let g:ctrlp_extensions = [
+			\ 'funky', 'cmdline', 'mark',
+			\ 'launcher', 'gist', 'yankring'
+			\ ]
 "}}}
+let g:ctrlp_show_hidden = 1
 
 " Switch {{{
 " -----------------------------------------------------------------------------
