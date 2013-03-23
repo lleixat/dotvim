@@ -335,3 +335,6 @@
 [submodule "bundle/ctrlp-extensions"]
 	path = bundle/ctrlp-extensions
 	url = git://github.com/sgur/ctrlp-extensions.vim.git
+[submodule "bundle/ctrlp-mark"]
+	path = bundle/ctrlp-mark
+	url = git://github.com/mattn/ctrlp-mark.git
