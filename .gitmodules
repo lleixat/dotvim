@@ -338,3 +338,6 @@
 [submodule "bundle/ctrlp-mark"]
 	path = bundle/ctrlp-mark
 	url = git://github.com/mattn/ctrlp-mark.git
+[submodule "bundle/ctrlp-launcher"]
+	path = bundle/ctrlp-launcher
+	url = git://github.com/mattn/ctrlp-launcher.git
