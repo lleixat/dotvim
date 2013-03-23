@@ -344,3 +344,6 @@
 [submodule "bundle/ctrlp-gist"]
 	path = bundle/ctrlp-gist
 	url = git://github.com/mattn/ctrlp-gist.git
+[submodule "bundle/ctrlp-sessions"]
+	path = bundle/ctrlp-sessions
+	url = git://github.com/pielgrzym/ctrlp-sessions.git
