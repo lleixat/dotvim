@@ -350,3 +350,6 @@
 [submodule "bundle/ctrlp-register"]
 	path = bundle/ctrlp-register
 	url = git://github.com/mattn/ctrlp-register.git
+[submodule "bundle/ctrlp-launcher"]
+	path = bundle/ctrlp-launcher
+	url = git://github.com/mattn/ctrlp-launcher.git
