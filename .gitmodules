@@ -347,3 +347,6 @@
 [submodule "bundle/ctrlp-sessions"]
 	path = bundle/ctrlp-sessions
 	url = git://github.com/pielgrzym/ctrlp-sessions.git
+[submodule "bundle/golden-ratio"]
+	path = bundle/golden-ratio
+	url = git://github.com/roman/golden-ratio.git
