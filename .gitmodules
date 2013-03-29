@@ -353,3 +353,6 @@
 [submodule "bundle/ctrlp-launcher"]
 	path = bundle/ctrlp-launcher
 	url = git://github.com/mattn/ctrlp-launcher.git
+[submodule "bundle/golden-ratio"]
+	path = bundle/golden-ratio
+	url = git://github.com/roman/golden-ratio.git
