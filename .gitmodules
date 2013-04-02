@@ -356,3 +356,6 @@
 [submodule "bundle/golden-ratio"]
 	path = bundle/golden-ratio
 	url = git://github.com/roman/golden-ratio.git
+[submodule "bundle/ctrlp-gist"]
+	path = bundle/ctrlp-gist
+	url = git://github.com/mattn/ctrlp-gist.git
