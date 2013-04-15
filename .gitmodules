@@ -359,3 +359,6 @@
 [submodule "bundle/ctrlp-gist"]
 	path = bundle/ctrlp-gist
 	url = git://github.com/mattn/ctrlp-gist.git
+[submodule "bundle/vim-multiple-cursors"]
+	path = bundle/vim-multiple-cursors
+	url = git://github.com/terryma/vim-multiple-cursors.git
