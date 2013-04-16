@@ -15,6 +15,7 @@ set nocompatible
 "set noequalalways " don't auto-resize when a window is closed
 set showmatch          " show matching brackets (),{},[]
 set lazyredraw
+"set noswapfile
 set updatetime=4000
 set matchtime=5        " Bracket blinking
 set number
@@ -85,7 +86,6 @@ au VimResized * exe "normal! \<c-w>="
 " -----------------------------------------------------------------------------
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 map <C-Q> :mksession! ~/.vim/.session <cr>
-"map <C-S> :source ~/.vim/.session <cr>
 let g:session_autosave = 'no'
 
 "set noerrorbells
@@ -336,7 +336,7 @@ set showmode     " show mode at bottom of screen
 " -----------------------------------------------------------------------------
 "set tags=./tags
 "set tags=./.tags;,~/.vim/mytags
-"let g:easytags_auto_update   = 0
+let g:easytags_auto_update   = 0
 "let g:easytags_dynamic_files = 1
 "let g:easytags_by_filetype   = '~/.vim/mytags/'
 "let g:easytags_on_cursorhold = 1
@@ -460,21 +460,6 @@ cabbrev vr VimpanelRemove
 " netrw"{{{
 " -----------------------------------------------------------------------------
 
-" FTP
-" -----------------------------------------------------------------------------
-" cmap <Leader>r :Nread ftp://209.51.134.122/public_html/index.html
-" cmap <Leader>w :Nwrite ftp://209.51.134.122/public_html/index.html
-" gvim ftp://209.51.134.122/public_html/index.html
-" " For ascii file transfers add the following line to your .vimrc
-" let g:netrw_ftpmode="ascii"
-let g:hftp="ftp.alwaysdata.com/www/"
-let g:rep="/home/lex/Data/www-dev/private/"
-function! E_ftp_upload()
-    exec ":cd ".g:rep
-    let s:fichier=bufname("%")
-    exec ":Nwrite ftp://".g:hftp.s:fichier
-endfunction map <F8> :call E_ftp_upload()<ENTER> </source>
-"}}}
 
 "  Headlights "{{{
 " -----------------------------------------------------------------------------
@@ -629,108 +614,10 @@ let g:sqlutil_align_keyword_right = 1
 let g:sqlutil_use_tbl_alias       = 'a'
 "}}}
 
-"------------------------------------------------------------------------------
-" pasting in Chat "{{{
-"------------------------------------------------------------------------------
-
-function! Imcopy() range
-    redir @*
-    sil echomsg "—8<——————————————————————"
-    sil echomsg expand("%")
-    sil echomsg "—8<——————————————————————"
-    exec 'sil!' . a:firstline . ',' . a:lastline . '#'
-    redir end
-endf
-
-com! -range Imcopy <line1>,<line2>call Imcopy()
-"}}}
-
-"------------------------------------------------------------------------------
-"To Html improvement"{{{
-"------------------------------------------------------------------------------
-let g:html_diff_one_file = 1
-
-function! DivHtml(line1, line2)
-    " make sure to generate in the correct format
-    let old_css = 1
-    if exists('g:html_use_css')
-        let old_css = g:html_use_css
-    endif
-    let g:html_use_css = 0
-
-    exec a:line1.','.a:line2.'TOhtml'
-    %g/<style/normal $dgg
-    %s/<\/style>\n<\/head>\n//
-    %s/.vim_block {/.vim_block {/
-    %s/<body\(.*\)>\n/<div class="vim_block"\1>/
-    %s/<\/body>\n<\/html>/<\/div>
-    %s/<br>//g
-
-    " set nonu
-endfunction
-
-command! -range=% DivHtml :call DivHtml(<line1>,<line2>)
-
-
-" Compte Le nombre de lignes
-" -----------------------------------------------------------------------------
-command! -range -nargs=0 Lignes :echo <line2> - <line1> + 1
-"}}}
-
-"------------------------------------------------------------------------------
-" Paste with colorsheme {{{
-"------------------------------------------------------------------------------
-
-function! ForumCopy(line1, line2, scroll)
-    " make sure to generate in the correct format
-    let old_css = 1
-    if exists('g:html_use_css')
-        let old_css = g:html_use_css
-    endif
-    let g:html_use_css = 0
-
-    " generate...
-    exec a:line1.','.a:line2.'TOhtml'
-    " ...and delete uneeded lines
-    %g/<body/normal k$dgg
-
-    " convert body to a span
-    if a:scroll == "true"
-        %s/<body bgcolor="\s*\([^"]*\)"\s*text=\("[^"]*"\)\s*>/
-                    \<span style="display:block; background-color:\1;
-                    \ padding:5px; margin:10px; height: 25em; overflow:auto;
-                    \ -moz-border-radius:5px; border-radius:5px;" >
-                    \<font color=\2>/
-    else
-        %s/<body bgcolor="\s*\([^"]*\)"\s*text=\("[^"]*"\)\s*>/
-                    \<span style="display:block; background-color:\1;
-                    \ padding:5px; margin:10px; -moz-border-radius:5px;
-                    \ border-radius:5px;" ><font color=\2>/
-    endif
-    %s#</body>\(.\|\n\)*</html>#\='</font></span><br />'#i
-    %s/br>/br \/>/
-    " restore old setting
-    let g:html_use_css = old_css
-endfunction
-
-com! -range=% ForumCopy :call ForumCopy(<line1>,<line2>, "false")
-com! -range=% ForumCopyS :call ForumCopy(<line1>,<line2>,"true")
-"}}}
-
 " Syntaxe Pour l'édition avec pentadactyl "{{{
 " (avec <C-i> dans un champ dans Firefox )
 " -----------------------------------------------------------------------------
 au BufRead,BufNewFile /tmp/pentadactyl* :set ft=xhtml
-"}}}
-
-" -----------------------------------------------------------------------------
-" Paste entry (old) "{{{
-" -----------------------------------------------------------------------------
-"
-" Nothing to do, i'm currently using |lodgeit.vim|
-" :Lodgeit to paste
-" :Lodgeit 'url' || #paste to view/edit in [g]vim and :Lodgeit to paste the new
-" entry : easyest way...
 "}}}
 
 
@@ -812,9 +699,9 @@ let g:neocomplcache_dictionary_filetype_lists = {
 " Enable syntaxcomplete
 if has("autocmd") && exists("+omnifunc")
     autocmd Filetype *
-                \ if &omnifunc == "" |
-                \ setlocal omnifunc=syntaxcomplete#Complete |
-                \ endif
+        \ if &omnifunc == "" |
+        \ setlocal omnifunc=syntaxcomplete#Complete |
+        \ endif
 endif
 
 
@@ -826,17 +713,17 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 let g:neocomplcache_keyword_patterns['php'] = '$\w+'
 
 " Plugin key-mappings.
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
+inoremap <expr><C-g> neocomplcache#undo_completion()
+inoremap <expr><C-l> neocomplcache#complete_common_string()
 
 " Recommended key-mappings.
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
+inoremap <expr><C-y> neocomplcache#close_popup()
+inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 
 
@@ -958,6 +845,7 @@ endfunction
 
 autocmd VimEnter * :call Appconfig_load()
 
+<<<<<<< HEAD
 
 "------------------------------------------------------------------------------
 " Retabing and Indenting
@@ -1003,6 +891,8 @@ command! -nargs=? -range=% Space2Tab call IndentConvert(<line1>,<line2>,0,<q-arg
 command! -nargs=? -range=% Tab2Space call IndentConvert(<line1>,<line2>,1,<q-args>)
 command! -nargs=? -range=% -bang RetabIndent call IndentConvert(<q-bang>, <line1>,<line2>,&et,<q-args>)
 
+=======
+>>>>>>> 194c0c55b9978dc57a98a4a9de3d635f7720c147
 " -----------------------------------------------------------------------------
 " Pathogen
 " -----------------------------------------------------------------------------
@@ -1152,3 +1042,9 @@ fun! <sid>set_statusline()
 endfun
 set laststatus=2
 call <sid>set_statusline()
+
+" -----------------------------------------------------------------------------
+" Sourcing helpers {{{
+" -----------------------------------------------------------------------------
+exec "source ~/.vim/etc/helpers.vim"
+" }}}

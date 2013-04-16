@@ -329,24 +329,33 @@
 [submodule "bundle/ftpsync"]
 	path = bundle/ftpsync
 	url = git://github.com/vim-scripts/ftpsync.git
-[submodule "bundle/ctrlp-funky"]
-	path = bundle/ctrlp-funky
-	url = git://github.com/tacahiroy/ctrlp-funky.git
-[submodule "bundle/ctrlp-extensions"]
-	path = bundle/ctrlp-extensions
-	url = git://github.com/sgur/ctrlp-extensions.vim.git
+[submodule "bundle/vim-textobj-line"]
+	path = bundle/vim-textobj-line
+	url = git://github.com/kana/vim-textobj-line.git
+[submodule "bundle/vim-textobj-user"]
+	path = bundle/vim-textobj-user
+	url = git://github.com/kana/vim-textobj-user.git
 [submodule "bundle/ctrlp-mark"]
 	path = bundle/ctrlp-mark
 	url = git://github.com/mattn/ctrlp-mark.git
-[submodule "bundle/ctrlp-launcher"]
-	path = bundle/ctrlp-launcher
-	url = git://github.com/mattn/ctrlp-launcher.git
-[submodule "bundle/ctrlp-gist"]
-	path = bundle/ctrlp-gist
-	url = git://github.com/mattn/ctrlp-gist.git
+[submodule "bundle/ctrlp-funky"]
+	path = bundle/ctrlp-funky
+	url = git://github.com/tacahiroy/ctrlp-funky.git
 [submodule "bundle/ctrlp-sessions"]
 	path = bundle/ctrlp-sessions
 	url = git://github.com/pielgrzym/ctrlp-sessions.git
+[submodule "bundle/ctrlp-extensions"]
+	path = bundle/ctrlp-extensions
+	url = git://github.com/sgur/ctrlp-extensions.vim.git
+[submodule "bundle/ctrlp-register"]
+	path = bundle/ctrlp-register
+	url = git://github.com/mattn/ctrlp-register.git
+[submodule "bundle/ctrlp-launcher"]
+	path = bundle/ctrlp-launcher
+	url = git://github.com/mattn/ctrlp-launcher.git
 [submodule "bundle/golden-ratio"]
 	path = bundle/golden-ratio
 	url = git://github.com/roman/golden-ratio.git
+[submodule "bundle/ctrlp-gist"]
+	path = bundle/ctrlp-gist
+	url = git://github.com/mattn/ctrlp-gist.git
