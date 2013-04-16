@@ -1,6 +1,6 @@
 " Switch definitions
 let g:switch_no_builtins = 1
-let g:switch_definitions = [
+let g:switch_custom_definitions = [
             \   {
             \ 	  'true': 'false',
             \ 	  'false': 'null',
@@ -25,7 +25,7 @@ let g:switch_definitions = [
             \  },
             \ ]
 
-autocmd FileType php let b:switch_definitions = [
+autocmd FileType php let b:switch_custom_definitions = [
             \   {
             \ 	  'and': 'or',
             \ 	  'or': 'xor',
@@ -55,7 +55,7 @@ autocmd FileType php let b:switch_definitions = [
             \   },
             \ ]
 
-autocmd FileType laravel,blade let b:switch_definitions = [
+autocmd FileType laravel,blade let b:switch_custom_definitions = [
             \   {
             \     '@if\s*(\%(true\|false\)\@!\(.*\))': '@if (true || (\1))',
             \     '@if\s*(true || (\(.*\)))': '@if (false && (\1))',
@@ -63,7 +63,7 @@ autocmd FileType laravel,blade let b:switch_definitions = [
             \   },
             \ ]
 
-autocmd FileType javascript,js let b:switch_definitions = [
+autocmd FileType javascript,js let b:switch_custom_definitions = [
             \   {
             \ 	  'return \(\k\+\)': 'console.log(\1)',
             \ 	  'console.log(\(.*\))': 'return \1'
