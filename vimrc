@@ -865,6 +865,19 @@ nmap <C-Left> :tabprevious<CR>
 set showtabline=2 " always show tabs in gvim, but not vim
 
 " -----------------------------------------------------------------------------
+" multicursor
+" https://github.com/terryma/vim-multiple-cursors
+" -----------------------------------------------------------------------------
+let g:multi_cursor_use_default_mapping=0
+
+" Custom mapping
+let g:multi_cursor_next_key='<C-j>'
+let g:multi_cursor_prev_key='<C-k>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+
+
+
 " Auto pairs
 " -----------------------------------------------------------------------------
 let g:AutoPairsFlyMode = 0
