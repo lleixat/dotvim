@@ -365,3 +365,6 @@
 [submodule "bundle/vim-nodejs-complete"]
 	path = bundle/vim-nodejs-complete
 	url = git://github.com/myhere/vim-nodejs-complete.git
+[submodule "bundle/vim-bufferlist"]
+	path = bundle/vim-bufferlist
+	url = git://github.com/szw/vim-bufferlist.git
