@@ -87,6 +87,7 @@ au VimResized * exe "normal! \<c-w>="
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 map <C-Q> :mksession! ~/.vim/.session <cr>
 let g:session_autosave = 'no'
+let g:session_autoload = 'no'
 
 "set noerrorbells
 set novb
@@ -194,6 +195,23 @@ command! W w !sudo tee % > /dev/null
 
 "}}}
 
+
+" BufferList : https://github.com/szw/vim-bufferlist {{{
+" -----------------------------------------------------------------------------
+map <silent> <F3> :BufferList<CR>
+"}}}
+
+" Sartify : https://github.com/mhinz/vim-startify  {{{
+" -----------------------------------------------------------------------------
+let g:startify_session_dir = '~/.vim/sessions'
+let g:startify_show_sessions = 1
+let g:startify_bookmarks = [ '~/.vimrc' ]
+"}}}
+
+" Golden-ratio https://github.com/roman/golden-ratio {{{
+" -----------------------------------------------------------------------------
+let g:golden_ratio_wrap_ignored = 1
+" }}}
 
 " Color-Picker"{{{
 " -----------------------------------------------------------------------------
@@ -672,6 +690,18 @@ let g:gundo_preview_height = 20
 "------------------------------------------------------------------------------
 vmap <leader>tp :Align =><CR>
 vmap <leader>t" :Align "<CR>
+" git://github.com/junegunn/vim-easy-align.git
+vnoremap <silent> <Enter> :EasyAlign<cr>
+let g:easy_align_delimiters = {
+			\ '>': { 'pattern': '>>\|=>\|>' },
+			\ '/': { 'pattern': '//*' },
+			\ 'x': {
+			\     'pattern':       '[xX]',
+			\     'margin_left':   ' <<<',
+			\     'margin_right':  '>>> ',
+			\     'stick_to_left': 0
+			\   }
+			\ }
 
 "------------------------------------------------------------------------------
 " Neocomplcache "{{{

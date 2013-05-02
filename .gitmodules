@@ -178,10 +178,6 @@
 	path = bundle/vim-ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
 
-[submodule "bundle/Align"]
-	path = bundle/Align
-	url = git://github.com/vim-scripts/Align.git
-
 [submodule "bundle/AutoAlign"]
 	path = bundle/AutoAlign
 	url = git://github.com/vim-scripts/AutoAlign.git
@@ -292,7 +288,7 @@
 
 [submodule "bundle/PDV--phpDocumentor-for-Vim"]
 	path = bundle/PDV--phpDocumentor-for-Vim
-	url = https://github.com/lleixat/PDV--phpDocumentor-for-Vim.git
+	url = git://github.com/lleixat/PDV--phpDocumentor-for-Vim.git
 	
 [submodule "bundle/vim-instant-markdown.git"]
 	path = bundle/vim-instant-markdown.git
