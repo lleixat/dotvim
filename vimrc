@@ -690,6 +690,7 @@ let g:gundo_preview_height = 20
 "------------------------------------------------------------------------------
 vmap <leader>tp :Align =><CR>
 vmap <leader>t" :Align "<CR>
+
 " git://github.com/junegunn/vim-easy-align.git
 vnoremap <silent> <Enter> :EasyAlign<cr>
 let g:easy_align_delimiters = {
