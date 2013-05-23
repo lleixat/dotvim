@@ -337,9 +337,6 @@
 [submodule "bundle/ctrlp-mark"]
 	path = bundle/ctrlp-mark
 	url = git://github.com/mattn/ctrlp-mark.git
-[submodule "bundle/ctrlp-funky"]
-	path = bundle/ctrlp-funky
-	url = git://github.com/tacahiroy/ctrlp-funky.git
 [submodule "bundle/ctrlp-sessions"]
 	path = bundle/ctrlp-sessions
 	url = git://github.com/pielgrzym/ctrlp-sessions.git
@@ -352,9 +349,6 @@
 [submodule "bundle/ctrlp-launcher"]
 	path = bundle/ctrlp-launcher
 	url = git://github.com/mattn/ctrlp-launcher.git
-[submodule "bundle/golden-ratio"]
-	path = bundle/golden-ratio
-	url = git://github.com/roman/golden-ratio.git
 [submodule "bundle/ctrlp-gist"]
 	path = bundle/ctrlp-gist
 	url = git://github.com/mattn/ctrlp-gist.git
@@ -373,6 +367,6 @@
 [submodule "bundle/vim-easy-align"]
 	path = bundle/vim-easy-align
 	url = git://github.com/junegunn/vim-easy-align.git
-[submodule "bundle/CoVim"]
-	path = bundle/CoVim
-	url = git://github.com/FredKSchott/CoVim.git
+[submodule "bundle/ctrlp-funky"]
+	path = bundle/ctrlp-funky
+	url = git://github.com/tacahiroy/ctrlp-funky.git
