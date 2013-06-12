@@ -21,10 +21,6 @@
 	path = bundle/colorv.vim
 	url = git://github.com/Rykka/colorv.vim.git
 
-[submodule "bundle/neocomplcache"]
-	path = bundle/neocomplcache
-	url = git://github.com/Shougo/neocomplcache.git
-
 [submodule "bundle/vimproc"]
 	path = bundle/vimproc
 	url = git://github.com/Shougo/vimproc.git
@@ -372,3 +368,6 @@
 [submodule "bundle/neosnippet"]
 	path = bundle/neosnippet
 	url = git://github.com/Shougo/neosnippet.vim.git
+[submodule "bundle/neocomplcache"]
+	path = bundle/neocomplcache
+	url = git://github.com/Shougo/neocomplcache.vim.git
