@@ -380,3 +380,6 @@
 [submodule "bundle/mustache"]
 	path = bundle/mustache
 	url = git://github.com/juvenn/mustache.vim.git
+[submodule "bundle/vim-gf-user-laravel"]
+	path = bundle/vim-gf-user-laravel
+	url = https://github.com/scil/vim-gf-user-laravel.git
