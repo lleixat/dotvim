@@ -383,3 +383,6 @@
 [submodule "bundle/vim-gf-user-laravel"]
 	path = bundle/vim-gf-user-laravel
 	url = https://github.com/scil/vim-gf-user-laravel.git
+[submodule "bundle/vim-localrc"]
+	path = bundle/vim-localrc
+	url = git@github.com:thinca/vim-localrc.git
