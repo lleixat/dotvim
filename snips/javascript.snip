@@ -32,10 +32,24 @@ options   head
         ${4:// body...}
     };
 
+snippet     vara
+abbr        var x = [...];
+options     head
+    var ${1:var name} = [ ${2:values} ];
+
 # Function
 snippet   fun
 options   head
     function ${1:function_name}(${2:argument}) {
+        ${3:// body...}
+    }
+
+# Function
+snippet   vfun
+abbr      var x = function (args){...}
+alias     fun func
+options   head
+    var ${1:function_name} = function (${2:argument}) {
         ${3:// body...}
     }
 
@@ -215,15 +229,14 @@ options   head
         };
     }
 
-snippet   vfun
-abbr      var x = function(){}
+snippet   vfunc
+abbr      var x = function (args, callback){...}
 alias     fun func
 options   head
     var ${1:a} = function (${2:arg}, cfunc) {
-        ${3://com here}
+        // ${3:com here}
         $2 = typeof $2 === 'undefined' ? false : $2 ;
         ${0}
-        
 
         if (typeof cfunc ==='function') {
             cfunc();
@@ -231,7 +244,7 @@ options   head
     }
 
 snippet   jfun
-abbr      var: function() {}
+abbr      var: function( args ) { ... }
 alias     fun
 options   head
     ${1:var}: function (${2:arg}) {
@@ -327,7 +340,7 @@ options   head
     });
 
 snippet   aerror
-alias     aerr 
+alias     aerr
 options   head
     ${1:obj}.ajaxError(function (${1:e}, xhr, settings, thrownError) {
         ${2:// error callback}

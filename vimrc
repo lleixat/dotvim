@@ -85,8 +85,8 @@ au VimResized * exe "normal! \<c-w>="
 " Session settings "{{{
 " -----------------------------------------------------------------------------
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
-map <C-Q> :mksession! ~/.vim/.session <cr>
-let g:session_autosave = 'no'
+map <C-Q> :mksession! ~/.vim/sessions/last.vim <cr>
+let g:session_autosave = 'yes'
 let g:session_autoload = 'no'
 
 "set noerrorbells
@@ -313,6 +313,8 @@ nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 "}}}
 
 
+let g:ctrlp_session_dir = ".vim/sessions"
+let g:ctrlp_max_height  = 15
 let g:ctrlp_show_hidden = 1
 
 " Switch {{{
@@ -514,6 +516,8 @@ set comments+=n::
 " -----------------------------------------------------------------------------
 au BufNewFile,BufRead      .torsmorc* set ft=rc
 au BufNewFile,BufRead     *.html      set ft=javascript syn=html
+au BufNewFile,BufRead     *.coffee    set ft=coffee
+au BufNewFile,BufRead     *.mustache  set ft=mustache
 au BufNewFile,BufRead     *.md        set ft=markdown
 au BufNewFile,BufRead     *.mkd       set ft=markdown
 au BufNewFile,BufRead     *.inc       set ft=php
@@ -801,16 +805,22 @@ let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 " -----------------------------------------------------------------------------
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/snips'
-
-" SuperTab like snippets behavior.
-"imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-"smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_jump)" : "\<TAB>"
+"let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets/'
 
 " Plugin key-mappings.
-imap <C-k>     <Plug>(neocomplcache_snippets_expand)
-smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+			\ "\<Plug>(neosnippet_expand_or_jump)"
+			\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+			\ "\<Plug>(neosnippet_expand_or_jump)"
+			\: "\<TAB>"
 
 set completeopt-=preview
 
@@ -867,21 +877,22 @@ let g:pdv_cfg_ReturnVal   = "mixed"
 let g:pdv_cfg_Package     = "mybiz"
 let g:pdv_cfg_ProjectName = "myBiz"
 let g:pdv_cfg_Update      = "GIT: $Date$"
-let g:pdv_cfg_Version     = "GIT: $Id$"
+let g:pdv_cfg_Version     = ""
 nnoremap <C-o> :call PhpDocSingle()<CR>
 
 "------------------------------------------------------------------------------
 " Try to auto source specific config file when cd-ing in root project dir
 "------------------------------------------------------------------------------
-let g:auto_source_Appconfig = "appconfig.vim"
-function! Appconfig_load()
-    if filereadable(g:auto_source_Appconfig)
-        exec 'source ' . g:auto_source_Appconfig
-        echom "loaded: ".g:auto_source_Appconfig
+let g:appconfig_file = ".appconfig.vim"
+function! Appconfig_auto_source()
+    if filereadable(g:appconfig_file)
+        exec 'source ' . g:appconfig_file
+		exec 'bufdo e'
+        echom "Auto sourced : ".g:appconfig_file
     endif
 endfunction
 
-autocmd VimEnter * :call Appconfig_load()
+autocmd VimEnter * :call Appconfig_auto_source()
 
 " -----------------------------------------------------------------------------
 " Pathogen
