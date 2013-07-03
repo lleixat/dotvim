@@ -386,6 +386,3 @@
 [submodule "bundle/vim-localrc"]
 	path = bundle/vim-localrc
 	url = git@github.com:thinca/vim-localrc.git
-[submodule "bundle/vim-markdown-extra-preview"]
-	path = bundle/vim-markdown-extra-preview
-	url = git@github.com:waylan/vim-markdown-extra-preview.git

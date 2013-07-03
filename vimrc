@@ -30,7 +30,7 @@ set encoding=utf-8
 set termencoding=utf-8
 set fillchars=vert:\│
 
-set shell=/bin/zsh
+set shell=/bin/bash
 "set autochdir
 set complete=k         " global autocompletion
 set completeopt+=longest,menuone
@@ -883,16 +883,18 @@ nnoremap <C-o> :call PhpDocSingle()<CR>
 "------------------------------------------------------------------------------
 " Try to auto source specific config file when cd-ing in root project dir
 "------------------------------------------------------------------------------
-let g:appconfig_file = ".appconfig.vim"
-function! Appconfig_auto_source()
-    if filereadable(g:appconfig_file)
-        exec 'source ' . g:appconfig_file
-		exec 'bufdo e'
-        echom "Auto sourced : ".g:appconfig_file
-    endif
-endfunction
+"let g:appconfig_file = ".appconfig.vim"
+"function! Appconfig_auto_source()
+    "if filereadable(g:appconfig_file)
+        "exec 'source ' . g:appconfig_file
+		"exec 'bufdo e'
+        "echom "Auto sourced : ".g:appconfig_file
+    "endif
+"endfunction
 
-autocmd VimEnter * :call Appconfig_auto_source()
+"autocmd VimEnter * :call Appconfig_auto_source()
+
+let g:localrc_filename = ".appconfig.vim"
 
 " -----------------------------------------------------------------------------
 " Pathogen
