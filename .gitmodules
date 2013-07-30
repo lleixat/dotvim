@@ -386,3 +386,12 @@
 [submodule "bundle/vim-localrc"]
 	path = bundle/vim-localrc
 	url = git@github.com:thinca/vim-localrc.git
+[submodule "vim-multicursor"]
+	path = vim-multicursor
+	url = git@github.com:rdnelson/vim-multicursor.git
+[submodule "bundle/vim-multicursor"]
+	path = bundle/vim-multicursor
+	url = git@github.com:rdnelson/vim-multicursor.git
+[submodule "bundle/vim-twig"]
+	path = bundle/vim-twig
+	url = git@github.com:evidens/vim-twig.git
