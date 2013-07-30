@@ -395,3 +395,6 @@
 [submodule "bundle/vim-twig"]
 	path = bundle/vim-twig
 	url = git@github.com:evidens/vim-twig.git
+[submodule "bundle/vim-haml"]
+	path = bundle/vim-haml
+	url = git@github.com:tpope/vim-haml.git
