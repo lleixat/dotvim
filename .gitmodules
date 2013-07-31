@@ -29,10 +29,6 @@
 	path = bundle/vimshell
 	url = git://github.com/Shougo/vimshell.git
 
-[submodule "bundle/scss-syntax.vim"]
-	path = bundle/scss-syntax.vim
-	url = git://github.com/cakebaker/scss-syntax.vim.git
-
 [submodule "bundle/vim-dbext"]
 	path = bundle/vim-dbext
 	url = git://github.com/edsono/vim-dbext.git
@@ -383,9 +379,6 @@
 [submodule "bundle/vim-gf-user-laravel"]
 	path = bundle/vim-gf-user-laravel
 	url = https://github.com/scil/vim-gf-user-laravel.git
-[submodule "bundle/vim-localrc"]
-	path = bundle/vim-localrc
-	url = git@github.com:thinca/vim-localrc.git
 [submodule "vim-multicursor"]
 	path = vim-multicursor
 	url = git@github.com:rdnelson/vim-multicursor.git
@@ -398,3 +391,6 @@
 [submodule "bundle/vim-haml"]
 	path = bundle/vim-haml
 	url = git@github.com:tpope/vim-haml.git
+[submodule "bundle/vim-localrc"]
+	path = bundle/vim-localrc
+	url = git@github.com:inkarkat/vim-localrc.git
