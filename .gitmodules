@@ -77,10 +77,6 @@
 	path = bundle/webapi-vim
 	url = git://github.com/mattn/webapi-vim.git
 
-[submodule "bundle/zencoding-vim"]
-	path = bundle/zencoding-vim
-	url = git://github.com/mattn/zencoding-vim.git
-
 [submodule "bundle/vim-indent-guides"]
 	path = bundle/vim-indent-guides
 	url = git://github.com/nathanaelkane/vim-indent-guides.git
@@ -394,3 +390,6 @@
 [submodule "bundle/vim-localrc"]
 	path = bundle/vim-localrc
 	url = git@github.com:inkarkat/vim-localrc.git
+[submodule "bundle/emmet-vim"]
+	path = bundle/emmet-vim
+	url = git@github.com:mattn/emmet-vim.git
