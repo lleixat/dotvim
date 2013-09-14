@@ -14,9 +14,9 @@
 let g:hftp="ftp.alwaysdata.com/www/"
 let g:rep="/home/lex/Data/www-dev/private/"
 function! E_ftp_upload()
-    exec ":cd ".g:rep
-    let s:fichier=bufname("%")
-    exec ":Nwrite ftp://".g:hftp.s:fichier
+	exec ":cd ".g:rep
+	let s:fichier=bufname("%")
+	exec ":Nwrite ftp://".g:hftp.s:fichier
 endfunction map <F8> :call E_ftp_upload()<ENTER> </source>
 "}}}
 
@@ -25,15 +25,29 @@ endfunction map <F8> :call E_ftp_upload()<ENTER> </source>
 " -----------------------------------------------------------------------------
 
 function! Imcopy() range
-    redir @*
-    sil echomsg "—8<——————————————————————"
-    sil echomsg expand("%")
-    sil echomsg "—8<——————————————————————"
-    exec 'sil!' . a:firstline . ',' . a:lastline . '#'
-    redir end
+	redir @*
+	sil echomsg "—8<——————————————————————"
+	sil echomsg expand("%")
+	sil echomsg "—8<——————————————————————"
+	exec 'sil!' . a:firstline . ',' . a:lastline . '#'
+	redir end
 endf
 
 com! -range Imcopy <line1>,<line2>call Imcopy()
+"}}}
+
+" -----------------------------------------------------------------------------
+" Hastebin "{{{
+" -----------------------------------------------------------------------------
+function! Haste()
+	let a:h_srv= $HASTE_SERVER
+	exec '%! haste | xclip -f -sel clip'
+	echom "Hasted at ".a:h_srv
+endfunction
+
+com! -range Haste call Haste()
+
+
 "}}}
 
 " -----------------------------------------------------------------------------
@@ -42,22 +56,22 @@ com! -range Imcopy <line1>,<line2>call Imcopy()
 let g:html_diff_one_file = 1
 
 function! DivHtml(line1, line2)
-    " make sure to generate in the correct format
-    let old_css = 1
-    if exists('g:html_use_css')
-        let old_css = g:html_use_css
-    endif
-    let g:html_use_css = 0
+	" make sure to generate in the correct format
+	let old_css = 1
+	if exists('g:html_use_css')
+		let old_css = g:html_use_css
+	endif
+	let g:html_use_css = 0
 
-    exec a:line1.','.a:line2.'TOhtml'
-    %g/<style/normal $dgg
-    %s/<\/style>\n<\/head>\n//
-    %s/.vim_block {/.vim_block {/
-    %s/<body\(.*\)>\n/<div class="vim_block"\1>/
-    %s/<\/body>\n<\/html>/<\/div>
-    %s/<br>//g
+	exec a:line1.','.a:line2.'TOhtml'
+	%g/<style/normal $dgg
+	%s/<\/style>\n<\/head>\n//
+	%s/.vim_block {/.vim_block {/
+	%s/<body\(.*\)>\n/<div class="vim_block"\1>/
+	%s/<\/body>\n<\/html>/<\/div>
+	%s/<br>//g
 
-    " set nonu
+	" set nonu
 endfunction
 
 command! -range=% DivHtml :call DivHtml(<line1>,<line2>)
@@ -67,35 +81,35 @@ command! -range=% DivHtml :call DivHtml(<line1>,<line2>)
 " -----------------------------------------------------------------------------
 
 function! ForumCopy(line1, line2, scroll)
-    " make sure to generate in the correct format
-    let old_css = 1
-    if exists('g:html_use_css')
-        let old_css = g:html_use_css
-    endif
-    let g:html_use_css = 0
+	" make sure to generate in the correct format
+	let old_css = 1
+	if exists('g:html_use_css')
+		let old_css = g:html_use_css
+	endif
+	let g:html_use_css = 0
 
-    " generate...
-    exec a:line1.','.a:line2.'TOhtml'
-    " ...and delete uneeded lines
-    %g/<body/normal k$dgg
+	" generate...
+	exec a:line1.','.a:line2.'TOhtml'
+	" ...and delete uneeded lines
+	%g/<body/normal k$dgg
 
-    " convert body to a span
-    if a:scroll == "true"
-        %s/<body bgcolor="\s*\([^"]*\)"\s*text=\("[^"]*"\)\s*>/
-                    \<span style="display:block; background-color:\1;
-                    \ padding:5px; margin:10px; height: 25em; overflow:auto;
-                    \ -moz-border-radius:5px; border-radius:5px;" >
-                    \<font color=\2>/
-    else
-        %s/<body bgcolor="\s*\([^"]*\)"\s*text=\("[^"]*"\)\s*>/
-                    \<span style="display:block; background-color:\1;
-                    \ padding:5px; margin:10px; -moz-border-radius:5px;
-                    \ border-radius:5px;" ><font color=\2>/
-    endif
-    %s#</body>\(.\|\n\)*</html>#\='</font></span><br />'#i
-    %s/br>/br \/>/
-    " restore old setting
-    let g:html_use_css = old_css
+	" convert body to a span
+	if a:scroll == "true"
+		%s/<body bgcolor="\s*\([^"]*\)"\s*text=\("[^"]*"\)\s*>/
+					\<span style="display:block; background-color:\1;
+					\ padding:5px; margin:10px; height: 25em; overflow:auto;
+					\ -moz-border-radius:5px; border-radius:5px;" >
+					\<font color=\2>/
+	else
+		%s/<body bgcolor="\s*\([^"]*\)"\s*text=\("[^"]*"\)\s*>/
+					\<span style="display:block; background-color:\1;
+					\ padding:5px; margin:10px; -moz-border-radius:5px;
+					\ border-radius:5px;" ><font color=\2>/
+	endif
+	%s#</body>\(.\|\n\)*</html>#\='</font></span><br />'#i
+	%s/br>/br \/>/
+	" restore old setting
+	let g:html_use_css = old_css
 endfunction
 
 com! -range=% ForumCopy :call ForumCopy(<line1>,<line2>, "false")
@@ -152,3 +166,72 @@ command! -nargs=? -range=% Space2Tab call IndentConvert(<line1>,<line2>,0,<q-arg
 command! -nargs=? -range=% Tab2Space call IndentConvert(<line1>,<line2>,1,<q-args>)
 command! -nargs=? -range=% -bang RetabIndent call IndentConvert(<q-bang>, <line1>,<line2>,&et,<q-args>)
 "}}}
+
+
+
+" ----------------------------------------------------------------------------
+" Case String manipulations
+" ----------------------------------------------------------------------------
+function! Cucfirst(str)
+	return substitute(strpart(a:str,0,strlen(a:str)-4), '\w\+', '\u\0', "")
+endfunction
+
+function! Clcname(str)
+	return substitute(strpart(a:str,0,strlen(a:str)-4), '(\w\+)', '\u\0', "")
+endfunction
+
+function! Uppercase(str)
+	return substitute(a:str, '(\w\+)', '\u\1', "")
+endfunction
+
+function! Lowercase(str)
+	return substitute(a:str, '(\w\+)', '\u\0', "")
+endfunction
+
+function! Ucfisrt(str)
+	return substitute(strpart(a:str,0,strlen(a:str)-4), '\w\+', '\u\0', "")
+endfunction
+
+function! CiFilePos(str)
+	if a:str =~ ".\.system.\."
+		return '.' . matchstr(a:str, "\/system/.*$")
+	elseif a:str =~ ".\.application.\."
+		return '.' . matchstr(a:str, "\/application/.*$")
+	else
+		return a:str
+endfunction
+
+
+" ----------------------------------------------------------------------------
+" Do something if current file is in dirname
+" ----------------------------------------------------------------------------
+
+com! -nargs=* Iidd call IsInDirDo(<f-args>)
+fun! IsInDirDo(dir, do)
+	let a:cur_path = expand("%:p:h")
+
+	if a:cur_path =~ a:dir
+		"do a:do (dadada)
+		echo 'Iidd: exec '.a:do
+		exec a:do
+	endif
+endfun
+
+
+" -----------------------------------------------------------------------------
+" Toggle menubar uin gvim
+" -----------------------------------------------------------------------------
+if has('gui_running')
+	function! ToggleMenu()
+		if &go=~#'m'
+			set go-=m
+			echom 'Toggle Menu : Off'
+		else
+			set go+=m
+			echom 'Toggle Menu : On'
+		endif
+	endfunction
+
+	nnoremap <silent> <C-F1> :exec ToggleMenu()<CR>
+
+endif

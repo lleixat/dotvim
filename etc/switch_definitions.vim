@@ -12,6 +12,11 @@ let g:switch_custom_definitions = [
             \ 	  'null': 'true',
             \   },
             \   {
+            \ 	  'production': 'development',
+            \ 	  'development': 'test',
+            \ 	  'test': 'production',
+            \   },
+            \   {
             \ 	  '&&': '||',
             \ 	  '||': '&&',
             \   },

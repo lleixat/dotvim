@@ -393,3 +393,6 @@
 [submodule "bundle/emmet-vim"]
 	path = bundle/emmet-vim
 	url = git@github.com:mattn/emmet-vim.git
+[submodule "bundle/jellybeans"]
+	path = bundle/jellybeans
+	url = git@github.com:nanotech/jellybeans.vim.git

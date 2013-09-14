@@ -73,6 +73,11 @@ snippet     vd
 abbr        echo "<pre>";var_dump...
 options     head
     echo "<pre>\n";var_dump($${1:data});echo "</pre>\n";
+
+snippet     vdc
+abbr        echo "<pre><p>";var_dump...
+options     head
+    echo "<strong>$1 :</strong>\n<pre>\n";var_dump($${1:data});echo "</pre>\n";
     
 snippet     vdd
 abbr        echo "<pre>";var_dump...

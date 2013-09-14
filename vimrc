@@ -30,7 +30,7 @@ set encoding=utf-8
 set termencoding=utf-8
 set fillchars=vert:\│
 
-set shell=/bin/bash
+set shell=/bin/bash\ -l\ -i\ -e
 "set autochdir
 set complete=k         " global autocompletion
 set completeopt+=longest,menuone
@@ -46,10 +46,11 @@ noremap <leader><space> :noh<cr>:call clearmatches()<cr>
 
 " Easy filetype switching {{{
 nnoremap _md :set ft=markdown<CR>
-nnoremap _h  :set ft=xhtml<CR>
+nnoremap _h  :set ft=xhtml.php syn=php<CR>
 nnoremap _p  :set ft=php<CR>
 nnoremap _j  :set ft=javascript<CR>
 nnoremap _d  :set ft=diff<CR>
+nnoremap _b  :set ft=php.laravel.blade<CR>
 " }}}
 
 " Easy window navigation
@@ -86,6 +87,7 @@ au VimResized * exe "normal! \<c-w>="
 " -----------------------------------------------------------------------------
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 map <C-Q> :mksession! ~/.vim/sessions/last.vim <cr>
+
 let g:session_autosave = 'yes'
 let g:session_autoload = 'no'
 
@@ -102,7 +104,7 @@ if has('gui_running')
     set lines=60                         "lines to display
     set columns=170                      "number of col to display
     set mousemodel=popup
-    set go=gmpt
+    set go=gpt
     set anti                            " antialias font
     set cursorline
 elseif (&term =~ 'linux')
@@ -113,6 +115,9 @@ else
     set mouse=a
     colorscheme lucius
     set termencoding=utf-8
+
+
+
 endif
 "}}}
 
@@ -196,16 +201,15 @@ command! W w !sudo tee % > /dev/null
 "}}}
 
 
-" BufferList : https://github.com/szw/vim-bufferlist {{{
-" -----------------------------------------------------------------------------
-map <silent> <F3> :BufferList<CR>
-"}}}
-
 " Sartify : https://github.com/mhinz/vim-startify  {{{
 " -----------------------------------------------------------------------------
 let g:startify_session_dir = '~/.vim/sessions'
 let g:startify_show_sessions = 1
-let g:startify_bookmarks = [ '~/.vimrc' ]
+let g:startify_bookmarks = [
+			\ '~/.vimrc',
+			\ '~/.vim/etc/helpers.vim',
+			\ '~/.vim/etc/switch_definitions.vim'
+			\ ]
 "}}}
 
 " Golden-ratio https://github.com/roman/golden-ratio {{{
@@ -216,10 +220,11 @@ let g:golden_ratio_wrap_ignored = 1
 " Color-Picker"{{{
 " -----------------------------------------------------------------------------
 map <F2> :ColorVPicker<CR>
+let g:colorizer_startup = 0
 map <S-F2> :ColorToggle<CR>
 "}}}
 
-" html5 to omnicomplete support "{{{
+" html5 to omnicomplete support {{{
 " -----------------------------------------------------------------------------
 let g:event_handler_attributes_complete = 0 " Disable event-handler attributes support
 let g:rdfa_attributes_complete          = 0 " Disable event-handler attributes support
@@ -245,9 +250,9 @@ let g:html_indent_style1 = "inc"
 "}}}
 
 " -----------------------------------------------------------------------------
-"  Zencoding
+"  Zencoding / Emmet
 " -----------------------------------------------------------------------------
-"let g:user_zen_leader_key = '<c-y>'
+"let g:user_emmet_leader_key = '<c-y>'
 
 " -----------------------------------------------------------------------------
 " Un petit menu qui permet d'afficher la liste des éléments"{{{
@@ -297,6 +302,7 @@ nnoremap <leader>z zMzvzz
 " -----------------------------------------------------------------------------
 nmap <C-p> :CtrlP<cr>
 nmap <C-m> :CtrlPMark<cr>
+nmap <C-b> :CtrlPBuff<cr>
 nmap <C-l> :CtrlPLauncher<cr>
 nmap <C-g> :CtrlPGist<cr>
 nmap <C-y> :CtrlPYankring<cr>
@@ -305,6 +311,11 @@ let g:ctrlp_extensions = [
 			\ 'funky', 'cmdline', 'mark',
 			\ 'launcher', 'gist', 'yankring'
 			\ ]
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn|sass-cache)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
 
 nnoremap <Leader>fu :CtrlPFunky<Cr>
 " narrow the list down with a word under cursor
@@ -456,7 +467,7 @@ let g:bufExplorerSplitRight    = 0 " Split left.
 " -----------------------------------------------------------------------------
 
 "let loaded_nerd_tree=1
-map <F12> :NERDTreeToggle <CR>
+map <S-F12> :NERDTreeToggle <CR>
 let g:NERDTreeShowBookmarks   = 1
 let g:NERDTreeHijackNetrw     = 1
 let g:NERDTreeMouseMode       = 2
@@ -466,7 +477,7 @@ let NERDTreeDirArrows         = 1
 nnoremap <Leader>f :NERDTreeFind<CR>
 
 " NERDTreeToggle
-map <S-F12> :NERDTreeTabsToggle <CR>
+map <F12> :NERDTreeTabsToggle <CR>
 let g:nerdtree_tabs_open_on_gui_startup = 0
 let g:nerdtree_tabs_autoclose           = 0
 let g:nerdtree_tabs_synchronize_view    = 1
@@ -746,7 +757,6 @@ if has("autocmd") && exists("+omnifunc")
         \ endif
 endif
 
-
 " define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
     let g:neocomplcache_keyword_patterns = {}
@@ -831,38 +841,10 @@ endif
 
 
 " Add custom coms because thats names sux
-command! EditSnips :NeoSnippetEdit
+com! EditSnips :NeoSnippetEdit
 
 let g:snips_author = $MAIL1
 
-function! Cucfirst(str)
-    return substitute(strpart(a:str,0,strlen(a:str)-4), '\w\+', '\u\0', "")
-endfunction
-
-function! Clcname(str)
-    return substitute(strpart(a:str,0,strlen(a:str)-4), '(\w\+)', '\u\0', "")
-endfunction
-
-function! Uppercase(str)
-    return substitute(a:str, '(\w\+)', '\u\1', "")
-endfunction
-
-function! Lowercase(str)
-    return substitute(a:str, '(\w\+)', '\u\0', "")
-endfunction
-
-function! Ucfisrt(str)
-    return substitute(strpart(a:str,0,strlen(a:str)-4), '\w\+', '\u\0', "")
-endfunction
-
-function! CiFilePos(str)
-    if a:str =~ ".\.system.\."
-        return '.' . matchstr(a:str, "\/system/.*$")
-    elseif a:str =~ ".\.application.\."
-        return '.' . matchstr(a:str, "\/application/.*$")
-    else
-        return a:str
-endfunction
 
 "}}}
 
@@ -928,11 +910,14 @@ let g:multi_cursor_prev_key='<C-k>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-
-
-" Auto pairs
+" -----------------------------------------------------------------------------
+" Auto pairs {{{
 " -----------------------------------------------------------------------------
 let g:AutoPairsFlyMode = 0
+let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
+let g:AutoPairShortcutFastWrap = '<C-e>'
+au Filetype twig let b:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`', "%":"%"}
+" }}}
 
 
 " -----------------------------------------------------------------------------
