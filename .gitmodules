@@ -396,3 +396,9 @@
 [submodule "bundle/jellybeans"]
 	path = bundle/jellybeans
 	url = git@github.com:nanotech/jellybeans.vim.git
+[submodule "bundle/vim-polyglot"]
+	path = bundle/vim-polyglot
+	url = git@github.com:sheerun/vim-polyglot.git
+[submodule "bundle/vim-phpunitqf"]
+	path = bundle/vim-phpunitqf
+	url = git@github.com:joonty/vim-phpunitqf.git
