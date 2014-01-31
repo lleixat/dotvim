@@ -113,10 +113,6 @@
 	path = bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
 
-[submodule "bundle/syntastic"]
-	path = bundle/syntastic
-	url = git://github.com/scrooloose/syntastic.git
-
 [submodule "bundle/phpcomplete.vim"]
 	path = bundle/phpcomplete.vim
 	url = git://github.com/shawncplus/phpcomplete.vim.git
@@ -402,3 +398,9 @@
 [submodule "bundle/vim-phpunitqf"]
 	path = bundle/vim-phpunitqf
 	url = git@github.com:joonty/vim-phpunitqf.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = git://github.com/scrooloose/syntastic.git
+[submodule "bundle/gitv"]
+	path = bundle/gitv
+	url = git@github.com:gregsexton/gitv.git
