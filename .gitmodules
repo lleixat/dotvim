@@ -404,3 +404,9 @@
 [submodule "bundle/gitv"]
 	path = bundle/gitv
 	url = git@github.com:gregsexton/gitv.git
+[submodule "vim-js-context-coloring"]
+	path = vim-js-context-coloring
+	url = git@github.com:bigfish/vim-js-context-coloring.git
+[submodule "bundle/vim-js-context-coloring"]
+	path = bundle/vim-js-context-coloring
+	url = git@github.com:bigfish/vim-js-context-coloring.git
