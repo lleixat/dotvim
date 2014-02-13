@@ -416,3 +416,6 @@
 [submodule "bundle/vim-notes"]
 	path = bundle/vim-notes
 	url = git@github.com:xolox/vim-notes.git
+[submodule "bundle/neosnippet-snippets"]
+	path = bundle/neosnippet-snippets
+	url = git@github.com:Shougo/neosnippet-snippets.git
