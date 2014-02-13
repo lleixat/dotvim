@@ -422,3 +422,6 @@
 [submodule "bundle/ultisnips"]
 	path = bundle/ultisnips
 	url = git@github.com:SirVer/ultisnips.git
+[submodule "bundle/neocomplcache-ultisnips"]
+	path = bundle/neocomplcache-ultisnips
+	url = git@github.com:JazzCore/neocomplcache-ultisnips.git
