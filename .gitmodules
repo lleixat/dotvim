@@ -407,7 +407,7 @@
 [submodule "bundle/vim-js-context-coloring"]
 	path = bundle/vim-js-context-coloring
 	url = git@github.com:bigfish/vim-js-context-coloring.git
-[submodule "bundle/git@github.com:guns/xterm-color-table.vim.git"]
+[submodule "bundle/xterm-color-table.vim"]
 	path = bundle/git@github.com:guns/xterm-color-table.vim.git
 	url = git@github.com:guns/xterm-color-table.vim.git
 [submodule "bundle/xterm-color-table"]
@@ -428,3 +428,6 @@
 [submodule "bundle/YouCompleteMe"]
 	path = bundle/YouCompleteMe
 	url = git@github.com:Valloric/YouCompleteMe.git
+[submodule "bundle/Tail-Bundle"]
+	path = bundle/Tail-Bundle
+	url = git@github.com:vim-scripts/Tail-Bundle.git
