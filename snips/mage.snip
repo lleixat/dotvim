@@ -1,0 +1,174 @@
+
+snippet help
+abbr    Mage::helper(...)
+options word
+    Mage::helper('${1}')
+
+
+snippet app
+abbr	Mage::app()
+options word
+    Mage::app()
+
+
+snippet model
+abbr    Mage::getModel('...')
+options word
+    Mage::getModel('${1}')
+
+snippet single
+abbr    Mage::getSingleton('${1}')
+options word
+    Mage::getSingleton('${1}')
+
+snippet session
+abbr    Mage::getSingleton('.../session')
+options word
+    Mage::getSingleton('${1}/session')
+
+snippet gsc
+abbr    Mage::getStoreConfig('${1}')
+options word
+    Mage::getStoreConfig('${1}')
+
+snippet store
+abbr    Mage::app()->getStore()->getStoreId();
+options word
+    Mage::app()->getStore()->getStoreId();
+
+snippet param
+abbr    $this->getRequest()->getParam('${1}', null)
+options word
+    $this->getRequest()->getParam('${1}', null)
+
+snippet t__
+abbr    $this->__('${1}')
+options word
+    $this->__('${1}')
+
+snippet logE
+abbr    Mage::logException(${1:$e});
+options word
+    Mage::logException(${1:$e});
+
+snippet debug
+abbr    Zend_Debug::dump(${1});
+options word
+    Zend_Debug::dump(${1});
+
+snippet newblock
+abbr    Block Stores
+options word
+    // Stores
+    Mage::app()->reinitStores();
+
+    /**
+    * Create the ${1:identifier} block
+    */
+    $block = Mage::getModel('cms/block');
+    $block->setData(array(
+    'title' => '${2:title}',
+    'identifier' => '${3:identifier}',
+    'content' => '${4:content}',
+    'creation_time' => now(),
+    'update_time' => now(),
+    'is_active' => 1,
+    'stores' => array_keys(Mage::app()->getStores())
+    ));
+    $block->save();
+
+snippet date
+abbr    Mage::app()->getLocale()->date()
+options word
+    Mage::app()->getLocale()->date()
+
+snippet messages
+abbr    Mage::getSingleton('core/session')->addSuccess('core message');
+options word
+    Mage::getSingleton('core/session')->addSuccess('core message');
+    Mage::getSingleton('core/session')->addError('core message');
+    Mage::getSingleton('core/session')->addWarning('core message');
+    Mage::getSingleton('core/session')->addNotice('core message');
+    Mage::getSingleton('customer/session')->addSuccess('customer message');
+    Mage::getSingleton('catalog/session')->addSuccess('catalog message');
+    Mage::getSingleton('checkout/session')->addSuccess('checkout message');
+
+snippet mlog
+abbr    Mage::log(__METHOD__ . ':' . __LINE__);
+options word
+    Mage::log(__METHOD__ . ':' . __LINE__);
+
+snippet request
+abbr    Mage::app()->getRequest()
+options word
+    Mage::app()->getRequest()
+
+snippet layout
+abbr    Mage::app()->getLayout()
+options word
+    Mage::app()->getLayout()
+
+snippet mail
+abbr    $mailTemplate = ...
+options word
+    $mailTemplate = Mage::getModel('core/email_template');
+    $mailTemplate
+        ->setDesignConfig(array('area' => '${1:frontend}'))
+        ->sendTransactional(
+            '${2:name_in_config}',
+            Mage::getStoreConfig('contacts/email/sender_email_identity'),
+            Mage::getStoreConfig('contacts/email/recipient_email'),
+            null,
+            array( // data
+            )
+        );
+
+snippet connection
+abbr    $res = Mage::getSingleton('core/resource');
+options word
+    $res = Mage::getSingleton('core/resource');
+    $cn = $res->getConnection('core_write');
+
+snippet redir
+abbr    $this->_redirect('${1:path}');
+options word
+    $this->_redirect('${1:path}');
+
+snippet trace
+    Mage::log(mageDebugBacktrace(true));
+
+snippet resource
+abbr    Mage::getResourceModel('${1}');
+options word
+    Mage::getResourceModel('${1}');
+
+snippet regr
+abbr    Mage::register('${1:name}', ${2:$object});
+options word
+    Mage::register('${1:name}', ${2:$object});
+
+snippet zdd
+abbr    Zend_Debug::dump(${1});
+options word
+    Zend_Debug::dump(${1});
+    exit;
+
+snippet log
+abbr    Mage::log(${1});
+options word
+    Mage::log(${1});
+
+snippet field
+abbr    ${1:$fieldset}->addField('${2:fieldname}', ...
+options word
+    ${1:$fieldset}->addField('${2:fieldname}', '${3:type}', array(
+        'label' => Mage::helper('${4:helper}')->__("${5:label}"),
+        'name' => '${6:name}',
+        'class' => '${7:class}',
+        'required' => ${8:false}
+    ));
+
+snippet reg
+abbr    Mage::registry('${1}')
+options word
+    Mage::registry('${1}')

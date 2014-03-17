@@ -29,6 +29,42 @@ options     head
      * ${1: My com here}
      */
 
+snippet     class
+abbr        <?php class {}
+options     head
+    <?php
+        class ${1:MyClass} {
+            ${0}
+        }
+
+snippet function_literal
+alias fun, func
+options word
+abbr function () {}
+    function (${1})${2: use } {
+        ${3:TARGET}
+    }
+
+snippet function
+alias fun, func
+abbr public function () {}
+options     word
+    ${1:public }function ${2:#:FunctionName}(${3})
+    {
+        ${4:TARGET}
+    }
+
+snippet     array
+abbr        array();
+alias       arr
+options     word
+    array(${1})${0:#:;}
+    
+snippet     =>
+abbr        array(... => ...);
+options     word
+    => '${1}'${2:#:,}${0}
+
 snippet     phpi
 abbr        <?php ... ?>
 options     word
@@ -107,6 +143,25 @@ options     head
     <?php foreach ($${1:variable} as $${2:k => $v}): ?>
         ${0}
     <?php endforeach ?>
+        
+snippet     fore
+abbr        foreach ... 
+options     head
+    foreach ($${1:#:variable} as $${2:k => $v}) {
+        ${0}
+    }
+
+snippet     for
+abbr        for (...) 
+options     head
+    for ($${1:i}; ${${#1} ${2:<=} $${3:num}}; $1++};  {
+        ${0}
+    }
+
+snippet     @wip
+abbr        @group wip
+options     head
+    @group wip
 
 ### Git
 

@@ -1,0 +1,7 @@
+snippet     controller
+abbr        app.controller
+alias       cont app.c
+options     head
+    app.controller('${1:fName}', ['${2:$scope}', '${3:factory ref}', function($2, $3) {
+        ${0:$scope.}
+    }]);

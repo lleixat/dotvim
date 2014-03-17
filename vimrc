@@ -100,7 +100,8 @@ if has('gui_running')
     "let &guicursor = &guicursor . " a:blinkon0 "
     colorscheme lucius
     "set guifont=monospace\ regular\ 10    " :cdefaults
-    set guifont=monaco\ regular\ 10    " :cdefaults
+    "set guifont=monaco\ regular\ 10    " :cdefaults
+    set guifont=DejaVu\ Sans\ mono\ 9    " :cdefaults
     set lines=60                         "lines to display
     set columns=170                      "number of col to display
     set mousemodel=popup
@@ -186,6 +187,16 @@ if has("autocmd")
                 \| exe "normal g'\"" | endif
 endif
 
+" Vim notes {{{
+" -----------------------------------------------------------------------------
+let g:notes_directories = ['~/brady/support', '~/Dropbox/Notes']
+" Make double mouse click search for @tags. This is actually quite a lot of
+" fun if you don't use the mouse for text selections anyway; you can click
+" between notes as if you're in a web browser:
+imap <C-LeftMouse> <C-o>:SearchNotes<CR>
+nmap <C-LeftMouse> :SearchNotes<CR>
+"}}}
+
 " Sudo-write
 " -----------------------------------------------------------------------------
 command! W w !sudo tee % > /dev/null
@@ -206,10 +217,11 @@ command! W w !sudo tee % > /dev/null
 let g:startify_session_dir = '~/.vim/sessions'
 let g:startify_show_sessions = 1
 let g:startify_bookmarks = [
-			\ '~/.vimrc',
-			\ '~/.vim/etc/helpers.vim',
-			\ '~/.vim/etc/switch_definitions.vim'
-			\ ]
+            \ '~/.vimrc',
+            \ '~/.vim/etc/helpers.vim',
+            \ '~/.vim/etc/switch_definitions.vim',
+            \ '~/bin/mageit'
+            \ ]
 "}}}
 
 " Golden-ratio https://github.com/roman/golden-ratio {{{
@@ -239,6 +251,14 @@ let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 " }}}
+ 
+" -----------------------------------------------------------------------------
+" Js Context coloring {{{
+" https://github.com/bigfish/vim-js-context-coloring
+" -----------------------------------------------------------------------------
+let g:js_context_colors_enabled = 0 " disable: 0
+map <F3> :JSContextColorToggle <CR>
+"}}}
 
 " -----------------------------------------------------------------------------
 "  Sparkup {{{
@@ -279,7 +299,7 @@ endif
 set tabstop=4     " numbers of spaces of tab character
 set shiftwidth=4  " numbers of spaces to (auto)indent
 set softtabstop=4 " counts n spaces when DELETE or BCKSPCE is used
-set noexpandtab   " insert tabs for indent
+set expandtab   " insert tabs for indent
 "set autoindent    " always set autoindenting on
 set smartindent   " advenced indenting [vs nosmartindent]
 "set nosmartindent                              " intelligent indenting -- DEPRECATED by cindent
@@ -296,6 +316,9 @@ nnoremap zO zCzO
 
 " Use ,z to "focus" the current fold.
 nnoremap <leader>z zMzvzz
+
+" Reformat
+nmap <C-l><C-l> gg=G''
 "}}}
 
 " CtrlP {{{
@@ -308,14 +331,14 @@ nmap <C-g> :CtrlPGist<cr>
 nmap <C-y> :CtrlPYankring<cr>
 nmap <C-s> :CtrlPSessions<cr>
 let g:ctrlp_extensions = [
-			\ 'funky', 'cmdline', 'mark',
-			\ 'launcher', 'gist', 'yankring'
-			\ ]
+            \ 'funky', 'cmdline', 'mark',
+            \ 'launcher', 'gist', 'yankring'
+            \ ]
 
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn|sass-cache)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ }
+            \ 'dir':  '\v[\/]\.(git|hg|svn|sass-cache)$',
+            \ 'file': '\v\.(exe|so|dll)$',
+            \ }
 
 nnoremap <Leader>fu :CtrlPFunky<Cr>
 " narrow the list down with a word under cursor
@@ -379,6 +402,7 @@ let g:easytags_auto_update   = 0
 "let g:easytags_by_filetype   = '~/.vim/mytags/'
 "let g:easytags_on_cursorhold = 1
 "let g:easytags_autorecurse   = 1
+
 "}}}
 
 " tags keymap {{{
@@ -568,11 +592,6 @@ augroup END
 au filetype *.php           set noet ci pi sts=0 sw=4 ts=4
 au BufRead,BufNewfile *.php set noet ci pi sts=0 sw=4 ts=4
 
-" -----------------------------------------------------------------------------
-" tidy depends on CPAN JSON::XS
-" -----------------------------------------------------------------------------
-map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
-
 " actionscript language
 " -----------------------------------------------------------------------------
 au bufread,bufnewfile *.as set filetype=actionscript
@@ -641,12 +660,12 @@ au filetype c,cpp set formatoptions+=ro
 " -----------------------------------------------------------------------------
 " dbext "{{{
 " -----------------------------------------------------------------------------
-"let g:dbext_default_profile_mysqlserver   = 'type = mysql:user      = root:dbname               = magasin'
-"let g:dbext_default_profile_mysql         = 'type = sqlsvr:host     = localhost:bin             = /opt/lampp/bin:user = root:passwd = :extra -t'
-let g:dbext_default_profile_localhostMySQL = 'type = MYSQL:MYSQL_bin = /opt/lampp/bin/mysql:user = root:passwd         = toor:dbname = @askdb:extra  = -t'
-let g:dbext_default_profile_localmagasin   = 'type = mysql:mysql_bin = /opt/lampp/bin/mysql:user = root:passwd         = :dbname     = magasin:extra = -t'
-"let g:dbext_default_type   = 'sqlsvr'
-"let g:dbext_default_user   = 'root'
+"let g:dbext_default_profile_localhostMySQL = 'type = MYSQL:MYSQL_bin = /usr/bin/mysql:user = root:passwd         = toor:dbname = @askdb:extra  = -t'
+"let g:dbext_default_profile_localmagasin   = 'type = mysql:mysql_bin = /usr/bin/mysql:user = root:passwd         = :dbname     = magansin:extra = -t'
+"let g:dbext_default_profile_localandromeda = 'type = mysql:mysql_bin = /usr/bin/mysql:user = root:passwd         = :dbname     = andromeda:extra = -t'
+let g:dbext_default_type   = 'MYSQL'
+let g:dbext_default_user   = 'root'
+let g:dbext_default_dbname = 'andromeda'
 "sqlutilities
 let g:sqlutil_align_comma         = 1
 let g:sqlutil_align_where         = 1
@@ -684,6 +703,15 @@ map <S-Right> :bnext<CR>
 map <S-Left>  :bprevious<CR>
 
 "}}}
+"
+"------------------------------------------------------------------------------
+"   NerdCommenter"{{{
+"------------------------------------------------------------------------------
+"toggle comments
+nmap <C-C><C-C> ,c<space>
+vmap <C-C><C-C> ,c<space>
+
+"}}}
 
 "------------------------------------------------------------------------------
 "   Yankring"{{{
@@ -716,19 +744,22 @@ vmap <leader>t" :Align "<CR>
 " git://github.com/junegunn/vim-easy-align.git
 vnoremap <silent> <Enter> :EasyAlign<cr>
 let g:easy_align_delimiters = {
-			\ '>': { 'pattern': '>>\|=>\|>' },
-			\ '/': { 'pattern': '//*' },
-			\ 'x': {
-			\     'pattern':       '[xX]',
-			\     'margin_left':   ' <<<',
-			\     'margin_right':  '>>> ',
-			\     'stick_to_left': 0
-			\   }
-			\ }
+            \ '>': { 'pattern': '>>\|=>\|>' },
+            \ '/': { 'pattern': '//*' },
+            \ 'x': {
+            \     'pattern':       '[xX]',
+            \     'margin_left':   ' <<<',
+            \     'margin_right':  '>>> ',
+            \     'stick_to_left': 0
+            \   }
+            \ }
 
 "------------------------------------------------------------------------------
 " Neocomplcache "{{{
 "------------------------------------------------------------------------------
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" and
 let g:neocomplcache_enable_at_startup               = 1        " use neocomplcache.
 "let g:neocomplcache_disable_auto_complete          = 1
 let g:neocomplcache_enable_smart_case               = 1        " use smartcase.
@@ -741,20 +772,20 @@ let g:neocomplcache_lock_buffer_name_pattern        = '\*ku\*'
 " define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
             \ 'default' : '',
-            \ 'sh' : $HOME.'/.vim/dictionary/sh.dict',
-            \ 'zsh' : $HOME.'/.vim/dictionary/sh.dict',
-            \ 'bash' : $HOME.'/.vim/dictionary/sh.dict',
-            \ 'javascript' : $HOME.'/.vim/dictionary/javascript.dict',
-            \ 'vimshell' : $HOME.'/.vimshell_hist',
-            \ 'php' : $HOME.'/.vim/dictionary/php.dict'
+            \ 'sh' : '~/.vim/dictionary/sh.dict',
+            \ 'zsh' : '~/.vim/dictionary/sh.dict',
+            \ 'bash' : '~/.vim/dictionary/sh.dict',
+            \ 'javascript' : '~/.vim/dictionary/javascript.dict',
+            \ 'vimshell' : '~/.vimshell_hist',
+            \ 'php' : '~/.vim/dictionary/php.dict'
             \ }
 
 " Enable syntaxcomplete
 if has("autocmd") && exists("+omnifunc")
     autocmd Filetype *
-        \ if &omnifunc == "" |
-        \ setlocal omnifunc=syntaxcomplete#Complete |
-        \ endif
+                \ if &omnifunc == "" |
+                \ setlocal omnifunc=syntaxcomplete#Complete |
+                \ endif
 endif
 
 " define keyword.
@@ -770,7 +801,7 @@ inoremap <expr><C-l> neocomplcache#complete_common_string()
 
 " Recommended key-mappings.
 " <TAB>: completion.
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+"inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
@@ -826,11 +857,11 @@ inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-			\ "\<Plug>(neosnippet_expand_or_jump)"
-			\: pumvisible() ? "\<C-n>" : "\<TAB>"
+            \ "\<Plug>(neosnippet_expand_or_jump)"
+            \: pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-			\ "\<Plug>(neosnippet_expand_or_jump)"
-			\: "\<TAB>"
+            \ "\<Plug>(neosnippet_expand_or_jump)"
+            \: "\<TAB>"
 
 set completeopt-=preview
 
@@ -847,6 +878,17 @@ let g:snips_author = $MAIL1
 
 
 "}}}
+
+"------------------------------------------------------------------------------
+" untisnips {{{
+"------------------------------------------------------------------------------
+let g:UltiSnipsUsePythonVersion = 2
+let g:UltiSnipsEditSplit = "vertical"
+let g:UltiSnipsSnippetsDir= "~/.vim/etc/ultisnips"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" }}}
 
 "------------------------------------------------------------------------------
 " PhpDoc
@@ -867,11 +909,11 @@ nnoremap <C-o> :call PhpDocSingle()<CR>
 "------------------------------------------------------------------------------
 "let g:appconfig_file = ".appconfig.vim"
 "function! Appconfig_auto_source()
-    "if filereadable(g:appconfig_file)
-        "exec 'source ' . g:appconfig_file
-		"exec 'bufdo e'
-        "echom "Auto sourced : ".g:appconfig_file
-    "endif
+"if filereadable(g:appconfig_file)
+"exec 'source ' . g:appconfig_file
+"exec 'bufdo e'
+"echom "Auto sourced : ".g:appconfig_file
+"endif
 "endfunction
 
 "autocmd VimEnter * :call Appconfig_auto_source()

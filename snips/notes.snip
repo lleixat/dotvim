@@ -1,0 +1,40 @@
+snippet     date
+alias       df
+options     word
+    `strftime("%Y-%m-%dT%H:%M:%S")`
+
+snippet     wpstpl
+abbr        template
+alias       tpl wps wp wpa
+options     head 
+prev_word   '^'
+    ${1:WPSSUP}-${2:NUM}
+
+    date: `strftime("%Y-%m-%dT%H")`
+
+    ${5:#:@tags}
+
+    # $1-$2 ${3:• ${4:title\}}
+
+    ## Desc
+
+    > 
+
+    ## Inv
+
+    ${0:### `strftime("%Y-%m-%dT%H:%M:%S")`}
+
+snippet     WPS
+abbr        WPSSUP-NUM
+alias       wpa wp
+options     word
+prev_word   '^'
+    WPSSUP-${0:NUM}
+
+snippet     WPA
+abbr        WPA-NUM
+alias       wp wpa
+options     word
+prev_word   '^'
+    WPA-${0:NUM}
+

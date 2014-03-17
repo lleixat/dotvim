@@ -8,12 +8,13 @@ prev_word   '^'
     #
      
 snippet     sigm
-abbr        Add signature "Author and Contact"
+abbr        Add signature "Author/Contact/Licence"
 prev_word   '^'
     #
     # Author       : Thomas Lleixa
     # Modification : `strftime("%d %b %Y")`
     # Contact      : <`system('echo $MAIL1')`>
+    # Licence      : DBAD Public Licence <http://thomaslleixa.fr/LICENCE-en.md>
     #
 
 snippet     com
@@ -32,3 +33,52 @@ snippet     ->
 abbr        --
 options     head
     →
+
+snippet     <-
+abbr        --
+options     head
+    ←
+
+snippet     <->
+abbr        --
+options     head
+    ↔
+
+snippet     date
+options     word
+    `strftime("%d %b %Y")`
+
+snippet     date_full
+alias       df
+options     word
+    `strftime("%Y-%m-%dT%H:%M:%S")`
+
+snippet     date_day
+alias       dd
+options     word
+    `strftime("%Y-%m-%d")`
+
+snippet     date_time
+alias       dt
+options     word
+    `strftime("%H:%M:%S")`
+
+snippet     lastmod
+abbr        Last modified time
+alias       lmod
+    Last Modified: `strftime("%Y-%m-%dT%H:%M:%S")`
+
+snippet     filename
+alias       fname
+options     word
+    `bufname('%') =='[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`${0}
+
+snippet     filename_upper_camel
+alias       fnameuc
+options     word
+    `substitute(bufname('%') =='[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r'), '\%(^\(.\)\|_\(.\)\)', '\u\1\u\2', 'g')`${0}
+
+snippet     filename_lower_camel
+alias       fnamelc
+options     word
+    `substitute(bufname('%') =='[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r'), '\%(_\(.\)\)', '\u\1', 'g')`${0}
