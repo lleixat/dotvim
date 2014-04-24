@@ -123,7 +123,7 @@
 
 [submodule "bundle/vim-bufexplorer"]
 	path = bundle/vim-bufexplorer
-	url = git://github.com/slack/vim-bufexplorer.git
+	url = git@github.com:jlanzarotta/bufexplorer.git
 
 [submodule "bundle/javaScriptLint.vim"]
 	path = bundle/javaScriptLint.vim
@@ -404,9 +404,6 @@
 [submodule "bundle/gitv"]
 	path = bundle/gitv
 	url = git@github.com:gregsexton/gitv.git
-[submodule "bundle/vim-js-context-coloring"]
-	path = bundle/vim-js-context-coloring
-	url = git@github.com:bigfish/vim-js-context-coloring.git
 [submodule "bundle/xterm-color-table.vim"]
 	path = bundle/git@github.com:guns/xterm-color-table.vim.git
 	url = git@github.com:guns/xterm-color-table.vim.git
@@ -431,3 +428,6 @@
 [submodule "bundle/Tail-Bundle"]
 	path = bundle/Tail-Bundle
 	url = git@github.com:vim-scripts/Tail-Bundle.git
+[submodule "bundle/vim-bookmarks"]
+	path = bundle/vim-bookmarks
+	url = https://github.com/MattesGroeger/vim-bookmarks.git
