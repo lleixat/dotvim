@@ -434,3 +434,6 @@
 [submodule "bundle/tagbar-phpctags"]
 	path = bundle/tagbar-phpctags
 	url = git@github.com:vim-php/tagbar-phpctags.vim.git
+[submodule "bundle/MatchTagAlways"]
+	path = bundle/MatchTagAlways
+	url = git@github.com:Valloric/MatchTagAlways.git
