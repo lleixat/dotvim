@@ -437,3 +437,6 @@
 [submodule "bundle/MatchTagAlways"]
 	path = bundle/MatchTagAlways
 	url = git@github.com:Valloric/MatchTagAlways.git
+[submodule "bundle/conky-syntax"]
+	path = bundle/conky-syntax
+	url = git@github.com:smancill/conky-syntax.vim.git
