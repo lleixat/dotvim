@@ -5,6 +5,10 @@
 
 " Switch definitions
 let g:switch_no_builtins = 1
+
+" -----------------------------------------------------------------------------
+" Globals custom definitions {{{
+" -----------------------------------------------------------------------------
 let g:switch_custom_definitions = [
             \   {
             \ 	  'true': 'false',
@@ -12,9 +16,26 @@ let g:switch_custom_definitions = [
             \ 	  'null': 'true',
             \   },
             \   {
+            \ 	  '[yY][eE][sS]': 'no',
+            \ 	  '[nN][oO]': 'yes',
+            \   },
+			\   {
+			\     'pick': 'squash',
+			\     'squash': 'reword',
+			\     'reword': 'edit',
+			\     'edit': 'fixup',
+			\     'fixup': 'exec',
+			\     'exec': 'pick',
+			\   },
+            \   {
             \ 	  'production': 'development',
             \ 	  'development': 'test',
             \ 	  'test': 'production',
+            \   },
+            \   {
+            \ 	  'NOTE': 'TODO',
+            \ 	  'TODO': 'XXX',
+            \ 	  'XXX': 'NOTE',
             \   },
             \   {
             \ 	  '&&': '||',
@@ -34,7 +55,11 @@ let g:switch_custom_definitions = [
             \   '\[-\]': '\[ \]',
             \  },
             \ ]
+" }}}
 
+" -----------------------------------------------------------------------------
+" [PHP] Definitions {{{
+" -----------------------------------------------------------------------------
 autocmd FileType php let b:switch_custom_definitions = [
             \   {
             \ 	  'and': 'or',
@@ -64,7 +89,11 @@ autocmd FileType php let b:switch_custom_definitions = [
             \     'if\s*(false && (\(.*\)))': 'if (\1)',
             \   },
             \ ]
+"}}}
 
+" -----------------------------------------------------------------------------
+" [Laravel/Blade] definitions {{{
+" -----------------------------------------------------------------------------
 autocmd FileType laravel,blade let b:switch_custom_definitions = [
             \   {
             \     '@if\s*(\%(true\|false\)\@!\(.*\))': '@if (true || (\1))',
@@ -72,7 +101,11 @@ autocmd FileType laravel,blade let b:switch_custom_definitions = [
             \     '@if\s*(false && (\(.*\)))': '@if (\1)',
             \   },
             \ ]
+"}}}
 
+" -----------------------------------------------------------------------------
+" [Javascript] definitions {{{
+" -----------------------------------------------------------------------------
 autocmd FileType javascript,js let b:switch_custom_definitions = [
             \   {
             \ 	  'return \(\k\+\)': 'console.log(\1)',
@@ -88,3 +121,7 @@ autocmd FileType javascript,js let b:switch_custom_definitions = [
             \     'if\s*(false && (\(.*\)))': 'if (\1)'
             \   },
             \ ]
+"}}}
+
+
+" vim: fdm=marker
