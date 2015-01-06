@@ -152,7 +152,7 @@ NeoBundleLazy 'joonty/vim-phpunitqf',
             \ {'autoload': {'filetypes': ['php']}}
 " Laravel {{{3
 NeoBundleLazy 'johnhamelink/blade.vim',
-            \ {'autoload': {'filetypes': ['blade.php']}}
+            \ {'autoload': {'filetypes': ['blade']}}
 NeoBundleLazy 'scil/vim-gf-user-laravel',
             \ {'autoload': {'filetypes': ['php']}}
 
