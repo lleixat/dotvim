@@ -27,7 +27,9 @@ set background=dark
 set encoding=utf-8
 set termencoding=utf-8
 set fillchars=vert:\│
-set breakindent
+if exists('+breakindent')
+    set breakindent
+endif
 
 set shell=/bin/bash\ -i
 "set autochdir
