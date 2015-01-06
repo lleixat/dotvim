@@ -135,7 +135,7 @@ com! -range=% ForumCopyS :call ForumCopy(<line1>,<line2>,"true")
 "}}}
 
 " -----------------------------------------------------------------------------
-" Compte Le nombre de lignes {{{
+" Count lines in current selection {{{
 " -----------------------------------------------------------------------------
 command! -range -nargs=0 Lignes :echo <line2> - <line1> + 1
 " }}}
@@ -300,6 +300,56 @@ function! HighlightRepeats() range
 endfunction
 
 command! -range=% HighlightRepeats <line1>,<line2>call HighlightRepeats()
+" }}}
+
+" -----------------------------------------------------------------------------
+" Custom fold text {{{
+" -----------------------------------------------------------------------------
+function! CustomFoldText()
+    "get first non-blank line
+    let fs = v:foldstart
+    while getline(fs) =~ '^\s*$' | let fs = nextnonblank(fs + 1)
+    endwhile
+    if fs > v:foldend
+        let line = getline(v:foldstart)
+    else
+        let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
+    endif
+
+    let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
+    let foldStartStr    = repeat('▾ ', v:foldlevel) . repeat('—', 5)
+    let foldSize        = 1 + v:foldend - v:foldstart
+    let foldSizeStr     = foldSize . " lines "
+    let foldLevelStr    = repeat('—', 5) . repeat(' ▾', v:foldlevel)
+    let lineCount       = line("$")
+    let foldPercentage  = printf("[%.1f", (foldSize*1.0)/lineCount*100) . "%] "
+    let foldGapStr      = repeat(' ', (27 - strwidth(foldSizeStr.foldLevelStr.foldPercentage)))
+    let expansionString = repeat(' ', w - strwidth(foldStartStr.foldGapStr.foldSizeStr.line.foldLevelStr.foldPercentage))
+    return line . expansionString . foldStartStr . foldGapStr . foldSizeStr . foldPercentage . foldLevelStr
+endfunction
+set foldtext=CustomFoldText()
+" }}}
+
+" -----------------------------------------------------------------------------
+" Split/Join {{{
+" -----------------------------------------------------------------------------
+" Basically this splits the current line into two new ones at the cursor position,
+" then joins the second one with whatever comes next.
+"
+" Example:                      Cursor Here
+"                                    |
+"                                    V
+" foo = ('hello', 'world', 'a', 'b', |'c',
+"        'd', 'e')
+"
+"            becomes
+"
+" foo = ('hello', 'world', 'a', 'b',
+"        'c', 'd', 'e')
+"
+" Especially useful for adding items in the middle of long lists/tuples in Python
+" while maintaining a sane text width.
+nnoremap K h/[^ ]<cr>"zd$jyyP^v$h"zpJk:s/\v +$//<cr>:noh<cr>j^
 " }}}
 
 " vim: fdm=marker

@@ -9,21 +9,19 @@ endif
 let colors_name="lucius"
 
 " TODO Need to add entry for conceal
-"
 
-" = Dark version =
-
-" == Normal color ==
+" = Dark version = {{{1
+" == Normal color == {{{2
 hi Normal           guifg=#e0e0e0           guibg=#202020
 hi Normal           ctermfg=253             ctermbg=234
+" }}}
 
-
-" == Comments ==
+" == Comments == {{{2
 hi Comment          guifg=#606060                                   gui=none
 hi Comment          ctermfg=240                                     cterm=none
+" }}}
 
-
-" == Constants ==
+" == Constants == {{{2
 " any constant
 hi Constant         guifg=#70c0d8                                   gui=none
 hi Constant         ctermfg=74                                      cterm=none
@@ -44,9 +42,9 @@ hi Boolean          ctermfg=74                                      cterm=none
 " float
 hi Float            guifg=#70c0d8                                   gui=none
 hi Float            ctermfg=74                                      cterm=none
+" }}}
 
-
-" == Identifiers ==
+" == Identifiers == {{{2
 " any variable name
 hi Identifier       guifg=#86c6b6                                   gui=none
 hi Identifier       ctermfg=116                                     cterm=none
@@ -55,9 +53,9 @@ hi IdentifierBold   ctermfg=116                                     cterm=bold
 " function, method, class
 hi Function         guifg=#86c6b6                                   gui=none
 hi Function         ctermfg=116                                     cterm=none
+" }}}
 
-
-" == Statements ==
+" == Statements == {{{2
 " any statement
 hi Statement        guifg=#b3d38c                                   gui=none
 hi Statement        ctermfg=150                                     cterm=none
@@ -81,9 +79,9 @@ hi Operator         ctermfg=150                                     cterm=none
 " any other keyword
 hi Keyword          guifg=#b3d38c                                   gui=none
 hi Keyword          ctermfg=150                                     cterm=none
+" }}}
 
-
-" == Preprocessor ==
+" == Preprocessor == {{{2
 " generic preprocessor
 hi PreProc          guifg=#e0e8b0                                   gui=none
 hi PreProc          ctermfg=187                                     cterm=none
@@ -101,9 +99,9 @@ hi Macro            ctermfg=187                                     cterm=none
 " #if, #else, #endif
 hi PreCondit        guifg=#e0e8b0                                   gui=none
 hi PreCondit        ctermfg=187                                     cterm=none
+" }}}
 
-
-" == Types ==
+" == Types == {{{2
 " int, long, char
 hi Type             guifg=#90d0a0                                   gui=none
 hi Type             ctermfg=115                                     cterm=none
@@ -118,9 +116,9 @@ hi Structure        ctermfg=115                                     cterm=none
 " typedef
 hi Typedef          guifg=#90d0a0                                   gui=none
 hi Typedef          ctermfg=115                                     cterm=none
+" }}}
 
-
-" == Special ==
+" == Special == {{{2
 " any special symbol
 hi Special          guifg=#b0a0c0                                   gui=none
 hi Special          ctermfg=182                                     cterm=none
@@ -141,9 +139,9 @@ hi SpecialComment   ctermfg=182                                     cterm=none
 " debugging statements
 hi Debug            guifg=#b0a0c0           guibg=NONE              gui=none
 hi Debug            ctermfg=182             ctermbg=NONE            cterm=none
+" }}}
 
-
-" == Text Markup ==
+" == Text Markup == {{{2
 " text that stands out, html links
 hi Underlined       guifg=fg                                        gui=underline
 hi Underlined       ctermfg=fg                                      cterm=underline
@@ -154,8 +152,10 @@ hi Error            ctermfg=167             ctermbg=236            cterm=none
 hi Todo             guifg=#e0e090           guibg=NONE              gui=underline
 hi Todo             ctermfg=186             ctermbg=NONE            cterm=underline
 " match parenthesis, brackets
-hi MatchParen       guifg=#9F5D5C          guibg=NONE              gui=bold
+hi MatchParen       guifg=#9F5D5C           guibg=NONE              gui=bold
 hi MatchParen       ctermfg=46              ctermbg=NONE            cterm=bold
+hi MatchTag         ctermfg=black           ctermbg=244
+hi MatchTag         guifg=black             guibg=#8F996B
 " the '~' and '@' and showbreak, '>' double wide char doesn't fit on line
 hi NonText          guifg=#323240                                   gui=none
 hi NonText          ctermfg=238                                     cterm=none
@@ -166,15 +166,15 @@ hi SpecialKey       ctermfg=239
 " titles for output from :set all, :autocmd, etc
 hi Title            guifg=#62bdde                                   gui=none
 hi Title            ctermfg=74                                      cterm=none
+" }}}
 
-
-" == Ignore ==
+" == Ignore == {{{2
 " left blank, hidden
 hi Ignore           guifg=bg
 hi Ignore           ctermfg=bg
+" }}}
 
-
-" == Text Selection ==
+" == Text Selection == {{{2
 " character under the cursor
 hi Cursor           guifg=bg                guibg=#a3e3ed
 hi Cursor           ctermfg=bg              ctermbg=153
@@ -203,9 +203,9 @@ hi IncSearch        ctermfg=87                                      cterm=revers
 " hlsearch (last search pattern), also used for quickfix
 hi Search                                    guibg=#ffaa33          gui=none
 hi Search                                    ctermbg=214            cterm=none
+" }}}
 
-
-" == UI ==
+" == UI == {{{2
 " normal item in popup
 hi Pmenu            guifg=#e0e0e0           guibg=#303840           gui=none
 hi Pmenu            ctermfg=253             ctermbg=233             cterm=none
@@ -237,16 +237,16 @@ hi TabLineSel       ctermfg=254             ctermbg=236             cterm=bold
 hi VertSplit        guifg=#777777           guibg=#363946           gui=none
 hi VertSplit        ctermfg=242             ctermbg=237             cterm=none
 " line used for closed folds
-hi Folded           guifg=#8A9199           guibg=#202020           gui=none
+hi Folded           guifg=#8A9199           guibg=#262628           gui=none
 hi Folded           ctermfg=117             ctermbg=235             cterm=none
 " column on side used to indicated open and closed folds
 hi FoldColumn       guifg=#8A9199           guibg=#363946           gui=none
 hi FoldColumn       ctermfg=117             ctermbg=238             cterm=none
+" }}}
 
-
-" == Spelling ==
+" == Spelling == {{{2
 " word not recognized
-hi SpellBad         guisp=#BF1E1E                                   gui=undercurl
+hi SpellBad         guisp=#6D2727                                   gui=undercurl
 hi SpellBad                                 ctermbg=196             cterm=undercurl
 " word not capitalized
 hi SpellCap         guisp=#eeee00                                   gui=undercurl
@@ -257,9 +257,9 @@ hi SpellRare                                ctermbg=214             cterm=underc
 " wrong spelling for selected region
 hi SpellLocal       guisp=#ffa500                                   gui=undercurl
 hi SpellLocal                               ctermbg=214             cterm=undercurl
+" }}}
 
-
-" == Diff ==
+" == Diff == {{{2
 " added line
 hi DiffAdd          guifg=#80a090           guibg=#313c36           gui=none
 hi DiffAdd          ctermfg=fg              ctermbg=22              cterm=none
@@ -272,9 +272,9 @@ hi DiffDelete       ctermfg=fg              ctermbg=58              cterm=none
 " changed text within line
 hi DiffText         guifg=#f05060           guibg=#4a343a           gui=bold
 hi DiffText         ctermfg=203             ctermbg=52              cterm=bold
+" }}}
 
-
-" == Misc ==
+" == Misc == {{{2
 " directory names and other special names in listings
 hi Directory        guifg=#c0e0b0                                   gui=none
 hi Directory        ctermfg=151                                     cterm=none
@@ -317,31 +317,31 @@ hi WildMenu         ctermfg=16              ctermbg=186             cterm=bold
 " color column highlighting
 hi ColorColumn      guifg=NONE              guibg=#1F1F1F           gui=none
 hi ColorColumn      ctermfg=NONE            ctermbg=95              cterm=none
+" }}}
+" 1}}}
 
-
-" == Vimwiki Colors ==
+" == Vimwiki Colors == {{{
 hi link VimwikiHeader1 PreProcBold
 hi link VimwikiHeader2 ConstantBold
 hi link VimwikiHeader3 StatementBold
 hi link VimwikiHeader4 IdentifierBold
 hi link VimwikiHeader5 SpecialBold
 hi link VimwikiHeader6 TypeBold
+" }}}
 
-"————————————————————————————————————————————————————————————————————————————————————————————————————————————————————"
-" Show Mark
-"————————————————————————————————————————————————————————————————————————————————————————————————————————————————————"
-
+" == Show Mark == {{{
 hi ShowMarksHLl guifg=#363946 guibg=#181818 gui=bold
 hi ShowMarksHLo guifg=#363946 guibg=#181818 gui=bold
 hi ShowMarksHLu guifg=#363946 guibg=#181818 gui=bold
 hi ShowMarksHLm guifg=#363946 guibg=#181818 gui=underline
 hi ShowMarksHLm guifg=#363946 guibg=#181818 gui=underline
 hi ShowMarksHLm guifg=#363946 guibg=#181818 gui=underline
+" }}}
 
-
-"————————————————————————————————————————————————————————————————————————————————————————————————————————————————————"
-" Multiple-cursor
-"————————————————————————————————————————————————————————————————————————————————————————————————————————————————————"
+" == Multiple-cursor == {{{
 " Default highlighting (see help :highlight and help :highlight-link)
 highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
 highlight link multiple_cursors_visual Visual
+" }}}
+
+" vim: foldmethod=marker

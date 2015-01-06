@@ -3,24 +3,27 @@ if has('vim_starting')
     set nocompatible               " Be iMproved
 
     " Required:
-    set runtimepath+=/home/lex/.vim/bundle/neobundle.vim/
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 " Required:
-call neobundle#begin(expand('/home/lex/.vim/bundle'))
+call neobundle#begin(expand('~/.vim/bundle'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" Add or remove your Bundles here: {{{
+" Add or remove your Bundles here: {{{1
+
+" Global {{{2
+" -----------------------------------------------------------------------------
+NeoBundle 'Shougo/neocomplete.vim', {
+            \ 'depends' : 'Shougo/context_filetype.vim',
+            \ 'disabled' : !has('lua'),
+            \ 'vim_version' : '7.3.885'
+            \ }
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/neocomplcache.vim', {'depends' :
-		    \ [ 'Shougo/neosnippet.git',
-		    \   ['rstacruz/sparkup', {'rtp': 'vim'}],
-		    \ ]}
-
 NeoBundle 'Shougo/vimproc.vim', {
             \ 'build' : {
             \     'windows' : 'tools\\update-dll-mingw',
@@ -28,132 +31,195 @@ NeoBundle 'Shougo/vimproc.vim', {
             \     'linux' : 'make',
             \    },
             \ }
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'kien/ctrlp.vim'
+"NeoBundle 'Shougo/context_filetype.vim'
 
-NeoBundle 'bling/vim-airline'
-NeoBundle '2072/PHP-Indenting-for-VIm'
+" Ctrl-P {{{3
+" -----------------------------------------------------------------------------
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'mattn/ctrlp-gist'
+NeoBundle 'mattn/ctrlp-launcher'
+NeoBundle 'mattn/ctrlp-mark'
+NeoBundle 'mattn/ctrlp-register'
+NeoBundle 'sgur/ctrlp-extensions.vim'
+NeoBundle 'tacahiroy/ctrlp-funky'
+NeoBundle 'pielgrzym/ctrlp-sessions'
+" 3}}}
+
+" Git {{{3
+" -----------------------------------------------------------------------------
+NeoBundle 'gregsexton/gitv'
+NeoBundle 'tpope/vim-fugitive'
+" 3}}}
+
+"NeoBundle "menghan/CmdlineComplete"
+"NeoBundle 'qingxbl/Mark--Karkat'
 NeoBundle 'AndrewRadev/linediff.vim'
 NeoBundle 'AndrewRadev/switch.vim'
 NeoBundle 'LStinson/vim-project'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'MarcWeber/vim-addon-mw-utils'
+NeoBundle 'MattesGroeger/vim-bookmarks'
 NeoBundle 'Rykka/colorv.vim'
-NeoBundle 'edsono/vim-dbext'
+NeoBundleLazy 'Shougo/vimshell', {
+          \ 'depends' : 'Shougo/vimproc.vim',
+          \ 'autoload' : {
+          \   'commands' : [{ 'name' : 'VimShell',
+          \                   'complete' : 'customlist,vimshell#complete'},
+          \                 'VimShellExecute', 'VimShellInteractive',
+          \                 'VimShellTerminal', 'VimShellPop'],
+          \   'mappings' : '<Plug>'
+          \ }}
+NeoBundle 'Valloric/MatchTagAlways'
+NeoBundle 'YankRing.vim'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'guns/xterm-color-table.vim'
+NeoBundle 'inkarkat/vim-localrc'
+NeoBundle 'jlanzarotta/bufexplorer'
+NeoBundle 'jpalardy/vim-slime'
+NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'kana/vim-textobj-line'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kshenoy/vim-signature'
+NeoBundle 'lilydjwg/colorizer'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'mattn/gist-vim'
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mhinz/vim-startify'
+NeoBundle 'mihaifm/vimpanel'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'sjl/gundo.vim'
+NeoBundle 'skroll/Smart-Tabs'
+NeoBundle 'smancill/conky-syntax.vim'
+NeoBundle 'szw/vim-bufferlist'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'tomtom/quickfixsigns_vim'
+NeoBundle 'vim-scripts/Align'
+NeoBundle 'vim-scripts/AutoAlign'
+NeoBundle 'vim-scripts/FuzzyFinder'
+NeoBundle 'vim-scripts/L9'
+NeoBundle 'vim-scripts/Tail-Bundle'
+NeoBundle 'vim-scripts/The-NERD-Commenter'
+NeoBundle 'vim-scripts/ack.vim'
+NeoBundle 'vim-scripts/boost.vim'
+NeoBundle 'vim-scripts/ftpsync'
+NeoBundle 'vim-scripts/lua_omni'
+NeoBundle 'vim-scripts/mru.vim'
+NeoBundle 'vim-scripts/netrw.vim'
+NeoBundle 'vim-scripts/repeat.vim'
+NeoBundle 'vim-scripts/restart.vim'
+NeoBundle 'vim-scripts/surround.vim'
+"NeoBundle 'xolox/vim-easytags'
+NeoBundle 'xolox/vim-misc'
+NeoBundle 'xolox/vim-session'
+NeoBundle 'xolox/vim-shell'
 NeoBundle 'godlygeek/csapprox'
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'greyblake/vim-preview'
 NeoBundle 'haesken/pentadactyl.vim'
 NeoBundle 'honza/vim-snippets'
-NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'jiangmiao/auto-pairs'
-NeoBundle 'jistr/vim-nerdtree-tabs'
-NeoBundle 'johnhamelink/blade.vim'
-NeoBundle 'jpalardy/vim-slime'
-NeoBundle 'ervandew/supertab'
-NeoBundle 'vim-php/vim-php-refactoring'
-NeoBundle 'vim-php/tagbar-phpctags.vim'
-
-NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'juvenn/mustache.vim'
-NeoBundle 'kana/vim-textobj-line'
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'lilydjwg/colorizer'
-NeoBundle 'lleixat/PDV--phpDocumentor-for-Vim'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'mattn/ctrlp-gist'
-NeoBundle 'mattn/ctrlp-launcher'
-NeoBundle 'mattn/ctrlp-mark'
-NeoBundle 'mattn/ctrlp-register'
-NeoBundle 'mattn/gist-vim'
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'mbra/prettysql'
-NeoBundle 'mhinz/vim-startify'
-NeoBundle 'mihaifm/vimpanel'
-NeoBundle 'myhere/vim-nodejs-complete'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'nelstrom/vim-markdown-preview'
-NeoBundle 'othree/fecompressor.vim'
-NeoBundle 'othree/html5-syntax.vim'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'pielgrzym/ctrlp-sessions'
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'sgur/ctrlp-extensions.vim'
-NeoBundle 'shawncplus/phpcomplete.vim'
-NeoBundle 'sjl/gundo.vim'
-NeoBundle 'skroll/Smart-Tabs'
-NeoBundle 'smith/javaScriptLint.vim'
-NeoBundle 'suan/vim-instant-markdown'
-NeoBundle 'szw/vim-bufferlist'
-NeoBundle 'tacahiroy/ctrlp-funky'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'tomtom/checksyntax_vim'
-NeoBundle 'tomtom/quickfixsigns_vim'
-NeoBundle 'tomtom/tlib_vim'
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'vim-scripts/Align'
-NeoBundle 'vim-scripts/AutoAlign'
-NeoBundle 'vim-scripts/FindInNERDTree'
-NeoBundle 'vim-scripts/FuzzyFinder'
-NeoBundle 'vim-scripts/Javascript-syntax-with-Ajax-Support'
-NeoBundle 'vim-scripts/L9'
-"NeoBundle 'qingxbl/Mark--Karkat'
-NeoBundle "menghan/CmdlineComplete"
-NeoBundle 'mjoey/vim-magento'
-NeoBundle 'vim-scripts/NERD_tree-Project'
-NeoBundle 'vim-scripts/SQLUtilities'
-NeoBundle 'vim-scripts/The-NERD-Commenter'
-NeoBundle 'kshenoy/vim-signature'
-NeoBundle 'vim-scripts/YankRing.vim'
-NeoBundle 'vim-scripts/ack.vim'
-NeoBundle 'vim-scripts/boost.vim'
-"NeoBundle 'vim-scripts/bufexplorer.zip'
-NeoBundle 'vim-scripts/ftpsync'
-NeoBundle 'vim-scripts/jQuery'
-NeoBundle 'vim-scripts/lua_omni'
-NeoBundle 'vim-scripts/mru.vim'
-NeoBundle 'vim-scripts/netrw.vim'
-NeoBundle 'vim-scripts/publish.vim'
-NeoBundle 'vim-scripts/repeat.vim'
-NeoBundle 'vim-scripts/restart.vim'
-NeoBundle 'vim-scripts/surround.vim'
-NeoBundle 'vim-scripts/vcscommand.vim'
-NeoBundle 'vim-scripts/xmledit'
-NeoBundle 'xolox/vim-easytags'
-NeoBundle 'xolox/vim-misc'
-NeoBundle 'xolox/vim-session'
-NeoBundle 'xolox/vim-shell'
-"NeoBundle 'SirVer/ultisnips'
-"NeoBundle 'JazzCore/neocomplcache-ultisnips'
-NeoBundle 'Valloric/MatchTagAlways'
-"NeoBundle 'Valloric/YouCompleteMe', {
-            "\ 'build': {
-            "\     'linux': './install.sh  --clang-completer',
-            "\   },
-            "\ }
-NeoBundle 'evidens/vim-twig'
-NeoBundle 'gregsexton/gitv'
-NeoBundle 'guns/xterm-color-table.vim'
-NeoBundle 'inkarkat/vim-localrc'
-NeoBundle 'jlanzarotta/bufexplorer'
-NeoBundle 'joonty/vim-phpunitqf'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'rdnelson/vim-multicursor'
 NeoBundle 'sheerun/vim-polyglot'
-NeoBundle 'smancill/conky-syntax.vim'
-NeoBundle 'tpope/vim-haml'
-NeoBundle 'vim-scripts/Tail-Bundle'
-NeoBundle 'MattesGroeger/vim-bookmarks'
-NeoBundle 'scil/vim-gf-user-laravel'
+NeoBundle 'tomtom/checksyntax_vim'
+NeoBundle 'tomtom/tlib_vim'
 
-" You can specify revision/branch/tag.
-NeoBundle 'Shougo/vimshell'
-" }}}
+" NerdTree {{{3
+" -----------------------------------------------------------------------------
+NeoBundle 'jistr/vim-nerdtree-tabs'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'vim-scripts/FindInNERDTree'
+NeoBundle 'vim-scripts/NERD_tree-Project'
+" 3}}}
+" 2}}} / Global
+
+" PHP {{{2
+" -----------------------------------------------------------------------------
+NeoBundleLazy '2072/PHP-Indenting-for-VIm',
+            \ {'autoload': {'filetypes': ['php']}}
+NeoBundleLazy 'vim-php/vim-php-refactoring',
+            \ {'autoload': {'filetypes': ['php']}}
+NeoBundleLazy 'lleixat/PDV--phpDocumentor-for-Vim',
+            \ {'script_type' : 'ftplugin'}
+NeoBundleLazy 'vim-php/tagbar-phpctags.vim',
+            \ {'autoload': {'filetypes': ['php']}}
+NeoBundleLazy 'mjoey/vim-magento',
+            \ {'autoload': {'filetypes': ['php']}}
+"NeoBundleLazy 'shawncplus/phpcomplete.vim',
+"           \ {'autoload': {'filetypes': ['php']}}
+NeoBundleLazy 'joonty/vim-phpunitqf',
+            \ {'autoload': {'filetypes': ['php']}}
+" Laravel {{{3
+NeoBundleLazy 'johnhamelink/blade.vim',
+            \ {'autoload': {'filetypes': ['blade.php']}}
+NeoBundleLazy 'scil/vim-gf-user-laravel',
+            \ {'autoload': {'filetypes': ['php']}}
+
+" 3}}}
+
+" 2}}}
+
+" Javascript {{{2
+" -----------------------------------------------------------------------------
+NeoBundleLazy 'kchmck/vim-coffee-script'
+NeoBundleLazy 'myhere/vim-nodejs-complete'
+NeoBundleLazy 'othree/javascript-libraries-syntax.vim',
+            \ {'name': 'js-libs'}
+NeoBundleLazy 'vim-scripts/Javascript-syntax-with-Ajax-Support'
+NeoBundleLazy 'smith/javaScriptLint.vim'
+"NeoBundleLazy 'jelera/vim-javascript-syntax'
+"NeoBundleLazy 'vim-scripts/jQuery'
+"NeoBundleLazy 'pangloss/vim-javascript'
+" 2}}}
+
+" WebFront {{{2
+" -----------------------------------------------------------------------------
+NeoBundleLazy 'evidens/vim-twig'
+NeoBundleLazy 'juvenn/mustache.vim'
+NeoBundleLazy 'othree/fecompressor.vim'
+NeoBundleLazy 'othree/html5-syntax.vim', {
+            \ 'autoload': {'filetypes':
+            \ ['htm','phtml','html', 'html5']
+            \ }
+            \ }
+NeoBundleLazy 'mattn/emmet-vim', {
+            \ 'autoload':
+            \ {'filetypes':
+            \ ['xhtml','htm','phtml','html', 'html5', 'xml']
+            \ }
+            \ }
+NeoBundleLazy 'tpope/vim-haml', {
+            \ 'autoload': {'filetypes': ['haml'] }
+            \ }
+
+
+" 2}}}
+
+" Sql {{{2
+" -----------------------------------------------------------------------------
+NeoBundleLazy 'edsono/vim-dbext',
+            \ {'autoload': {'filetypes': ['sql', 'SQL']}}
+NeoBundleLazy 'mbra/prettysql',
+            \ {'autoload': {'filetypes': ['sql', 'SQL']}}
+NeoBundleLazy 'vim-scripts/SQLUtilities',
+            \ {'autoload': {'filetypes': ['sql', 'SQL']}}
+" 2}}}
+
+" Markdown {{{2
+" -----------------------------------------------------------------------------
+NeoBundleLazy 'plasticboy/vim-markdown',
+            \ {'autoload': {'filetypes': ['md', 'markdown']}}
+NeoBundleLazy 'suan/vim-instant-markdown',
+            \ {'autoload': {'filetypes': ['md', 'markdown']}}
+" 2}}}
+
+" Ruby {{{2
+" -----------------------------------------------------------------------------
+NeoBundleLazy 'vim-ruby/vim-ruby'
+" 2}}}
+
+" 1}}}
 
 " Required:
 call neobundle#end()
@@ -166,4 +232,4 @@ filetype plugin indent on
 NeoBundleCheck
 "End NeoBundle Scripts-------------------------
 
-" vim: fdm=marker 
+" vim: fdm=marker

@@ -216,12 +216,12 @@ class PHPCtags
             }
         } elseif ($node instanceof PHPParser_Node_Expr_FuncCall) {
             switch ($node->name) {
-                case 'define':
-                    $kind = 'd';
-                    $node = $node->args[0]->value;
-                    $name = $node->value;
-                    $line = $node->getLine();
-                    break;
+            case 'define':
+                $kind = 'd';
+                $node = $node->args[0]->value;
+                $name = $node->value;
+                $line = $node->getLine();
+                break;
             }
         } else {
             // we don't care the rest of them.
@@ -286,11 +286,11 @@ class PHPCtags
                 in_array('z', $this->mOptions['fields']) && $str .= "kind:";
                 $str .= "\t" . $struct['kind'];
             } else
-            #field=K, kind of tag as fullname
-            if (in_array('K', $this->mOptions['fields'])) {
-                in_array('z', $this->mOptions['fields']) && $str .= "kind:";
-                $str .= "\t" . self::$mKinds[$struct['kind']];
-            }
+            	#field=K, kind of tag as fullname
+            	if (in_array('K', $this->mOptions['fields'])) {
+                	in_array('z', $this->mOptions['fields']) && $str .= "kind:";
+                	$str .= "\t" . self::$mKinds[$struct['kind']];
+            	}
 
             #field=n
             if (in_array('n', $this->mOptions['fields'])) {
@@ -303,33 +303,33 @@ class PHPCtags
                 $scope = array_pop($struct['scope']);
                 list($type, $name) = each($scope);
                 switch ($type) {
-                    case 'class':
-                        // n_* stuffs are namespace related scope variables
-                        // current > class > namespace
-                        $n_scope = array_pop($struct['scope']);
-                        if(!empty($n_scope)) {
-                            list($n_type, $n_name) = each($n_scope);
-                            $s_str = 'class:' . $n_name . '\\' . $name;
-                        } else {
-                            $s_str = 'class:' . $name;
-                        }
-                        break;
-                    case 'method':
-                        // c_* stuffs are class related scope variables
-                        // current > method > class > namespace
-                        $c_scope = array_pop($struct['scope']);
-                        list($c_type, $c_name) = each($c_scope);
-                        $n_scope = array_pop($struct['scope']);
-                        if(!empty($n_scope)) {
-                            list($n_type, $n_name) = each($n_scope);
-                            $s_str = 'method:' . $n_name . '\\' . $c_name . '::' . $name;
-                        } else {
-                            $s_str = 'method:' . $c_name . '::' . $name;
-                        }
-                        break;
-                    default:
-                        $s_str = $type . ':' . $name;
-                        break;
+                case 'class':
+                    // n_* stuffs are namespace related scope variables
+                    // current > class > namespace
+                    $n_scope = array_pop($struct['scope']);
+                    if(!empty($n_scope)) {
+                        list($n_type, $n_name) = each($n_scope);
+                        $s_str = 'class:' . $n_name . '\\' . $name;
+                    } else {
+                        $s_str = 'class:' . $name;
+                    }
+                    break;
+                case 'method':
+                    // c_* stuffs are class related scope variables
+                    // current > method > class > namespace
+                    $c_scope = array_pop($struct['scope']);
+                    list($c_type, $c_name) = each($c_scope);
+                    $n_scope = array_pop($struct['scope']);
+                    if(!empty($n_scope)) {
+                        list($n_type, $n_name) = each($n_scope);
+                        $s_str = 'method:' . $n_name . '\\' . $c_name . '::' . $name;
+                    } else {
+                        $s_str = 'method:' . $c_name . '::' . $name;
+                    }
+                    break;
+                default:
+                    $s_str = $type . ':' . $name;
+                    break;
                 }
                 $str .= "\t" . $s_str;
             }

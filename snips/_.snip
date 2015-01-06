@@ -82,3 +82,11 @@ snippet     filename_lower_camel
 alias       fnamelc
 options     word
     `substitute(bufname('%') =='[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r'), '\%(_\(.\)\)', '\u\1', 'g')`${0}
+
+snippet     fd 
+abbr        Insert folding 
+alias       fold 
+options     word
+prev_word   '^'
+    ${1:TARGET} {{{${2:2}
+    $2}}}

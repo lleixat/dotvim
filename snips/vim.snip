@@ -1,8 +1,52 @@
-snippet     comm
-abbr        Comment block
+snippet     header
+abbr        Add comment header and fold block
+alias       head h
 options     head
     " -----------------------------------------------------------------------------
-    " ${0:Comment} {{{
+    " ${0:My Comment Here} {{{${2:1}
     " -----------------------------------------------------------------------------
     ${1:TARGET}
-    "}}}
+    ${3}
+    " $2}}}
+
+snippet     funccall
+abbr        fu! Name() .. endf com! Name call Name()
+alias       fc fcall
+options     head
+prev_word   '^'
+    function! ${1:Name}()
+        ${0}
+    endfunction
+    command! $1 call $1()
+
+
+snippet     funccallrange
+abbr        fu! Name() .. endf com! -range Name call Name()
+alias       fcr fcallrange fcg
+options     head
+prev_word   '^'
+    function! ${1:Name}()
+        ${0}
+    endfunction
+    command! -range $1 call $1()
+
+snippet     comrange
+abbr        com! -nargs -range=% Name call Name()
+alias       cr comr
+options     head
+prev_word   '^'
+    command! ${1:-nargs=${2:?\}} -range${3:#:=%} ${4:MyFunc} call $4(${5:<line1>,<line2>${6:#:,\}})${0}
+        
+
+snippet     comcall
+abbr        com! Name call Name()
+alias       cc comc
+options     head
+    command! ${1:MyFunc} call $1(${2:arg1${3:,arg2\}})${0}
+
+snippet     mod
+abbr        " vim: <fdm=marker> ...
+alias       modeline fdm ts
+options     head
+prev_word   '^'
+    " vim: ${1:fdm=${2:marker\}}${3: ts=${4:4\}}${5: expandtab:${6: \}}

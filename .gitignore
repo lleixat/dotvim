@@ -3,3 +3,6 @@
 .session
 sessions/
 record/
+bundle/*
+!bundle/.neobundle/           
+!neobundle.vim/
