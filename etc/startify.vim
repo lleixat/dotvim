@@ -15,11 +15,12 @@ let g:startify_list_order = [
 let g:startify_session_dir   = '~/.vim/sessions'
 let g:startify_show_sessions = 1
 let g:startify_bookmarks     = [
-            \ '~/.vimrc',
-            \ '~/.vim/etc/',
+            \ '~/.vim/vimrc',
             \ '~/.vim/snips/',
             \ '~/.vim/etc/helpers.vim',
             \ '~/.vim/etc/startify.vim',
+            \ '~/.vim/etc/switch_definitions.vim',
+            \ '~/.vim/etc/neobundle.vim',
             \ '~/Dev/parfum_d_O/src/',
             \ '~/bin/mageit',
             \ ]

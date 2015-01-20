@@ -90,3 +90,46 @@ options     word
 prev_word   '^'
     ${1:TARGET} {{{${2:2}
     $2}}}
+
+# Ascii chars
+snippet     -->
+abbr         [→] ASCII Arrow Right
+alias       ---
+options     word
+prev_word   '^'
+    →${0}
+    
+snippet     <--
+abbr        [←] ASCII Arrow Left
+alias       --- aal
+options     word
+prev_word   '^'
+    ←${0}
+
+snippet     dot
+abbr        [•] ASCII Small Bullet
+alias       --- asb
+options     word
+prev_word   '^'
+    •${0}
+
+snippet     mdot
+abbr        [·] ASCII Middle Dot
+alias       --- amd
+options     word
+prev_word   '^'
+    ·${0}
+
+snippet     rangle
+abbr        ASCII Right Single Angle Quote
+alias       --- arsaq
+options     word
+prev_word   '^'
+    ›${0}
+
+snippet     ams
+abbr        ASCII Multiplication Sign
+alias       ---
+options     word
+prev_word   '^'
+    ×${0}

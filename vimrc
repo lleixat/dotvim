@@ -86,11 +86,19 @@ exec "source ~/.vim/etc/startify.vim"
 " Bundles
 exec "source ~/.vim/etc/neobundle.vim"
 
+" Unite
+exec "source ~/.vim/etc/unite.vim"
+
 " Tagbar
 exec "source ~/.vim/etc/tagbar_types.vim"
 
-" Startify
-exec "source ~/.vim/etc/startify.vim"
+" -----------------------------------------------------------------------------
+" Switch {{{
+" -----------------------------------------------------------------------------
+nnoremap - :Switch<cr>
+runtime etc/switch_definitions.vim
+
+" }}}
 " 1}}}
 
 " Indent hilight
@@ -313,33 +321,35 @@ nmap <C-l><C-l> gg=G''
 " }}}
 
 " -----------------------------------------------------------------------------
-" CtrlP {{{
+" Unite {{{1
 " -----------------------------------------------------------------------------
-nmap <C-p> :CtrlP<cr>
-nmap <C-m> :CtrlPMark<cr>
-nmap <C-b> :CtrlPBuff<cr>
-nmap <C-l> :CtrlPLauncher<cr>
-nmap <C-g> :CtrlPGist<cr>
-nmap <C-y> :CtrlPYankring<cr>
-nmap <C-s> :CtrlPSessions<cr>
-let g:ctrlp_extensions = [
-            \ 'funky', 'cmdline', 'mark',
-            \ 'launcher', 'gist', 'yankring'
-            \ ]
+" Like ctrlp.vim settings.
+call unite#custom#profile('default', 'context', {
+            \   'start_insert': 1,
+            \   'winheight': 10,
+            \   'direction': 'botleft',
+            \ })
 
-let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/]\.(git|hg|svn|sass-cache)$',
-            \ 'file': '\v\.(exe|so|dll)$',
-            \ }
+" Prompt choices.
+call unite#custom#profile('default', 'context', {
+            \   'prompt': '» ',
+            \ })
 
-nnoremap <Leader>fu :CtrlPFunky<Cr>
-" narrow the list down with a word under cursor
-nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <C-p> :<C-u>Unite -start-insert buffer file_rec/async:!<CR>
+" Yank
+let g:unite_source_history_yank_enable = 1
+nnoremap <C-y> :<C-u>Unite history/yank<CR>
+" Menu
+nnoremap <C-m> :<C-u>Unite menu<CR>
+" Buffers
+nnoremap <C-b> :<C-u>Unite buffer<CR>
+" Outline
+nnoremap <C-h> :<C-u>Unite outline<CR>
+" Git grep
+nnoremap <C-g> :<C-u>Unite grep/git<CR>
 
-let g:ctrlp_session_dir = ".vim/sessions"
-let g:ctrlp_max_height  = 15
-let g:ctrlp_show_hidden = 1
-" }}}
+" 1}}}
 
 " -----------------------------------------------------------------------------
 " Yankring
@@ -348,14 +358,6 @@ let g:ctrlp_show_hidden = 1
 " Replace conflicted mapping
 let g:yankring_replace_n_pkey = ''
 let g:yankring_replace_n_nkey = ''
-" }}}
-
-" -----------------------------------------------------------------------------
-" Switch {{{
-" -----------------------------------------------------------------------------
-nnoremap - :Switch<cr>
-runtime etc/switch_definitions.vim
-
 " }}}
 
 " -----------------------------------------------------------------------------
@@ -612,6 +614,26 @@ map <S-Left>  :bprevious<CR>
 " Toggle comments
 nmap <C-x><C-x> ,c<space>
 vmap <C-x><C-x> ,c<space>
+" }}}
+
+"------------------------------------------------------------------------------
+
+"------------------------------------------------------------------------------
+" Surround mapping {{{
+"------------------------------------------------------------------------------
+function! Map_surroundchars() abort
+    let surround_chars = ['"', '`', '(', '[', '{', '<', "'"]
+    for char in surround_chars
+        " Surround
+        execute 'nmap <C-s><C-s>' . char . ' viwS' . char . 'lvi' . char
+    endfor
+    " Delete surrounding char
+    execute 'nmap <C-s><C-d> ds'
+    " Change surrounding char
+    execute 'nmap <C-s><C-c> cs'
+endfunction
+execute Map_surroundchars()
+
 " }}}
 
 "------------------------------------------------------------------------------

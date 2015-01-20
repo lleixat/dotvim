@@ -22,6 +22,16 @@ NeoBundle 'Shougo/neocomplete.vim', {
             \ 'disabled' : !has('lua'),
             \ 'vim_version' : '7.3.885'
             \ }
+
+" Unite {{{3
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'lambdalisue/unite-grep-vcs'
+NeoBundle 'tungd/unite-session'
+NeoBundleLazy 'heavenshell/unite-zf'
+NeoBundleLazy 'heavenshell/unite-sf2'
+" 3}}}
+
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/vimproc.vim', {
@@ -32,18 +42,6 @@ NeoBundle 'Shougo/vimproc.vim', {
             \    },
             \ }
 "NeoBundle 'Shougo/context_filetype.vim'
-
-" Ctrl-P {{{3
-" -----------------------------------------------------------------------------
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'mattn/ctrlp-gist'
-NeoBundle 'mattn/ctrlp-launcher'
-NeoBundle 'mattn/ctrlp-mark'
-NeoBundle 'mattn/ctrlp-register'
-NeoBundle 'sgur/ctrlp-extensions.vim'
-NeoBundle 'tacahiroy/ctrlp-funky'
-NeoBundle 'pielgrzym/ctrlp-sessions'
-" 3}}}
 
 " Git {{{3
 " -----------------------------------------------------------------------------
@@ -209,8 +207,6 @@ NeoBundleLazy 'vim-scripts/SQLUtilities',
 " Markdown {{{2
 " -----------------------------------------------------------------------------
 NeoBundleLazy 'plasticboy/vim-markdown',
-            \ {'autoload': {'filetypes': ['md', 'markdown']}}
-NeoBundleLazy 'suan/vim-instant-markdown',
             \ {'autoload': {'filetypes': ['md', 'markdown']}}
 " 2}}}
 
