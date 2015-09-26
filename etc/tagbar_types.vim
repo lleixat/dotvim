@@ -55,6 +55,16 @@ let g:tagbar_type_markdown = {
             \ 'sort' : 0
             \ }
 
+let g:tagbar_type_notes = {
+            \ 'ctagstype' : 'markdown',
+            \ 'kinds' : [
+            \ 'h:headings',
+            \ 'l:links',
+            \ 'i:images'
+            \ ],
+            \ 'sort' : 0
+            \ }
+
 let g:tagbar_type_php = {
             \ 'ctagstype' : 'php',
             \ 'kinds' : [
@@ -65,25 +75,26 @@ let g:tagbar_type_php = {
             \ ]
             \ }
 
-let g:tagbar_type_shell = {
-            \ 'ctagstype' : 'shell',
+let g:tagbar_type_sh = {
+            \ 'ctagstype' : 'sh',
             \ 'kinds' : [
-            \ 'f:function',
-            \ 'a:alias',
+            \ 'v:Variable declarations:1:0',
+            \ 'f:Function',
+            \ 'a:Alias',
             \ ]
             \ }
 
-let g:tagbar_type_javascript = {
-            \ 'ctagstype' : 'javascript',
-            \ 'kinds' : [
-            \ 'a:array',
-            \ 'v:variable',
-            \ 's:string',
-            \ 'o:object',
-            \ 'f:function',
-            \ ],
-            \ 'sort' : 1
-            \ }
+"let g:tagbar_type_javascript = {
+            "\ 'ctagstype' : 'javascript',
+            "\ 'kinds' : [
+            "\ 'a:array',
+            "\ 'v:variable',
+            "\ 's:string',
+            "\ 'o:object',
+            "\ 'f:function',
+            "\ ],
+            "\ 'sort' : 1
+            "\ }
 
 "let g:tagbar_type_jpp = {
             "\ 'ctagstype' : 'jpp',
@@ -98,30 +109,38 @@ let g:tagbar_type_javascript = {
             "\ ]
             "\ }
             "
-            
-let g:tagbar_type_html = {
-            \ 'ctagstype' : 'html',
+let g:tagbar_type_vim = {
+            \ 'ctagstype' : 'vim',
             \ 'kinds' : [
-            \ 'f:JavaScript functions',
-            \ 'a:named anchors',
-            \ 'r:html',
-            \ 'b:body',
-            \ 'o:object',
-            \ 'c:class',
+            \ 't:Coment Bocks',
+            \ 'v:variables',
+            \ 'f:functions',
+            \ 'a:autocommand groups',
+            \ 'c:commands',
+            \ 'm:maps',
             \ ],
-            \ 'ctagsargs' : '-f - --html-kinds=fabr'
             \ }
 
-let g:tagbar_type_html = {
-            \ 'ctagstype' : 'html',
-            \ 'kinds' : [
-            \ 'f:JavaScript functions',
-            \ 'a:named anchors',
-            \ 'r:html',
-            \ 'b:body',
-            \ 'o:object',
-            \ 'c:class',
-            \ ],
-            \ 'ctagsargs' : '-f - --html-kinds=fabr'
-            \ }
 
+"let g:tagbar_type_html = {
+            "\ 'ctagstype' : 'html',
+            "\ 'kinds' : [
+            "\ 'f:JavaScript functions',
+            "\ 'a:named anchors',
+            "\ 'r:html',
+            "\ 'b:body',
+            "\ 'o:object',
+            "\ 'c:class',
+            "\ ],
+            "\ 'ctagsargs' : '-f - --html-kinds=fabr'
+            "\ }
+
+let g:tagbar_type_ctags = {
+            \ 'ctagstype' : 'ctags',
+            \ 'kinds' : [
+            \ 'e:Glob Exclude:1:0',
+            \ 'k:Kinds',
+            \ 'd:Lang definitions',
+            \ ],
+            \ 'sort': 1
+            \ }

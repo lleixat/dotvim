@@ -37,7 +37,7 @@ com! -range Imcopy <line1>,<line2>call Imcopy()
 "}}}
 
 " -----------------------------------------------------------------------------
-" Hastebin "{{{
+" Hastebin {{{
 " -----------------------------------------------------------------------------
 function! Haste()
     let a:h_srv= $HASTE_SERVER
@@ -351,5 +351,8 @@ set foldtext=CustomFoldText()
 " while maintaining a sane text width.
 nnoremap K h/[^ ]<cr>"zd$jyyP^v$h"zpJk:s/\v +$//<cr>:noh<cr>j^
 " }}}
+
+
+
 
 " vim: fdm=marker

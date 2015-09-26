@@ -18,12 +18,12 @@ set updatetime=4000
 set matchtime=5                   " Bracket blinking
 set number
 set numberwidth=5
+set hidden
+let &colorcolumn="80,".join(range(120,300),",")
 set textwidth=80
-set colorcolumn=+1
 set splitbelow
 set splitright
 set autowrite
-set background=dark
 set encoding=utf-8
 set termencoding=utf-8
 set fillchars=vert:\│
@@ -75,6 +75,7 @@ let g:vtranslate = "T"
 let g:langpair   = "en"
 
 " -----------------------------------------------------------------------------
+
 " Sourcing etc/ files {{{1
 " -----------------------------------------------------------------------------
 " Helpers
@@ -92,6 +93,7 @@ exec "source ~/.vim/etc/unite.vim"
 " Tagbar
 exec "source ~/.vim/etc/tagbar_types.vim"
 
+
 " -----------------------------------------------------------------------------
 " Switch {{{
 " -----------------------------------------------------------------------------
@@ -101,17 +103,23 @@ runtime etc/switch_definitions.vim
 " }}}
 " 1}}}
 
-" Indent hilight
-if has('gui_running')
-    let g:indent_guides_auto_colors           = 0
-    let g:indent_guides_enable_on_vim_startup = 1
-endif
+" Vim
+let g:indentLine_color_term = 239
+
+"GVim
+"let g:indentLine_color_gui = '#E3E1DA'
+"let g:indentLine_color_dark = '#31353F'
+
+" none X terminal
+let g:indentLine_color_tty_light = 7 " (default: 4)
+let g:indentLine_color_dark = 1 " (default: 2)
+let g:indentLine_char = '│'
 
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
 
 " -----------------------------------------------------------------------------
-" Session settings "{{{
+" Session settings {{{
 " -----------------------------------------------------------------------------
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 map <C-Q> :mksession! ~/.vim/sessions/last.vim <cr>
@@ -122,25 +130,78 @@ let g:session_autoload = 'no'
 "set noerrorbells
 set novb
 set t_vb= " ^
+'
+
+let base16colorspace=256
+
+" -----------------------------------------------------------------------------
+" ColorSheme setup {{{2
+" -----------------------------------------------------------------------------
+
+" Set default theme
+set background=dark
+colorscheme base16-ocean
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#2D323D
+
+function! SetIndentLineColor() abort
+	if &background ==# "dark"
+		exe "hi Conceal guifg='#363D4A'"
+	else
+		exe "hi Conceal guifg='#F1E9D7'"
+	endif
+endfunction
+
+command! SetIndentLineColor call SetIndentLineColor()
+
+
+" Ambienter {{{3
+" -----------------------------------------------------------------------------
+let g:ambienter_config = {
+            \     "debug": 0,
+            \     "sensor": {
+            \         "value": {"min": 3000}
+            \     },
+            \     "theme": {
+            \         "light": {
+            \             "background": "light",
+            \             "colorsheme": "base16-solarized"
+            \         },
+            \         "dark": {
+            \             "background": "dark",
+            \             "colorsheme": "base16-ocean"
+            \         }
+            \     },
+            \     "callbacks": [function("airline#load_theme"), function("SetIndentLineColor")]
+            \ }
+
+            "\     "callbacks": [function("airline#load_theme"), function("SetIndentGuideColor")]
+
+let g:ambienter_config.sensor.path = "/tmp/bus/iio/devices/als/in_intensity_both_raw"
+
+au VimEnter,BufEnter * call Ambienter.Sensor()
+" 3}}}
+" 2}}}
+" -----------------------------------------------------------------------------
 
 
 if has('gui_running')
     "let &guicursor = &guicursor . " a:blinkon0 "
-    colorscheme lucius
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10  " :cdefaults
-    set lines=60                                        " lines to display
-    set columns=170                                     " number of col to display
+    "colorscheme lucius
+    "set guifont=Inconsolata-g\ for\ Powerline\ 10
+    set guifont=Inconsolata\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Plus\ Pomicons\ 12
+    set lines=60                                  " lines to display
+    set columns=180                               " number of col to display
     set mousemodel=popup
     set go=gpt
-    set anti                                            " antialias font
+    set anti                                      " antialias font
     set cursorline
+    set linespace=3
 elseif (&term =~ 'linux')
-    set t_co=8
+    "set t_co=8
     colorscheme xterm16
 else
-    set t_co=256
+    "set t_co=256
     set mouse=a
-    colorscheme lucius
     set termencoding=utf-8
 endif
 " }}}
@@ -177,7 +238,7 @@ vnoremap <C-l> >`[V`]
 nmap gV `[v`]
 
 " -----------------------------------------------------------------------------
-" Using the System Clipboard {{{
+" System Clipboard {{{
 " -----------------------------------------------------------------------------
 " copy/cut/paste
 vmap <C-c> "+yi
@@ -195,6 +256,7 @@ map <Leader>cd :exe 'cd '.expand ("%:p:h")<CR>
 map <F8> gg"+yG<CR>
 " }}}
 " 1}}}
+" -----------------------------------------------------------------------------
 
 " -----------------------------------------------------------------------------
 " Behaviours {{{
@@ -233,8 +295,8 @@ command! W w !sudo tee % > /dev/null
 
 
 " -----------------------------------------------------------------------------
-" Color-Picker
-" https://github.com/Rykka/colorv.vim {{{
+" Color-Picker {{{
+" https://github.com/Rykka/colorv.vim
 " -----------------------------------------------------------------------------
 map <F2> :ColorVPicker<CR>
 let g:colorizer_startup = 0
@@ -259,23 +321,23 @@ let g:html_indent_style1  = "inc"
 " }}}
 
 " -----------------------------------------------------------------------------
-" Js Context coloring
-" https://github.com/bigfish/vim-js-context-coloring {{{
+" Js Context coloring {{{
+" https://github.com/bigfish/vim-js-context-coloring
 " -----------------------------------------------------------------------------
 let g:js_context_colors_enabled = 0 " disable: 0
 map <F3> :JSContextColorToggle <CR>
 " }}}
 
 " -----------------------------------------------------------------------------
-" Zencoding / Emmet
-" https://github.com/mattn/emmet-vim {{{
+" Zencoding / Emmet {{{
+" https://github.com/mattn/emmet-vim
 " -----------------------------------------------------------------------------
 let g:user_emmet_leader_key = '<c-e>'
 " }}}
 
 " -----------------------------------------------------------------------------
-" Un petit menu qui permet d'afficher la liste des éléments
-" filtrés avec un wildcard {{{
+" Un petit menu qui permet d'afficher la liste des éléments {{{
+" filtrés avec un wildcard
 " -----------------------------------------------------------------------------
 set wildmenu
 set wildignore=*.o,*#,*~,*.dll,*.so,*.a,*.bak,*.pyc,*.class,*.swp
@@ -291,7 +353,7 @@ map <F4> :emenu <C-Z>
 " -----------------------------------------------------------------------------
 " Indenting, Folding {{{
 " -----------------------------------------------------------------------------
-"Détection du type de fichier pour l'indentation
+" Détection du type de fichier pour l'indentation
 if has("autocmd")
     filetype indent on
 endif
@@ -303,7 +365,9 @@ set expandtab           " insert tabs for indent
 set smartindent         " advenced indenting [vs nosmartindent]
 "set nosmartindent      " intelligent indenting -- DEPRECATED by cindent
 set cindent             " set C style indenting off
+
 "set foldenable
+"set foldcolumn=2
 "set foldmethod=indent
 
 " Space to toggle folds.
@@ -316,8 +380,6 @@ nnoremap zO zCzO
 " Use ,z to "focus" the current fold.
 nnoremap <leader>z zMzvzz
 
-" Reformat
-nmap <C-l><C-l> gg=G''
 " }}}
 
 " -----------------------------------------------------------------------------
@@ -336,28 +398,30 @@ call unite#custom#profile('default', 'context', {
             \ })
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <C-p> :<C-u>Unite -start-insert buffer file_rec/async:!<CR>
+" File
+nnoremap <C-p> :<C-u>Unite -start-insert buffer file/async:!<CR>
+nnoremap <C-P> :<C-u>Unite -start-insert buffer file_rec/async:!<CR>
 " Yank
 let g:unite_source_history_yank_enable = 1
-nnoremap <C-y> :<C-u>Unite history/yank<CR>
+nnoremap <C-y> :<C-u>Unite -start-insert history/yank<CR>
 " Menu
 nnoremap <C-m> :<C-u>Unite menu<CR>
 " Buffers
-nnoremap <C-b> :<C-u>Unite buffer<CR>
+nnoremap <C-b> :<C-u>Unite -start-insert buffer<CR>
 " Outline
 nnoremap <C-h> :<C-u>Unite outline<CR>
 " Git grep
-nnoremap <C-g> :<C-u>Unite grep/git<CR>
+nnoremap <C-g> :<C-u>Unite -start-insert grep/git<CR>
 
 " 1}}}
 
 " -----------------------------------------------------------------------------
-" Yankring
-" {{{
+" Yankring {{{
 " -----------------------------------------------------------------------------
 " Replace conflicted mapping
 let g:yankring_replace_n_pkey = ''
 let g:yankring_replace_n_nkey = ''
+nnoremap <leader>y :YRShow<CR>
 " }}}
 
 " -----------------------------------------------------------------------------
@@ -396,19 +460,19 @@ set showmode           " show mode at bottom of screen
 " }}}
 
 " -----------------------------------------------------------------------------
-" Easytags & ctags
-" https://github.com/xolox/vim-easytags {{{1
+" Easytags & ctags {{{1
+" https://github.com/xolox/vim-easytags
 " -----------------------------------------------------------------------------
 "set tags=~./tags
 set tags=.tags
 let g:easytags_auto_update    = 0
 "let g:easytags_dynamic_files = 1
 let g:easytags_by_filetype   = '~/Dev/.vim/mytags/'
-let g:easytags_on_cursorhold  = 1
+let g:easytags_on_cursorhold = 1
 let g:easytags_autorecurse   = 1
 
 " -----------------------------------------------------------------------------
-" tags keymap {{{2
+" Tags keymap {{{2
 " -----------------------------------------------------------------------------
 map <C-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
@@ -416,8 +480,8 @@ map <C-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 " 1}}}
 
 " -----------------------------------------------------------------------------
-" Shell Vim
-" https://github.com/xolox/vim-shell {{{
+" Shell Vim {{{
+" https://github.com/xolox/vim-shell
 " -----------------------------------------------------------------------------
 let g:shell_mappings_enabled = 0
 inoremap <Leader>fs <C-o>:Fullscreen<CR>
@@ -427,8 +491,8 @@ nnoremap <Leader>op :Open<CR>
 " }}}
 
 " -----------------------------------------------------------------------------
-" Delimitmate 
-" https://github.com/Raimondi/delimitMate {{{
+" Delimitmate {{{
+" https://github.com/Raimondi/delimitMate
 " -----------------------------------------------------------------------------
 let delimitMate_expand_cr = 0
 " }}}
@@ -441,8 +505,8 @@ let g:tagbar_ctags_bin   = "/usr/bin/ctags"
 let g:tagbar_iconchars   = ['▸', '▾']
 let g:tagbar_singleclick = 1
 
-let g:tagbar_phpctags_bin          = '~/.vim/lib/phpctags/phpctags'
-let g:tagbar_phpctags_memory_limit = '512M'
+let g:tagbar_phpctags_bin='~/.vim/lib/phpctags/phpctags'
+let g:tagbar_phpctags_memory_limit='512M'
 " 1}}} /Tagbar
 
 " -----------------------------------------------------------------------------
@@ -476,6 +540,36 @@ let g:nerdtree_tabs_synchronize_view    = 1
 let g:nerdtree_tabs_focus_on_files      = 1
 
 " }}}
+
+" -----------------------------------------------------------------------------
+" Autoformat {{{
+" -----------------------------------------------------------------------------
+"  PHP fmt {{{
+let g:phpfmt_on_save = get(g:, 'phpfmt_on_save', 0) " format on save (autocmd)
+let g:phpfmt_php_path = "/usr/bin/php"              " Path to PHP
+let g:phpfmt_prepasses_list = "AutoPreincrement,JointToImplode,DoubleToSingleQuote"
+let g:phpfmt_passes_list = "ReturnNull"
+let g:phpfmt_config='~/.phptools.rc'
+"let g:phpfmt_exclude_list = "vendor,cache"
+let g:phpfmt_enable_default_mapping = 0
+let g:phpfmt_psr2 = 1
+
+au FileType php nnoremap <silent><C-l><C-f> :call PhpFmtFixFile()<CR>
+au FileType php nnoremap <silent><C-l><C-d> :call PhpFmtFixDirectory()<CR>
+" }}}
+
+"  Autoformat {{{
+let g:formatprg_args_javascript = "-ajxk"
+let g:formatprg_args_css        = "-ajxk -w 120"
+"let g:formatprg_args_php = "--mode=cs --style=ansi -pcHs4"
+
+" Reformat mapping
+nnoremap <silent><C-l><C-l> :Autoformat<CR>
+
+" }}}
+" -----------------------------------------------------------------------------
+" }}}
+
 
 " -----------------------------------------------------------------------------
 " netrw {{{
@@ -513,24 +607,25 @@ set comments+=n::
 " -----------------------------------------------------------------------------
 " Fix filetype detection {{{
 " -----------------------------------------------------------------------------
-au BufNewFile,BufRead      .torsmorc* set ft=rc
-au BufNewFile,BufRead     *.html      set ft=javascript syn=html
-au BufNewFile,BufRead     *.coffee    set ft=coffee
-au BufNewFile,BufRead     *.mustache  set ft=mustache
-au BufNewFile,BufRead     *.md        set ft=markdown
-au BufNewFile,BufRead     *.mkd       set ft=markdown
-au BufNewFile,BufRead     *.inc       set ft=php
-"au BufNewFile,BufRead     *.sys       set ft=php
-au BufNewFile,BufRead     *.php       set ft=php
-au BufNewFile,BufRead  grub.conf      set ft=grub
-au BufNewFile,BufRead     *.dentry    set ft=dentry
-au BufNewFile,BufRead     *.blog      set ft=blog
-au BufNewFile,BufRead     *.xml       set ft=xml
-au BufNewFile,BufRead     *.xsl       set ft=xslt
-au BufNewFile,BufRead     *.htc       set ft=javascript
-au BufNewFile,BufRead     *.snip      set ft=snippet
-"au BufNewFile,BufRead     *.scss      set ft=scss.css
-au BufNewFile,BufRead jquery-*.js        set ft=javascript syntax=jquery
+au BufNewFile,BufRead        .torsmorc* set ft=rc
+au BufNewFile,BufRead       *.html      set ft=javascript syn=html
+au BufNewFile,BufRead       *.coffee    set ft=coffee
+au BufNewFile,BufRead       *.mustache  set ft=mustache
+au BufNewFile,BufRead       *.md        set ft=markdown
+au BufNewFile,BufRead       *.mkd       set ft=markdown
+au BufNewFile,BufRead       *.inc       set ft=php
+"au BufNewFile,BufRead      *.sys       set ft=php
+au BufNewFile,BufRead        *.php      set ft=php
+au BufNewFile,BufRead     grub.conf     set ft=grub
+au BufNewFile,BufRead        *.dentry   set ft=dentry
+au BufNewFile,BufRead        *.blog     set ft=blog
+au BufNewFile,BufRead        *.xml      set ft=xml
+au BufNewFile,BufRead        *.xsl      set ft=xslt
+au BufNewFile,BufRead        *.htc      set ft=javascript
+au BufNewFile,BufRead        *.snip     set ft=snippet
+"au BufNewFile,BufRead      *.scss      set ft=scss.css
+au BufNewFile,BufRead jquery-*.js       set ft=javascript syntax=jquery
+au BufNewFile,BufRead         .ctags    set ft=ctags syntax=ctags
 " }}}
 
 " -----------------------------------------------------------------------------
@@ -549,8 +644,10 @@ augroup filetypedetect
 augroup END
 " }}}
 
+" }}}
 " -----------------------------------------------------------------------------
-" Fix ft specific entry {{{1
+
+" Filetype specific entry {{{1
 " -----------------------------------------------------------------------------
 " php indent style
 au filetype *.php           set noet ci pi sts=0 sw=4 ts=4
@@ -567,7 +664,7 @@ au filetype c,cpp set formatoptions+=ro
 " dbext {{{
 " -----------------------------------------------------------------------------
 " You need to put your specific config in .appconfig file lke this:
-"let g:dbext_default_profile_localhostMySQL = 'type = MYSQL:MYSQL_bin = /usr/bin/mysql:user = root:passwd         = toor:dbname = @askdb:extra  = -t'
+"let g:dbext_default_profile_localhostMySQL = 'type = MYSQL:MYSQL_bin = /usr/bin/mysql:user = root:passwd= toor:dbname = @askdb:extra  = -t'
 let g:dbext_default_type   = 'MYSQL'
 let g:dbext_default_user   = 'root'
 let g:dbext_default_dbname = '@askdb'
@@ -580,14 +677,14 @@ let g:sqlutil_use_tbl_alias       = 'a'
 " }}}
 
 " -----------------------------------------------------------------------------
-" Pentadactyl textarea edition syntax support
-" ('<C-i>' stuff in firefox textarea {{{
+" Pentadactyl textarea edition syntax support {{{
+" ('<C-i>' stuff in firefox textarea
 " -----------------------------------------------------------------------------
 au BufRead,BufNewFile /tmp/pentadactyl* :set ft=xhtml
 " }}}
 
 " -----------------------------------------------------------------------------
-" Gist plugin "{{{
+" Gist plugin {{{
 " https://github.com/mattn/gist-vim
 " -----------------------------------------------------------------------------
 let g:gist_clip_command            = 'xclip -selection clipboard'
@@ -615,7 +712,6 @@ map <S-Left>  :bprevious<CR>
 nmap <C-x><C-x> ,c<space>
 vmap <C-x><C-x> ,c<space>
 " }}}
-
 "------------------------------------------------------------------------------
 
 "------------------------------------------------------------------------------
@@ -637,16 +733,18 @@ execute Map_surroundchars()
 " }}}
 
 "------------------------------------------------------------------------------
-" Yankring {{{
-"------------------------------------------------------------------------------
-nnoremap <leader>y :YRShow<CR>
-" }}}
-
-"------------------------------------------------------------------------------
 " Browse url under cursor {{{
 "------------------------------------------------------------------------------
 nnoremap <leader>w :Open<CR>
 " }}}
+
+" -----------------------------------------------------------------------------
+" Vim notes {{{2
+" -----------------------------------------------------------------------------
+"  https://github.com/xolox/vim-notes 
+let g:notes_directories = ['~/Documents/Notes', '~/Dropbox/Shared Notes']
+" 2}}}
+" -----------------------------------------------------------------------------
 
 "------------------------------------------------------------------------------
 " Gundo {{{
@@ -663,7 +761,7 @@ vmap <leader>tp :Align =><CR>
 vmap <leader>t" :Align \s"<CR>
 
 " -----------------------------------------------------------------------------
-" Custom Align maps {{{2
+" Easy align {{{2
 " -----------------------------------------------------------------------------
 " git://github.com/junegunn/vim-easy-align.git
 vnoremap <silent> <Enter> :EasyAlign<CR>
@@ -702,9 +800,9 @@ let g:neocomplete#enable_auto_delimiter = 1
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
             \ 'default' : '',
-            \ 'vimshell' : $HOME.'/.vimshell_hist',
-            \ 'scheme' : $HOME.'/.gosh_completions'
+            \ 'vimshell' : $HOME.'/.vimshell_hist'
             \ }
+            "\ 'scheme' : $HOME.'/.gosh_completions'
 
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
@@ -726,13 +824,11 @@ function! s:my_cr_function()
 endfunction
 " <Tab>: completion.
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<Tab>"
-inoremap <expr><Tab> pumvisible() ? "\<C-n>" :
-            \ <SID>check_back_space() ? "\<Tab>" :
-            \ neocomplete#start_manual_complete()
-function! s:check_back_space()  " {{{
+inoremap <expr><Tab> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : neocomplete#start_manual_complete()
+function! s:check_back_space()
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~ '\s'
-endfunction                     " }}}
+endfunction
 
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
@@ -774,12 +870,8 @@ inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 " SuperTab like snippets behavior.
-imap <expr><Tab> neosnippet#expandable_or_jumpable() ?
-            \ "\<Plug>(neosnippet_expand_or_jump)"
-            \: pumvisible() ? "\<C-n>" : "\<Tab>"
-smap <expr><Tab> neosnippet#expandable_or_jumpable() ?
-            \ "\<Plug>(neosnippet_expand_or_jump)"
-            \: "\<Tab>"
+"imap <expr><Tab> neosnippet#expandable_or_jumpable() ?  "\<Plug>(neosnippet_expand_or_jump)": pumvisible() ? "\<C-n>" : "\<Tab>"
+"smap <expr><Tab> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)": "\<Tab>"
 
 "set completeopt-=preview
 
@@ -787,16 +879,21 @@ smap <expr><Tab> neosnippet#expandable_or_jumpable() ?
 com! EditSnips :NeoSnippetEdit
 
 let g:snips_author = $MAIL1
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ neocomplete#start_manual_complete()
-function! s:check_back_space() "{{{
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
 "}}}
 " 2}}}
+
+"------------------------------------------------------------------------------
+" Unltisnips  {{{2
+"------------------------------------------------------------------------------
+"" Configure Ultisnips
+"let g:UltiSnipsExpandTrigger = "<Tab>"
+"let g:UltiSnipsListSnippets = "<M-Tab>"
+"" Set a custom snippets directory
+"let g:UltiSnipsSnippetsDir = $HOME . "/.vim/etc/ultisnips/"
+"let g:UltiSnipsSnippetDirectories = ["ultisnips"]
+"" 2}}}
+
+
 " 1}}}
 
 "------------------------------------------------------------------------------
@@ -809,8 +906,10 @@ let g:mta_filetypes = {
             \ 'jinja' : 1,
             \}
 
-let g:mta_use_matchparen_group = 0
-let g:mta_set_default_matchtag_color = 0
+"let g:mta_use_matchparen_group = 0
+"let g:mta_set_default_matchtag_color = 0
+"highlight MatchTag ctermfg=black ctermbg=lightgreen guifg=#2B303B guibg=#EBCB8B
+
 " }}}
 
 "------------------------------------------------------------------------------
@@ -826,6 +925,9 @@ let g:pdv_cfg_ProjectName = "myBiz"
 let g:pdv_cfg_Update      = "GIT: $Date$"
 let g:pdv_cfg_Version     = "GIT: $Id$"
 autocmd FileType php nnoremap <C-o> :call PhpDocSingle()<CR>
+
+"let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+"nnoremap <buffer> <C-i> :call pdv#DocumentCurrentLine()<CR>
 " }}}
 
 "------------------------------------------------------------------------------
@@ -850,14 +952,12 @@ set showtabline=2 " always show tabs in gvim, but not vim
 let g:AutoPairsFlyMode = 0
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
 let g:AutoPairShortcutFastWrap = '<C-e>'
-au Filetype twig let b:AutoPairs = {
-            \ '(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`', "%":"%"
-            \ }
+au Filetype twig let b:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`', "%":"%"}
 " }}}
 
 " -----------------------------------------------------------------------------
-" Multiple Cursor
-" https://github.com/terryma/vim-multiple-cursors {{{
+" Multiple Cursor {{{
+" https://github.com/terryma/vim-multiple-cursors
 " -----------------------------------------------------------------------------
 let g:multi_cursor_use_default_mapping=0
 " Default mapping
@@ -872,5 +972,6 @@ let g:multi_cursor_quit_key='<Esc>'
 " -----------------------------------------------------------------------------
 let g:airline_powerline_fonts = 1
 " }}}
+
 
 " vim: fdm=marker

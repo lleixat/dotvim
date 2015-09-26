@@ -16,6 +16,10 @@ let g:switch_custom_definitions = [
             \ 	  'null': 'true',
             \   },
             \   {
+            \ 	  '[oO][nN]': 'off',
+            \ 	  '[oO][fF][fF]': 'on',
+            \   },
+            \   {
             \ 	  '[yY][eE][sS]': 'no',
             \ 	  '[nN][oO]': 'yes',
             \   },
@@ -66,6 +70,25 @@ autocmd FileType php let b:switch_custom_definitions = [
             \ 	  'or': 'xor',
             \ 	  'xor': 'and',
             \   },
+			\   {
+            \ 	  'public': 'private',
+            \ 	  'private': 'public',
+			\   },
+			\   {
+            \ 	  'include': 'include_once',
+            \ 	  'include_once': 'include',
+			\   },
+			\   {
+            \ 	  'require': 'require_once',
+            \ 	  'require_once': 'require',
+			\   },
+			\   {
+            \ 	  'mixed': 'string',
+            \ 	  'string': 'array',
+            \ 	  'array': 'bool',
+            \ 	  'bool': 'int',
+            \ 	  'int': 'mixed',
+			\   },
             \   {
             \ 	  'return': 'echo',
             \ 	  'echo': 'exit',

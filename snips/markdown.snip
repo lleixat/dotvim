@@ -38,3 +38,37 @@ abbr        hr
 options     head
     <hr>
     ${0}
+    
+snippet     8<
+abbr        8<
+prev_word   '^'
+     -8<---------------------------
+ 
+snippet     vim
+abbr        vim
+options     head
+prev_word   '^'
+    <!-- vim:set spelllang=fr:set spell -->
+
+snippet     lbc
+abbr        lbc
+option      head
+   ## ${1:Lave linge}
+
+   ### Notes & Refs : 
+
+    * Marque : ${2:Whirlpool}
+    * Prix neuf : ${3:250}€ 
+    * Prix occasion : ${4:200}€  
+
+    * Refs :
+      - ${5:http://www.conforama.fr/canape-salon-sejour/banquette/banquette-clic-clac/banquette-lit-clic-clac--emma-coloris-gris/p/573677}
+
+   ### Annonce :
+
+   Lien : ${6:http://}
+
+    > ${0}
+
+   -8<---------------------------
+

@@ -24,8 +24,9 @@ snippet fori
 		${3:#statements}
 	done
 snippet fore
-	for ${1:item} in ${2:list}; do
-		${3:# statements}
+    list=("06" "07" "08")   
+	for ${1:item} in ${list[@]}; do
+		${3:echo $\{item\}}
 	done
 snippet wh
 	while ${1:condition}; do

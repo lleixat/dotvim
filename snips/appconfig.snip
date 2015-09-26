@@ -1,0 +1,19 @@
+snippet     partial
+abbr        partial
+options     head
+    let g:partial_templates = {
+      \   'ejs': '<% ${1:include|render} %s %>',
+      \   'hbs': '{{> %s }}'
+      \ }
+    ${0}
+
+snippet     partial_root
+abbr        partial partial_root
+options     head
+    " Partial root template
+    " ex: 'views' render 'views/<partial_name>'
+    let s:partial_templates_roots = [
+          \ '${1:views}',
+          ${2:#:\ 'styles'}
+          \ ]
+    ${0}

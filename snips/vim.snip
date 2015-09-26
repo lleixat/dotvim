@@ -8,6 +8,17 @@ options     head
     ${1:TARGET}
     ${3}
     " $2}}}
+    " -----------------------------------------------------------------------------
+
+snippet     headerSmall
+abbr        Add simple comment header and fold block
+alias       heads hs
+options     head
+    " ${0:My Comment Here} {{{${2:1}
+    " -----------------------------------------------------------------------------
+    ${1:TARGET}
+    ${3}
+    " $2}}}
 
 snippet     funccall
 abbr        fu! Name() .. endf com! Name call Name()
@@ -36,7 +47,6 @@ alias       cr comr
 options     head
 prev_word   '^'
     command! ${1:-nargs=${2:?\}} -range${3:#:=%} ${4:MyFunc} call $4(${5:<line1>,<line2>${6:#:,\}})${0}
-        
 
 snippet     comcall
 abbr        com! Name call Name()

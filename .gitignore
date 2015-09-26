@@ -3,6 +3,7 @@
 .session
 sessions/
 record/
-bundle/*
-!bundle/.neobundle/           
-!neobundle.vim/
+bundle/
+plugin/ambienter-vim/
+#!bundle/.neobundle/           
+#!neobundle.vim/
