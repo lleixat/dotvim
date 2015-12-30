@@ -19,16 +19,15 @@ function! Populate_unite_menu_candidates(submenu, menu) abort
     let g:unite_source_menu_menus[a:menu].command_candidates = []
 
     for items in a:submenu
-        let l:titleLength = strlen(a:menu)
         call add(g:unite_source_menu_menus[a:menu].command_candidates,
-                    \ MakeUniteMenuTitle(items, l:titleLength))
+                    \ MakeUniteMenuTitle(items))
     endfor
 
     return g:unite_source_menu_menus[a:menu].command_candidates
 endfunction
 
 " Construct Title string
-function! MakeUniteMenuTitle(items, titleLength) abort
+function! MakeUniteMenuTitle(items) abort
     let l:str = [
                 \ g:usmm.char.bullet . a:items[0],
                 \ empty(a:items[1])? '': '[' . a:items[1] . ']',
