@@ -31,7 +31,8 @@ if exists('+breakindent')
     set breakindent
 endif
 
-set shell=/bin/bash\ -i
+"set shell=/bin/bash\ -i
+set shell=/bin/zsh
 "set autochdir
 set complete=k                    " global autocompletion
 set completeopt+=longest,menuone
@@ -113,8 +114,7 @@ let g:indentLine_color_term = 239
 " none X terminal
 let g:indentLine_color_tty_light = 7 " (default: 4)
 let g:indentLine_color_dark = 1 " (default: 2)
-let g:indentLine_char = '│'
-
+let g:indentLine_char = '⋮'
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
 
@@ -159,7 +159,7 @@ command! SetIndentLineColor call SetIndentLineColor()
 let g:ambienter_config = {
             \     "debug": 0,
             \     "sensor": {
-            \         "value": {"min": 3000}
+            \         "value": {"min": 250}
             \     },
             \     "theme": {
             \         "light": {
@@ -174,8 +174,6 @@ let g:ambienter_config = {
             \     "callbacks": [function("airline#load_theme"), function("SetIndentLineColor")]
             \ }
 
-            "\     "callbacks": [function("airline#load_theme"), function("SetIndentGuideColor")]
-
 let g:ambienter_config.sensor.path = "/tmp/bus/iio/devices/als/in_intensity_both_raw"
 
 au VimEnter,BufEnter * call Ambienter.Sensor()
@@ -187,8 +185,8 @@ au VimEnter,BufEnter * call Ambienter.Sensor()
 if has('gui_running')
     "let &guicursor = &guicursor . " a:blinkon0 "
     "colorscheme lucius
-    "set guifont=Inconsolata-g\ for\ Powerline\ 10
-    set guifont=Inconsolata\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Plus\ Pomicons\ 12
+    set guifont=Inconsolata\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Plus\ Font\ Awesome\ Plus\ Octicons\ Plus\ Pomicons\ 12
+    
     set lines=60                                  " lines to display
     set columns=180                               " number of col to display
     set mousemodel=popup
@@ -544,12 +542,15 @@ let g:nerdtree_tabs_focus_on_files      = 1
 " -----------------------------------------------------------------------------
 " Autoformat {{{
 " -----------------------------------------------------------------------------
+
+
+
 "  PHP fmt {{{
 let g:phpfmt_on_save = get(g:, 'phpfmt_on_save', 0) " format on save (autocmd)
 let g:phpfmt_php_path = "/usr/bin/php"              " Path to PHP
 let g:phpfmt_prepasses_list = "AutoPreincrement,JointToImplode,DoubleToSingleQuote"
 let g:phpfmt_passes_list = "ReturnNull"
-let g:phpfmt_config='~/.phptools.rc'
+let g:phpfmt_config='~/.vim/etc/phptools.rc'
 "let g:phpfmt_exclude_list = "vendor,cache"
 let g:phpfmt_enable_default_mapping = 0
 let g:phpfmt_psr2 = 1
@@ -559,8 +560,8 @@ au FileType php nnoremap <silent><C-l><C-d> :call PhpFmtFixDirectory()<CR>
 " }}}
 
 "  Autoformat {{{
-let g:formatprg_args_javascript = "-ajxk"
-let g:formatprg_args_css        = "-ajxk -w 120"
+let g:formaters_args_javascript = "-ajxk"
+let g:formaters_args_css        = "-ajxk -w 120"
 "let g:formatprg_args_php = "--mode=cs --style=ansi -pcHs4"
 
 " Reformat mapping
@@ -628,6 +629,17 @@ au BufNewFile,BufRead jquery-*.js       set ft=javascript syntax=jquery
 au BufNewFile,BufRead         .ctags    set ft=ctags syntax=ctags
 " }}}
 
+
+" -----------------------------------------------------------------------------
+" Golang {{{
+" -----------------------------------------------------------------------------
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_bin_path = "/home/lex/go/go/bin/"
+" }}}
 " -----------------------------------------------------------------------------
 " Set up syntax highlighting for e-mail {{{
 " -----------------------------------------------------------------------------

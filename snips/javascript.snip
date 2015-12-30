@@ -59,7 +59,7 @@ alias     fun func var
 options   head
     var ${1:function_name} = function (${2:argument}) {
         ${3:// body...}
-    }
+    };
 
 # Anonymous Function
 snippet   f
@@ -302,7 +302,7 @@ snippet   csl
 abbr      console.log()
 alias     cons
 options   head
-    console.log(${2:"$1: "+}${1:v});
+    console.log(${2:"$1: " + }${1:v});
 
 snippet   csw
 abbr      console.warn()

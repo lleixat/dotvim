@@ -4,11 +4,12 @@
 " Config:
 let g:usmm = {
             \ 'char' : {
-                \ 'bullet': '› ',
-                \ 'key' : '✱ ',
-                \ 'gap' : ' ',
-                \ 'width' : [30,55],
-                \ }
+            \ 'bullet': '› ',
+            \ 'key' : '• ',
+            \ 'gap' : ' ',
+            \ 'width' : [30,55],
+            \ 'total' : 80
+            \ }
             \ }
 
 let g:unite_menus = ['unites', 'git', 'config', 'plugins', 'refactor']
@@ -18,45 +19,38 @@ function! Populate_unite_menu_candidates(submenu, menu) abort
     let g:unite_source_menu_menus[a:menu].command_candidates = []
 
     for items in a:submenu
+        let l:titleLength = strlen(a:menu)
         call add(g:unite_source_menu_menus[a:menu].command_candidates,
-                    \ MakeUniteMenuTitle(items))
+                    \ MakeUniteMenuTitle(items, l:titleLength))
     endfor
+
     return g:unite_source_menu_menus[a:menu].command_candidates
 endfunction
 
 " Construct Title string
-function! MakeUniteMenuTitle(items) abort
+function! MakeUniteMenuTitle(items, titleLength) abort
     let l:str = [
                 \ g:usmm.char.bullet . a:items[0],
                 \ empty(a:items[1])? '': '[' . a:items[1] . ']',
                 \ empty(a:items[2])? '': g:usmm.char.key . a:items[2]
                 \ ]
-    " calculate gap
-    let l:gap = []
-    call add(l:gap, g:usmm.char.width[0] - strlen(l:str[0]))
-    call add(l:gap, g:usmm.char.width[1] - strlen(l:str[1].l:str[2]) + l:gap[0])
 
-    let lenths = [
+    let l:lengths = [
                 \ strlen(l:str[0]),
                 \ strlen(l:str[1]),
                 \ strlen(l:str[2]),
                 \ ]
 
+    " calculate gap
+    let l:gap = []
+    call add(l:gap, g:usmm.char.width[0] - l:lengths[0])
+    let l:gruik = g:usmm.char.total - ( l:lengths[0]+l:lengths[1]+l:lengths[2] + l:gap[0] )
+
+    call add(l:gap, l:gruik)
+
     let l:title = l:str[0].repeat(g:usmm.char.gap, l:gap[0])
                 \ .l:str[1].repeat(g:usmm.char.gap, l:gap[1])
                 \ .l:str[2]
-
-    "echo "#### gaps ####"
-    "echo l:gap
-    "echo "#### items ####"
-    "echo a:items
-    "echo "### str ###"
-    "echo l:str
-    "echo "###title###"
-    "echo l:title
-    "echo "### lenths ###"
-    "echo l:lenths
-    "echo "\n"
 
     if len(a:items) > 3
         let l:plop = [l:title, a:items[3]]
@@ -137,10 +131,10 @@ let g:unite_source_menu_menus.unites = {
             \ 'description' : MakeUniteMenuTitle(['', 'Unite', '[zone]p']),
             \}
 let g:unite_source_menu_menus.unites.command_candidates = [
-            \['Buffer list',             'Unite', '<C-S-b>', 'Unite buffer']                                       ,
-            \['File list (cur. folder)', 'Unite', '<C-S-f>', 'Unite -start-insert file_rec/async']                 ,
+            \['Buffer list',             'Unite', '<C-S-b>', 'Unite buffer'],
+            \['File list (cur. folder)', 'Unite', '<C-S-f>', 'Unite -start-insert file_rec/async'],
             \['File list filtered',      'Unite', '<C-S-F>', 'exe "Unite file_rec/async -input=" input("filter: ")'],
-            \['Yank history',            'Unite', '<C-y>'  , 'Unite history/yank']                                 ,
+            \['Yank history',            'Unite', '<C-y>',   'Unite history/yank'],
             \]
 " 2}}}
 
@@ -148,11 +142,19 @@ let g:unite_source_menu_menus.unites.command_candidates = [
 " Refactor {{{2
 " -----------------------------------------------------------------------------
 let g:unite_source_menu_menus.refactor = {
-            \ 'description' : MakeUniteMenuTitle(['', 'Refactor (WIP)', '[zone]e']),
+            \ 'description' : MakeUniteMenuTitle(['', 'Refactor', '[zone]r']),
             \}
 
 let g:unite_source_menu_menus.refactor.command_candidates = [
-            \['Nothing here for now', '...', '...', '...'],
+            \['Autoformat',        'All',          '<C-l><C-l>', ':Autoformat<CR>'],
+            \['Align commas',      'All (V mode)', 'range <C-m>',      ''],
+            \['Autoformat',        'All',          '<C-l><C-l>', ':Autoformat<CR>'],
+            \['Php fix file',      'PHP',          '<C-l><C-f>', ':call PhpFmtFixFile()'],
+            \['Php fix directory', 'PHP',          '<C-l><C-d>', ':call PhpFmtFixDirectory()'],
+            \['Space to Tab',      'All',          '',           ':Space2Tab()'],
+            \['Tab to Space',      'All',          '',           ':Tab2Space()'],
+            \['Trim spaces',       'All',          '',           ':TrimSpaces()'],
+            \['Retab indent',      'All',          '',           ':RetabIndent'],
             \]
 " 2}}}
 

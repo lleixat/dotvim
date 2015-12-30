@@ -59,6 +59,7 @@ NeoBundle 'tpope/vim-fugitive'
 "NeoBundle 'qingxbl/Mark--Karkat'
 NeoBundle 'AndrewRadev/linediff.vim'
 NeoBundle 'AndrewRadev/switch.vim'
+NeoBundle 'chrisbra/unicode.vim'
 NeoBundle 'LStinson/vim-project'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'MarcWeber/vim-addon-mw-utils'
@@ -179,7 +180,7 @@ NeoBundleLazy 'joonty/vim-phpunitqf',
 " Laravel {{{3
 NeoBundleLazy 'johnhamelink/blade.vim',
             \ {'autoload': {'filetypes': ['blade']}}
-NeoBundleLazy 'scil/vim-gf-user',
+NeoBundleLazy 'kana/vim-gf-user',
             \ {'autoload': {'filetypes': ['php']}}
 
 " 3}}}

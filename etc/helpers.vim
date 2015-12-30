@@ -22,19 +22,61 @@ endfunction map <F8> :call E_ftp_upload()<ENTER> </source>
 
 " -----------------------------------------------------------------------------
 " Pasting code in Chat {{{
+"
 " -----------------------------------------------------------------------------
-
 function! Imcopy() range
     redir @*
-    sil echomsg "—8<——————————————————————"
+    sil echomsg "—8<—". repeat('—', 20)
     sil echomsg expand("%")
-    sil echomsg "—8<——————————————————————"
+    sil echomsg "—8<—". repeat('—', 20)
     exec 'sil!' . a:firstline . ',' . a:lastline . '#'
     redir end
 endfunction
 
 com! -range Imcopy <line1>,<line2>call Imcopy()
 "}}}
+
+function! GetVisualSelection()
+    " Why is this not a built-in Vim script function?!
+    let [lnum1, col1] = getpos("'<")[1:2]
+    let [lnum2, col2] = getpos("'>")[1:2]
+    let lines     = getline(lnum1, lnum2)
+    let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
+    let lines[0]  = lines[0][col1 - 1:]
+    return join(lines, "\n")
+endfunction
+
+com! GetVisualSelection :call GetVisualSelection()
+
+
+
+" -----------------------------------------------------------------------------
+" Pasting code in markdown form {{{
+" -----------------------------------------------------------------------------
+function! ImcopyMd() range
+    "    echom a:firstline ',' a:lastline. '#'
+    let l:separator = "```"
+    let l:codeStyle = &filetype
+
+    let l:code = GetVisualSelection()
+    "let l:code = substitute(l:code, '\n', nr2char(13), 'g')
+
+    let l:snip  = l:separator . l:codeStyle . "\n"
+    let l:snip .= l:code . "\n"
+    let l:snip .= l:separator . "\n"
+
+    echom l:snip
+
+    " Copying
+    redir @*
+    sil echomsg l:snip
+    redir end
+endfunction
+
+com! -range ImcopyMd <line1>,<line2>call ImcopyMd()
+"}}}
+
+
 
 " -----------------------------------------------------------------------------
 " Hastebin {{{
@@ -80,7 +122,7 @@ function! DivHtml(line1, line2)
     endif
     let g:html_use_css = 0
 
-    exec a:line1.','.a:line2.'TOhtml'
+    exec a:line1 . ',' . a:line2 . 'TOhtml'
     %g/<style/normal $dgg
     %s/<\/style>\n<\/head>\n//
     %s/.vim_block {/.vim_block {/
@@ -221,6 +263,7 @@ function! CiFilePos(str)
         return '.' . matchstr(a:str, "\/application/.*$")
     else
         return a:str
+    endif
 endfunction
 " }}}
 
@@ -255,7 +298,6 @@ if has('gui_running')
     endfunction
 
     nnoremap <silent> <C-F1> :exec ToggleMenu()<CR>
-
 endif
 " }}}
 
@@ -271,6 +313,7 @@ function! s:MkNonExDir(file, buf)
         endif
     endif
 endfunction
+
 augroup BWCCreateDir
     autocmd!
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
@@ -282,21 +325,21 @@ augroup END
 " http://stackoverflow.com/questions/1268032/marking-duplicate-lines
 " -----------------------------------------------------------------------------
 function! HighlightRepeats() range
-  let lineCounts = {}
-  let lineNum = a:firstline
-  while lineNum <= a:lastline
-    let lineText = getline(lineNum)
-    if lineText != ""
-      let lineCounts[lineText] = (has_key(lineCounts, lineText) ? lineCounts[lineText] : 0) + 1
-    endif
-    let lineNum = lineNum + 1
-  endwhile
-  exe 'syn clear Repeat'
-  for lineText in keys(lineCounts)
-    if lineCounts[lineText] >= 2
-      exe 'syn match Repeat "^' . escape(lineText, '".\^$*[]') . '$"'
-    endif
-  endfor
+    let lineCounts = {}
+    let lineNum = a:firstline
+    while lineNum <= a:lastline
+        let lineText = getline(lineNum)
+        if lineText != ""
+            let lineCounts[lineText] = (has_key(lineCounts, lineText) ? lineCounts[lineText] : 0) + 1
+        endif
+        let lineNum = lineNum + 1
+    endwhile
+    exe 'syn clear Repeat'
+    for lineText in keys(lineCounts)
+        if lineCounts[lineText] >= 2
+            exe 'syn match Repeat "^' . escape(lineText, '".\^$*[]') . '$"'
+        endif
+    endfor
 endfunction
 
 command! -range=% HighlightRepeats <line1>,<line2>call HighlightRepeats()
@@ -327,6 +370,7 @@ function! CustomFoldText()
     let expansionString = repeat(' ', w - strwidth(foldStartStr.foldGapStr.foldSizeStr.line.foldLevelStr.foldPercentage))
     return line . expansionString . foldStartStr . foldGapStr . foldSizeStr . foldPercentage . foldLevelStr
 endfunction
+
 set foldtext=CustomFoldText()
 " }}}
 
@@ -352,7 +396,29 @@ set foldtext=CustomFoldText()
 nnoremap K h/[^ ]<cr>"zd$jyyP^v$h"zpJk:s/\v +$//<cr>:noh<cr>j^
 " }}}
 
-
+" -----------------------------------------------------------------------------
+" Redirect vim ex command output in split view {{{
+" this function output the result of the Ex command into a split scratch buffer
+" http://vim.wikia.com/wiki/Capture_ex_command_output
+" -----------------------------------------------------------------------------
+function! OutputSplitWindow(...)
+    let cmd = join(a:000, ' ')
+    let temp_reg = @"
+    redir @"
+    silent! execute cmd
+    redir END
+    let output = copy(@")
+    let @" = temp_reg
+    if empty(output)
+        echoerr "no output"
+    else
+        new
+        setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted
+        put! =output
+    endif
+endfunction
+command! -nargs=+ -complete=command Output call OutputSplitWindow(<f-args>)
+" }}}
 
 
 " vim: fdm=marker
