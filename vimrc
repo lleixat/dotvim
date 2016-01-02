@@ -77,23 +77,30 @@ let g:langpair   = "en"
 
 " -----------------------------------------------------------------------------
 
-" Sourcing etc/ files {{{1
+" Sourcing config files {{{1
 " -----------------------------------------------------------------------------
-" Helpers
-exec "source ~/.vim/etc/helpers.vim"
+function! Source_conf(dict) abort
+    for fpath in a:dict.partials
+        let l:file = a:dict.path.fpath.".vim"
+        if empty(glob(l:file))
+            echoerr 'Source_conf: file `'.l:file.'` does not exists or not readable'
+        else
+            exec "source " l:file
+        endif
+    endfor
+endfunction
 
-" Startify
-exec "source ~/.vim/etc/startify.vim"
+let g:vimconf = {}
 
-" Bundles
-exec "source ~/.vim/etc/neobundle.vim"
-
-" Unite
-exec "source ~/.vim/etc/unite.vim"
-
-" Tagbar
-exec "source ~/.vim/etc/tagbar_types.vim"
-
+" Etc files
+let g:vimconf.etc = {
+            \ "path": "~/.vim/etc/",
+            \ "partials": [
+            \     'helpers', 'startify', 'neobundle',
+            \     'unite', 'tagbar_types', 'fold'
+            \     ],
+            \ }
+call Source_conf(g:vimconf.etc)
 
 " -----------------------------------------------------------------------------
 " Switch {{{
@@ -144,11 +151,11 @@ colorscheme base16-ocean
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#2D323D
 
 function! SetIndentLineColor() abort
-	if &background ==# "dark"
-		exe "hi Conceal guifg='#363D4A'"
-	else
-		exe "hi Conceal guifg='#F1E9D7'"
-	endif
+    if &background ==# "dark"
+        exe "hi Conceal guifg='#363D4A'"
+    else
+        exe "hi Conceal guifg='#F1E9D7'"
+    endif
 endfunction
 
 command! SetIndentLineColor call SetIndentLineColor()
@@ -186,7 +193,7 @@ if has('gui_running')
     "let &guicursor = &guicursor . " a:blinkon0 "
     "colorscheme lucius
     set guifont=Inconsolata\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Plus\ Font\ Awesome\ Plus\ Octicons\ Plus\ Pomicons\ 12
-    
+
     set lines=60                                  " lines to display
     set columns=180                               " number of col to display
     set mousemodel=popup
@@ -411,6 +418,14 @@ nnoremap <C-h> :<C-u>Unite outline<CR>
 " Git grep
 nnoremap <C-g> :<C-u>Unite -start-insert grep/git<CR>
 
+" Ag search
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts =
+            \ '-i --vimgrep --hidden --ignore ' .
+            \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+let g:unite_source_grep_recursive_opt = ''
+
+nnoremap <C-S-f> :<C-u>Unite grep:.<CR>
 " 1}}}
 
 " -----------------------------------------------------------------------------
@@ -508,7 +523,7 @@ let g:tagbar_phpctags_memory_limit='512M'
 " 1}}} /Tagbar
 
 " -----------------------------------------------------------------------------
-"  bufexplorer customisation {{{
+" Bufexplorer customisation {{{
 " -----------------------------------------------------------------------------
 let g:bufExplorerShowTabBuffer = 1 " Yes.
 let g:bufExplorerDefaultHelp   = 0 " Do not show default help
@@ -571,7 +586,6 @@ nnoremap <silent><C-l><C-l> :Autoformat<CR>
 " -----------------------------------------------------------------------------
 " }}}
 
-
 " -----------------------------------------------------------------------------
 " netrw {{{
 " -----------------------------------------------------------------------------
@@ -633,12 +647,12 @@ au BufNewFile,BufRead         .ctags    set ft=ctags syntax=ctags
 " -----------------------------------------------------------------------------
 " Golang {{{
 " -----------------------------------------------------------------------------
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
+let g:go_highlight_functions         = 1
+let g:go_highlight_methods           = 1
+let g:go_highlight_structs           = 1
+let g:go_highlight_operators         = 1
 let g:go_highlight_build_constraints = 1
-let g:go_bin_path = "/home/lex/go/go/bin/"
+let g:go_bin_path                    = "/home/lex/go/go/bin/"
 " }}}
 " -----------------------------------------------------------------------------
 " Set up syntax highlighting for e-mail {{{
@@ -721,8 +735,8 @@ map <S-Left>  :bprevious<CR>
 " NerdCommenter {{{
 " ------------------------------------------------------------------------------
 " Toggle comments
-nmap <C-x><C-x> ,c<space>
-vmap <C-x><C-x> ,c<space>
+nnoremap ,c :call NERDComment(0, "toggle")<CR>
+vnoremap ,c :call NERDComment(1, "toggle")<CR>
 " }}}
 "------------------------------------------------------------------------------
 
@@ -814,7 +828,7 @@ let g:neocomplete#sources#dictionary#dictionaries = {
             \ 'default' : '',
             \ 'vimshell' : $HOME.'/.vimshell_hist'
             \ }
-            "\ 'scheme' : $HOME.'/.gosh_completions'
+"\ 'scheme' : $HOME.'/.gosh_completions'
 
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
@@ -978,6 +992,7 @@ let g:multi_cursor_prev_key='<C-h>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 " }}}
+
 
 " -----------------------------------------------------------------------------
 " Airline {{{
