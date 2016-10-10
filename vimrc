@@ -165,6 +165,7 @@ command! SetIndentLineColor call SetIndentLineColor()
 " -----------------------------------------------------------------------------
 let g:ambienter_config = {
             \     "debug": 0,
+            \     "disable": 1,
             \     "sensor": {
             \         "value": {"min": 250}
             \     },
@@ -183,7 +184,7 @@ let g:ambienter_config = {
 
 let g:ambienter_config.sensor.path = "/tmp/bus/iio/devices/als/in_intensity_both_raw"
 
-au VimEnter,BufEnter * call Ambienter.Sensor()
+"au VimEnter,BufEnter * call Ambienter.Sensor()
 " 3}}}
 " 2}}}
 " -----------------------------------------------------------------------------
@@ -192,7 +193,8 @@ au VimEnter,BufEnter * call Ambienter.Sensor()
 if has('gui_running')
     "let &guicursor = &guicursor . " a:blinkon0 "
     "colorscheme lucius
-    set guifont=Inconsolata\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Plus\ Font\ Awesome\ Plus\ Octicons\ Plus\ Pomicons\ 12
+    "set guifont=Inconsolata\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Plus\ Font\ Awesome\ Plus\ Octicons\ Plus\ Pomicons\ 12
+    set guifont=InconsolataForPowerline\ Nerd\ Font\ Medium\ 13
 
     set lines=60                                  " lines to display
     set columns=180                               " number of col to display

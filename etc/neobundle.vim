@@ -77,6 +77,7 @@ NeoBundleLazy 'Shougo/vimshell', {
 NeoBundle 'Valloric/MatchTagAlways'
 NeoBundle 'YankRing.vim'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'guns/xterm-color-table.vim'
 NeoBundle 'inkarkat/vim-localrc'
 NeoBundle 'jlanzarotta/bufexplorer'
@@ -273,7 +274,7 @@ NeoBundleLazy 'Chiel92/vim-autoformat',
             \ ]
             \ }}
 
-NeoBundleLazy 'dericofilho/vim-phpfmt',
+NeoBundleLazy 'waltzofpearls/vim-phpfmt',
             \ {'autoload': {'filetypes': ['php']}}
 " 3}}}
 " 2}}}
