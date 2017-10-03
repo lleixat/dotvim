@@ -14,7 +14,7 @@ snippet [:*
 # images
 snippet ![
 	![${1:alttext}](${2:/images/image.jpg} "${3:title}")${0}
-	
+
 snippet ![*
 	![${1:alt}](${2:`@*`} "${3:title}")${0}
 
@@ -26,7 +26,7 @@ snippet ![:*
 # titles
 snippet ===
 	`repeat('=', strlen(getline(line(".") - 1)))`
-	
+
 	${0}
 snippet ---
 	`repeat('-', strlen(getline(line(".") - 1)))`
@@ -52,7 +52,7 @@ prev_word   '^'
 
 snippet     lbc
 abbr        lbc
-option      head
+options      head
    ## ${1:Lave linge}
 
    ### Notes & Refs : 

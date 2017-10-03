@@ -21,6 +21,5 @@ let g:startify_bookmarks     = [
             \ '~/.vim/etc/startify.vim',
             \ '~/.vim/etc/switch_definitions.vim',
             \ '~/.vim/etc/neobundle.vim',
-            \ '~/Dev/parfum_d_O/src/',
-            \ '~/bin/mageit',
+            \ '~/.oh-my-zsh/custom/alias.zsh',
             \ ]

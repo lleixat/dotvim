@@ -104,6 +104,7 @@ let g:unite_source_menu_menus.config = {
 let g:unite_source_menu_menus.config.command_candidates = [
             \['Reload vim config'       , 'vim/rc'  , '~/.vim/vimrc'                      , 'source ~/.vim/vimrc']                    ,
             \['Edit vim config'         , 'vim/rc'  , '~/.vim/vimrc'                      , 'edit ~/.vim/vimrc']                      ,
+            \['Edit Startify config'    , 'vim/rc'  , '~/.vim/etc/startify.vim'           , 'edit ~/.vim/etc/startify.vim']           ,
             \['Edit Switch definitions' , 'vim/etc' , '~/.vim/etc/switch_definitions.vim' , 'edit ~/.vim/etc/switch_definitions.vim'] ,
             \['Edit NeoBundle config'   , 'vim/etc' , '~/.vim/etc/neobundle.vim'          , 'edit ~/.vim/etc/neobundle.vim']          ,
             \['Edit Unite config'       , 'vim/etc' , '~/.vim/etc/unite.vim'              , 'edit ~/.vim/etc/unite.vim']              ,

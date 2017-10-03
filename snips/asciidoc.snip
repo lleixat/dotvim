@@ -1,0 +1,20 @@
+snippet     code snippet
+abbr        code
+alias       src
+prev_word   '^'
+    [source${1:,bash}${2:,linenums}]
+    ----
+    ${0}
+    ----
+
+snippet     kbd snippet
+abbr        kbd
+options     word
+prev_word   '^'
+    kbd:[${0}]
+
+snippet     link
+abbr        <`2link`>
+options     <`4:word`>
+prev_word   '^'
+    link:++${0:http://plop}++[${1:Title}]

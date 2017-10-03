@@ -31,17 +31,17 @@ prev_word   '^'
     
 snippet     ->
 abbr        --
-options     head
+options     word
     →
 
 snippet     <-
 abbr        --
-options     head
+options     word
     ←
 
 snippet     <->
 abbr        --
-options     head
+options     word
     ↔
 
 snippet     date
@@ -139,4 +139,9 @@ abbr        Environment
 options     head
     #!/usr/bin/env ${0:bash/zsh/python/ruby/php}
 
-
+snippet     -\
+abbr        Kaomoji ¯\_(ツ)_/¯
+alias       shrug
+options     word
+prev_word   '^'
+    ¯\_(ツ)_/¯${0}

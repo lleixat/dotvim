@@ -1,0 +1,35 @@
+snippet     steps
+abbr        steps {...}
+alias       ste, se
+options     word
+prev_word   '^'
+    steps {
+        echo '${0:Import dump}'
+    }
+
+snippet     stage
+abbr        stage(...) {...}
+alias       sta, sa
+options     word
+prev_word   '^'
+    stage(${'1:Deploy}') {
+        ${0}
+    }
+
+snippet     node
+abbr        node { stage(...) {...} ... }
+alias       nod, n
+options     word
+prev_word   '^'
+    node {
+        stage(${'1:Deploy}') {
+            ${0}
+        }
+    }
+
+snippet     echo
+abbr        echo '...'
+alias       ech
+options     word
+prev_word   '^'
+    echo '${0:Do something}'

@@ -11,39 +11,57 @@ let g:switch_no_builtins = 1
 " -----------------------------------------------------------------------------
 let g:switch_custom_definitions = [
             \   {
-            \ 	  'true': 'false',
-            \ 	  'false': 'null',
-            \ 	  'null': 'true',
+            \    'true': 'false',
+            \    'false': 'null',
+            \    'null': 'true',
             \   },
             \   {
-            \ 	  '[oO][nN]': 'off',
-            \ 	  '[oO][fF][fF]': 'on',
+            \     '[oO][nN]': 'off',
+            \     '[oO][fF][fF]': 'on',
             \   },
             \   {
-            \ 	  '[yY][eE][sS]': 'no',
-            \ 	  '[nN][oO]': 'yes',
-            \   },
-			\   {
-			\     'pick': 'squash',
-			\     'squash': 'reword',
-			\     'reword': 'edit',
-			\     'edit': 'fixup',
-			\     'fixup': 'exec',
-			\     'exec': 'pick',
-			\   },
-            \   {
-            \ 	  'production': 'development',
-            \ 	  'development': 'test',
-            \ 	  'test': 'production',
+            \     'master': 'develop',
+            \     'develop': 'integration',
+            \     'integration': 'master',
             \   },
             \   {
-            \ 	  'NOTE': 'TODO',
-            \ 	  'TODO': 'XXX',
-            \ 	  'XXX': 'NOTE',
+            \     '[yY][eE][sS]': 'no',
+            \     '[nN][oO]': 'yes',
             \   },
             \   {
-            \ 	  '&&': '||',
-            \ 	  '||': '&&',
+            \     'pick': 'squash',
+            \     'squash': 'reword',
+            \     'reword': 'edit',
+            \     'edit': 'fixup',
+            \     'fixup': 'exec',
+            \     'exec': 'pick',
+            \   },
+            \   {
+            \     'present': 'absent',
+            \     'absent': 'present',
+            \   },
+            \   {
+            \     'prod': 'preprod',
+            \     'preprod': 'dev',
+            \     'dev': 'test',
+            \     'test': 'prod',
+            \   },
+            \   {
+            \     'production': 'preproduction',
+            \     'preproduction': 'qualification',
+            \     'qualification': 'integration',
+            \     'integration': 'test',
+            \     'test': 'development',
+            \     'development': 'production',
+            \   },
+            \   {
+            \     'NOTE': 'TODO',
+            \     'TODO': 'XXX',
+            \     'XXX': 'NOTE',
+            \   },
+            \   {
+            \     '&&': '||',
+            \     '||': '&&',
             \   },
             \   {
             \     '\<[a-z0-9]\+_\k\+\>': {
@@ -70,25 +88,25 @@ autocmd FileType php let b:switch_custom_definitions = [
             \ 	  'or': 'xor',
             \ 	  'xor': 'and',
             \   },
-			\   {
+            \   {
             \ 	  'public': 'private',
             \ 	  'private': 'public',
-			\   },
-			\   {
+            \   },
+            \   {
             \ 	  'include': 'include_once',
             \ 	  'include_once': 'include',
-			\   },
-			\   {
+            \   },
+            \   {
             \ 	  'require': 'require_once',
             \ 	  'require_once': 'require',
-			\   },
-			\   {
+            \   },
+            \   {
             \ 	  'mixed': 'string',
             \ 	  'string': 'array',
             \ 	  'array': 'bool',
             \ 	  'bool': 'int',
             \ 	  'int': 'mixed',
-			\   },
+            \   },
             \   {
             \ 	  'return': 'echo',
             \ 	  'echo': 'exit',

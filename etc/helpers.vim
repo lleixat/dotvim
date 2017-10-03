@@ -22,7 +22,6 @@ endfunction map <F8> :call E_ftp_upload()<ENTER> </source>
 
 " -----------------------------------------------------------------------------
 " Pasting code in Chat {{{
-"
 " -----------------------------------------------------------------------------
 function! Imcopy() range
     redir @*
@@ -36,6 +35,9 @@ endfunction
 com! -range Imcopy <line1>,<line2>call Imcopy()
 "}}}
 
+" -----------------------------------------------------------------------------
+" Get visual selection {{{
+" -----------------------------------------------------------------------------
 function! GetVisualSelection()
     " Why is this not a built-in Vim script function?!
     let [lnum1, col1] = getpos("'<")[1:2]
@@ -44,11 +46,10 @@ function! GetVisualSelection()
     let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
     let lines[0]  = lines[0][col1 - 1:]
     return join(lines, "\n")
+
 endfunction
-
 com! GetVisualSelection :call GetVisualSelection()
-
-
+" }}}
 
 " -----------------------------------------------------------------------------
 " Pasting code in markdown form {{{
@@ -75,8 +76,6 @@ endfunction
 
 com! -range ImcopyMd <line1>,<line2>call ImcopyMd()
 "}}}
-
-
 
 " -----------------------------------------------------------------------------
 " Hastebin {{{
@@ -180,6 +179,36 @@ com! -range=% ForumCopyS :call ForumCopy(<line1>,<line2>,"true")
 " Count lines in current selection {{{
 " -----------------------------------------------------------------------------
 command! -range -nargs=0 Lignes :echo <line2> - <line1> + 1
+" }}}
+
+" ----------------------------------------------------------------------------
+" Comment line/block and copy it for edition {{{
+" ----------------------------------------------------------------------------
+func! Duplicate(line1, line2, ...)
+    let comment_string = strlen(&commentstring) > 3 ? '#' : substitute(&commentstring, '\([^ \t]*\)\s*%s.*', '\1', '')
+    let lines          = getbufline('%', a:line1, a:line2)
+
+    call inputsave()
+    let duplicate_tag_name = input("Enter tag name (default 'tag'): ")
+    call inputrestore()
+
+    let tag_string = strlen(duplicate_tag_name) == 0 ? " tag": " ". duplicate_tag_name
+
+    let comments=[]
+    for i in lines
+        let str = substitute(i, '\(^\s*\)\(.*\)','\1' . comment_string.' \2', '')
+        call add(comments, str."    ".comment_string.tag_string)
+    endfor
+    call append(a:line1-1, comments)
+
+    " valign tags
+    "exe ':' . a:line1 . ',' . a:line2 . ' Align .*\zs' . comment_string . tag_string
+endf
+
+command! -range Duplicate :call Duplicate(<line1>,<line2>)
+
+vmap <S-Y><S-Y> :Duplicate<CR>
+nmap <S-Y><S-Y> :Duplicate<CR>
 " }}}
 
 "------------------------------------------------------------------------------
@@ -320,6 +349,7 @@ augroup BWCCreateDir
 augroup END
 " }}}
 
+
 " -----------------------------------------------------------------------------
 " Higlight repeated lines {{{
 " http://stackoverflow.com/questions/1268032/marking-duplicate-lines
@@ -368,9 +398,9 @@ nnoremap K h/[^ ]<cr>"zd$jyyP^v$h"zpJk:s/\v +$//<cr>:noh<cr>j^
 " }}}
 
 " -----------------------------------------------------------------------------
-" Redirect vim ex command output in split view {{{
+" Redirect vim ex command output in split view
 " this function output the result of the Ex command into a split scratch buffer
-" http://vim.wikia.com/wiki/Capture_ex_command_output
+" http://vim.wikia.com/wiki/Capture_ex_command_output {{{
 " -----------------------------------------------------------------------------
 function! OutputSplitWindow(...)
     let cmd = join(a:000, ' ')

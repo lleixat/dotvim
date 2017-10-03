@@ -29,6 +29,7 @@ NeoBundle 'Shougo/neocomplete.vim', {
 " Unite {{{3
 " -----------------------------------------------------------------------------
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neoyank.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'lambdalisue/unite-grep-vcs'
 NeoBundle 'tungd/unite-session'
@@ -75,7 +76,6 @@ NeoBundleLazy 'Shougo/vimshell', {
             \   'mappings' : '<Plug>'
             \ }}
 NeoBundle 'Valloric/MatchTagAlways'
-NeoBundle 'YankRing.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'guns/xterm-color-table.vim'
@@ -95,9 +95,7 @@ NeoBundle 'mihaifm/vimpanel'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'skroll/Smart-Tabs'
-NeoBundle 'smancill/conky-syntax.vim'
 NeoBundle 'szw/vim-bufferlist'
-NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tomtom/quickfixsigns_vim'
 NeoBundle 'vim-scripts/Align'
@@ -121,7 +119,7 @@ NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-session'
 NeoBundle 'xolox/vim-shell'
 NeoBundle 'godlygeek/csapprox'
-NeoBundle 'gregsexton/MatchTag'
+"NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'greyblake/vim-preview'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'jiangmiao/auto-pairs'
@@ -130,26 +128,30 @@ NeoBundle 'sheerun/vim-polyglot'
 NeoBundle 'tomtom/checksyntax_vim'
 NeoBundle 'tomtom/tlib_vim'
 NeoBundle 'jbgutierrez/vim-partial'
+NeoBundle 'brooth/far.vim'
 
 
 " Themes
 NeoBundle 'chriskempson/base16-vim'
 "NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'lleixat/ambienter-vim', {'depends': 'chriskempson/base16-vim'}
 
 " Debug
 NeoBundle 'joonty/vdebug.git'
 
 " Note taking
 NeoBundle 'xolox/vim-notes'
+" Remote editing
+NeoBundle 'zenbro/mirror.vim'
 
 
 " NerdTree {{{3
 " -----------------------------------------------------------------------------
 NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'scrooloose/nerdtree'
+" NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 NeoBundle 'vim-scripts/FindInNERDTree'
 NeoBundle 'vim-scripts/NERD_tree-Project'
+NeoBundle 'tiagofumo/vim-nerdtree-syntax-highlight'
 " 3}}}
 
 NeoBundle 'ryanoasis/vim-devicons'
@@ -205,6 +207,8 @@ NeoBundleLazy 'smith/javaScriptLint.vim'
 "NeoBundleLazy 'jelera/vim-javascript-syntax'
 "NeoBundleLazy 'vim-scripts/jQuery'
 "NeoBundleLazy 'pangloss/vim-javascript'
+NeoBundleLazy 'rdolgushin/groovy.vim',
+            \ {'autoload': {'filetypes': ['groovy']}}
 " 2}}}
 
 " -----------------------------------------------------------------------------
@@ -228,6 +232,10 @@ NeoBundleLazy 'tpope/vim-haml', {
             \ 'autoload': {'filetypes': ['haml'] }
             \ }
 
+NeoBundleLazy 'actionshrimp/vim-xpath', {
+            \ 'autoload': {'filetypes': ['xml'] }
+            \ }
+
 NeoBundleLazy 'fatih/vim-go', {
             \ 'autoload': {'filetypes': ['go'] }
             \ }
@@ -238,7 +246,7 @@ NeoBundleLazy 'fatih/vim-go', {
 " -----------------------------------------------------------------------------
 " Sql {{{2
 " -----------------------------------------------------------------------------
-NeoBundleLazy 'edsono/vim-dbext',
+NeoBundleLazy 'vim-scripts/dbext.vim',
             \ {'autoload': {'filetypes': ['sql', 'SQL']}}
 NeoBundleLazy 'mbra/prettysql',
             \ {'autoload': {'filetypes': ['sql', 'SQL']}}
@@ -251,6 +259,10 @@ NeoBundleLazy 'vim-scripts/SQLUtilities',
 " -----------------------------------------------------------------------------
 NeoBundleLazy 'plasticboy/vim-markdown',
             \ {'autoload': {'filetypes': ['md', 'markdown']}}
+NeoBundleLazy 'vim-scripts/SyntaxRange', {
+            \ 'depends' : 'vim-scripts/ingo-library',
+            \ 'autoload': {'filetypes': ['md', 'markdown', 'adoc']}
+            \ }
 " 2}}}
 
 " -----------------------------------------------------------------------------
@@ -273,9 +285,18 @@ NeoBundleLazy 'Chiel92/vim-autoformat',
             \ 'c', 'css', 'java', 'python',
             \ ]
             \ }}
+NeoBundleLazy 'pearofducks/ansible-vim', {
+            \ 'autoload': {'filetype': ['yml', 'yaml']}
+            \ }
+
+NeoBundleLazy 'stephpy/vim-php-cs-fixer',
+            \ {'autoload': {'filetypes': ['php']}}
 
 NeoBundleLazy 'waltzofpearls/vim-phpfmt',
             \ {'autoload': {'filetypes': ['php']}}
+
+NeoBundleLazy 'PProvost/vim-ps1',
+            \ {'autoload': {'filetypes': ['ps1']}}
 " 3}}}
 " 2}}}
 

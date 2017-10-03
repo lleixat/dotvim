@@ -55,7 +55,27 @@ let g:tagbar_type_markdown = {
             \ 'sort' : 0
             \ }
 
+let g:tagbar_type_ansible = {
+            \ 'ctagstype' : 'ansible',
+            \ 'kinds' : [
+            \ 'h:headings',
+            \ 'l:links',
+            \ 'i:images'
+            \ ],
+            \ 'sort' : 0
+            \ }
+
 let g:tagbar_type_notes = {
+            \ 'ctagstype' : 'markdown',
+            \ 'kinds' : [
+            \ 'h:headings',
+            \ 'l:links',
+            \ 'i:images'
+            \ ],
+            \ 'sort' : 0
+            \ }
+
+let g:tagbar_type_axciidoc = {
             \ 'ctagstype' : 'markdown',
             \ 'kinds' : [
             \ 'h:headings',

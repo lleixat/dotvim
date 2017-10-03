@@ -4,3 +4,92 @@ alias       loc
 options     word
 prev_word   '^'
     local ${1:str}=${${0:1}}
+
+snippet     if
+alias       if
+options     word
+prev_word   '^'
+    if [[ ${1} ]]; then
+        ${0}
+    fi
+
+snippet     _base
+alias       _lo
+options     head
+prev_word   '^'
+    RED='\033[0;31m'
+    GREEN='\033[0;32m'
+    ORANGE='\033[0;33m'
+    BLUE='\033[0;34m'
+    GREY='\033[0;90m'
+    NC='\033[0m'
+
+    _log(){
+        local level=${1}
+        local mess=${2}
+
+        aft=""
+        pre=""
+        fc=""
+
+        case "${level}" in
+            1)
+                fc=${GREEN}
+                pre="==>"
+                ;;
+            2)
+                fc=${GREEN}
+                pre="  -->"
+                ;;
+            3)
+                fc=${BLUE}
+                pre="   ::"
+                ;;
+            'error'|'ee')
+                fc=${RED}
+                pre="Error${NC}:"
+                ;;
+            'warning'|'ww')
+                fc=${ORANGE}
+                pre="Warning${NC}:"
+                ;;
+            'end')
+                n=$(basename \$\{0\})
+                fc=${NC}
+                pre="\n*** '${n}'"
+                aft="***"
+                ;;
+            *)
+        esac
+
+        printf "${fc}${pre}${NC} %s${aft}\n${GREY}" "${mess}"
+    }
+
+    _end(){
+        code=\$\{1:-1\}
+        _log 'end' "Done."
+        printf "${NC}"
+        exit ${code}
+    }
+
+snippet     _log
+alias       _lo
+options     word
+prev_word   '^'
+    _log '${1:1,2,3,error,warning}' "${0}"
+
+snippet     for
+abbr        for
+options     word
+prev_word   '^'
+    declare -a things=(one two three drink)
+    for i in "${things[@]}"; do
+    echo ${i}
+    done
+
+snippet     DIR
+abbr        Grab local script dir
+alias       alias
+options     word
+prev_word   '^'
+    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"

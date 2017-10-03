@@ -148,6 +148,7 @@ let base16colorspace=256
 " Set default theme
 set background=dark
 colorscheme base16-ocean
+let g:airline_theme='base16'
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#2D323D
 
 function! SetIndentLineColor() abort
@@ -189,12 +190,17 @@ let g:ambienter_config.sensor.path = "/tmp/bus/iio/devices/als/in_intensity_both
 " 2}}}
 " -----------------------------------------------------------------------------
 
+" -----------------------------------------------------------------------------
+" Airline {{{
+" -----------------------------------------------------------------------------
+let g:airline_powerline_fonts = 1
+" }}}
 
 if has('gui_running')
     "let &guicursor = &guicursor . " a:blinkon0 "
     "colorscheme lucius
     "set guifont=Inconsolata\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Plus\ Font\ Awesome\ Plus\ Octicons\ Plus\ Pomicons\ 12
-    set guifont=InconsolataForPowerline\ Nerd\ Font\ Medium\ 13
+    set guifont=InconsolataForPowerline\ Nerd\ Font\ Medium\ 12
 
     set lines=60                                  " lines to display
     set columns=180                               " number of col to display
@@ -202,7 +208,7 @@ if has('gui_running')
     set go=gpt
     set anti                                      " antialias font
     set cursorline
-    set linespace=3
+    set linespace=10
 elseif (&term =~ 'linux')
     "set t_co=8
     colorscheme xterm16
@@ -327,6 +333,7 @@ let g:html_indent_script1 = "inc"
 let g:html_indent_style1  = "inc"
 " }}}
 
+
 " -----------------------------------------------------------------------------
 " Js Context coloring {{{
 " https://github.com/bigfish/vim-js-context-coloring
@@ -341,6 +348,14 @@ map <F3> :JSContextColorToggle <CR>
 " -----------------------------------------------------------------------------
 let g:user_emmet_leader_key = '<c-e>'
 " }}}
+
+" -----------------------------------------------------------------------------
+" Ansible specific config {{{
+" -----------------------------------------------------------------------------
+let g:ansible_unindent_after_newline = 1
+let g:ansible_name_highlight = 'd'
+" }}}
+
 
 " -----------------------------------------------------------------------------
 " Un petit menu qui permet d'afficher la liste des éléments {{{
@@ -417,11 +432,15 @@ nnoremap <C-m> :<C-u>Unite menu<CR>
 nnoremap <C-b> :<C-u>Unite -start-insert buffer<CR>
 " Outline
 nnoremap <C-h> :<C-u>Unite outline<CR>
+
+let g:unite_source_outline_ctags_program =
+            \ '/usr/bin/ctags-exuberant'
+
 " Git grep
 nnoremap <C-g> :<C-u>Unite -start-insert grep/git<CR>
 
 " Ag search
-let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_command = '/usr/bin/ag'
 let g:unite_source_grep_default_opts =
             \ '-i --vimgrep --hidden --ignore ' .
             \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
@@ -520,7 +539,8 @@ let g:tagbar_ctags_bin   = "/usr/bin/ctags"
 let g:tagbar_iconchars   = ['▸', '▾']
 let g:tagbar_singleclick = 1
 
-let g:tagbar_phpctags_bin='~/.vim/lib/phpctags/phpctags'
+"let g:tagbar_phpctags_bin='~/.vim/lib/phpctags/phpctags'
+let g:tagbar_phpctags_bin='~/.vim/bundle/tagbar-phpctags.vim/build/phpctags-0.5.1/phpctags'
 let g:tagbar_phpctags_memory_limit='512M'
 " 1}}} /Tagbar
 
@@ -539,13 +559,20 @@ let g:bufExplorerSplitRight    = 0 " Split left.
 
 "let loaded_nerd_tree=1
 map <S-F12> :NERDTreeToggle <CR>
-let g:NERDTreeShowBookmarks   = 1
-let g:NERDTreeHijackNetrw     = 1
-let g:NERDTreeMouseMode       = 2
-let g:NERDTreeChDirMode       = 1
+let g:NERDTreeShowBookmarks    = 1
+let g:NERDTreeHijackNetrw      = 1
+let g:NERDTreeMouseMode        = 2
+let g:NERDTreeChDirMode        = 1
 "let g:NERDTreeShowLineNumbers = 1
-let NERDTreeDirArrows         = 1
-nnoremap <Leader>f :NERDTreeFind<CR>
+let NERDTreeDirArrows          = 1
+let NERDTreeQuitOnOpen         = 1
+"let g:NERDTreeWinSize          = 60
+
+let g:NERDTreeDirArrowExpandable  = ''
+let g:NERDTreeDirArrowCollapsible = ''
+
+nnoremap <Leader>r :NERDTreeFind<CR>
+"autocmd BufEnter * if &modifiable | NERDTreeFind | wincmd p | endif
 
 " NERDTreeToggle
 map <F12> :NERDTreeTabsToggle <CR>
@@ -553,6 +580,11 @@ let g:nerdtree_tabs_open_on_gui_startup = 0
 let g:nerdtree_tabs_autoclose           = 0
 let g:nerdtree_tabs_synchronize_view    = 1
 let g:nerdtree_tabs_focus_on_files      = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 0
+"let g:WebDevIconsUnicodeDecorateFolderNodeDefaultSymbol = ''
+let g:NERDTreeFileExtensionHighlightFullName = 1
+"let g:NERDTreeExactMatchHighlightFullName = 1
+"let g:NERDTreePatternMatchHighlightFullName = 1
 
 " }}}
 
@@ -639,7 +671,7 @@ au BufNewFile,BufRead        *.blog     set ft=blog
 au BufNewFile,BufRead        *.xml      set ft=xml
 au BufNewFile,BufRead        *.xsl      set ft=xslt
 au BufNewFile,BufRead        *.htc      set ft=javascript
-au BufNewFile,BufRead        *.snip     set ft=snippet
+au BufNewFile,BufRead        *.snip     set ft=snippet syntax=neosnippet
 "au BufNewFile,BufRead      *.scss      set ft=scss.css
 au BufNewFile,BufRead jquery-*.js       set ft=javascript syntax=jquery
 au BufNewFile,BufRead         .ctags    set ft=ctags syntax=ctags
@@ -769,7 +801,7 @@ nnoremap <leader>w :Open<CR>
 " -----------------------------------------------------------------------------
 " Vim notes {{{2
 " -----------------------------------------------------------------------------
-"  https://github.com/xolox/vim-notes 
+"  https://github.com/xolox/vim-notes
 let g:notes_directories = ['~/Documents/Notes', '~/Dropbox/Shared Notes']
 " 2}}}
 " -----------------------------------------------------------------------------
@@ -780,6 +812,9 @@ let g:notes_directories = ['~/Documents/Notes', '~/Dropbox/Shared Notes']
 nnoremap <F6> :GundoToggle<CR>
 let g:gundo_width          = 60
 let g:gundo_preview_height = 20
+if has('python3')
+    let g:gundo_prefer_python3 = 1          " anything else breaks on Ubuntu 16.04+
+endif
 " }}}
 
 " -----------------------------------------------------------------------------
@@ -995,12 +1030,6 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 " }}}
 
-
-" -----------------------------------------------------------------------------
-" Airline {{{
-" -----------------------------------------------------------------------------
-let g:airline_powerline_fonts = 1
-" }}}
 
 
 " vim: fdm=marker
